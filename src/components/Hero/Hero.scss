@@ -1,0 +1,59 @@
+.hero {
+	height: 100vh;
+	width: 100%;
+	background-image: url("/src/assets/hero-small.png");
+	background-position: left;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.tagline {
+	font-size: 3rem;
+	margin: 4rem 1rem 8rem 1rem;
+	line-height: 1.1;
+	font-family: "Dosis";
+	font-weight: 200;
+
+	&--small {
+		font-size: 1.75rem;
+		margin: 0;
+	}
+}
+
+.logo__container {
+	display: block;
+}
+
+.logo {
+	width: 40vw;
+}
+
+.icon {
+	width: 50px;
+}
+.icon__container {
+	display: flex;
+	place-content: center;
+	gap: 1rem;
+}
+
+.planning-button {
+	border-radius: 10px;
+	background-color: #62b5e5;
+	color: white;
+	padding: 1rem;
+	font-family: "Dosis";
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+.navigation-div {
+	position: absolute;
+	bottom: 1em; /*adjust the number depends on your need*/
+	left: 50%;
+	transform: translatex(-50%);
+}
+
+.arrow-link {
+	width: 50px;
+}
