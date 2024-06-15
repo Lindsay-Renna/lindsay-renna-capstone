@@ -13,13 +13,20 @@ const navListArr = [
 function NavBar() {
 	const [hamburgerOpen, setHamburgerOpen] = useState(false);
 	const menuRef = useRef(null);
+	const hamburgerRef = useRef(null);
 
-	function toggleHamburger() {
-		setHamburgerOpen(!hamburgerOpen);
+	function toggleHamburger(event) {
+		event.stopPropagation();
+		setHamburgerOpen((prev) => !prev);
 	}
 
 	function handleClickOutside(event) {
-		if (menuRef.current && !menuRef.current.contains(event.target)) {
+		if (
+			menuRef.current &&
+			!menuRef.current.contains(event.target) &&
+			hamburgerRef.current &&
+			!hamburgerRef.current.contains(event.target)
+		) {
 			setHamburgerOpen(false);
 		}
 	}
@@ -39,7 +46,7 @@ function NavBar() {
 
 	return (
 		<nav>
-			<div className="hamburger" onClick={toggleHamburger}>
+			<div ref={hamburgerRef} className="hamburger" onClick={toggleHamburger}>
 				<Hamburger />
 			</div>
 			<ul
