@@ -8,6 +8,7 @@
 	flex-flow: column nowrap;
 	cursor: pointer;
 	z-index: 10;
+	padding-left: 0.5rem;
 
 	@include tablet {
 		display: none;

@@ -1,6 +1,6 @@
 import Hamburger from "../HamburgerMenu/Hamburger";
 import "./NavBar.scss";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const navListArr = [
 	"Browse Movies",
@@ -49,6 +49,11 @@ function NavBar() {
 			<div ref={hamburgerRef} className="hamburger" onClick={toggleHamburger}>
 				<Hamburger />
 			</div>
+			<img
+				className="nav__logo"
+				src="/src/assets/Famtivity-colourful.png"
+				alt="famtivity logo"
+			/>
 			<ul
 				ref={menuRef}
 				className={hamburgerOpen ? "nav-list ham-nav" : "nav-list"}
