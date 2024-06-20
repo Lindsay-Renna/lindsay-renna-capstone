@@ -51,7 +51,7 @@ function NavBar() {
 			</div>
 			<img
 				className="nav__logo"
-				src="/src/assets/Famtivity-colourful.png"
+				src="/src/assets/Famtivity-logo.svg"
 				alt="famtivity logo"
 			/>
 			<ul
