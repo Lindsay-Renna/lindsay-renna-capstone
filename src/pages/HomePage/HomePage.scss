@@ -1,4 +1,10 @@
+@use "../../styles/partials/global" as *;
+
 #home-page {
 	height: 100vh;
 	position: relative;
+}
+
+.homepage-main {
+	background-color: $FamtivityPurple;
 }

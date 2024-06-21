@@ -10,7 +10,9 @@ function HomePage() {
 		<div id="home-page">
 			<NavBar />
 			<Hero />
-			<ActivityChoiceBox />
+			<main className="homepage-main">
+				<ActivityChoiceBox />
+			</main>
 		</div>
 	);
 }

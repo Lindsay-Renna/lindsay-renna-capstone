@@ -11,9 +11,12 @@ function Hero() {
 				</div>
 				<p className="tagline">Where family fun begins</p>
 				<div className="icon__container">
-					<img className="icon" src="/src/assets/icons/controller-icon.png" />
-					<img className="icon" src="/src/assets/icons/dice-icon.png" />
-					<img className="icon" src="src/assets/icons/movie-icon.png" />
+					<img
+						className="icon"
+						src="/src/assets/icons/controller-icon-red.png"
+					/>
+					<img className="icon" src="/src/assets/icons/dice-icon-purple.png" />
+					<img className="icon" src="src/assets/icons/movie-icon-blue.png" />
 				</div>
 			</div>
 
@@ -26,7 +29,7 @@ function Hero() {
 			</div>
 
 			<div className="navigation-div">
-				<Link to="movie-list" smooth={true}>
+				<Link to="activities" smooth={true}>
 					<img className="arrow-link" src="/src/assets/icons/arrow-down.svg" />
 				</Link>
 			</div>
