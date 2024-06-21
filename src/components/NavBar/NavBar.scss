@@ -81,4 +81,26 @@ nav {
 			}
 		}
 	}
+
+	.login {
+		@include flex-center-both;
+
+		&__logo {
+			width: 1.75rem;
+			padding: 0 0.5rem 0 0;
+
+			@include tablet {
+				padding: 0 0.5rem 0 0;
+			}
+		}
+
+		&__title {
+			display: none;
+
+			@include tablet {
+				display: initial;
+				margin: 0;
+			}
+		}
+	}
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Hamburger from "../HamburgerMenu/Hamburger";
 import "./NavBar.scss";
 import { useState, useEffect, useRef } from "react";
@@ -64,6 +65,14 @@ function NavBar() {
 					</li>
 				))}
 			</ul>
+			<Link className="login">
+				<img
+					className="login__logo"
+					src="/src/assets/icons/user-account-red.svg"
+					alt="user account logo"
+				/>
+				<p className="login__title">Login / Sign Up</p>
+			</Link>
 		</nav>
 	);
 }

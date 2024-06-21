@@ -1,8 +1,7 @@
 // import logo from "./assets/famtivity-icons.png";
-import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
-import MovieList from "./components/MovieList/MovieList";
 
 function App() {
 	return (
