@@ -2,6 +2,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
+import MoviesPage from "./pages/MoviesPage/MoviesPage";
 
 function App() {
 	return (
@@ -9,6 +10,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
+					<Route path="/movie-selection" element={<MoviesPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>

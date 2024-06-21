@@ -1,0 +1,10 @@
+@use "../../styles/partials/global" as *;
+
+#movie-selection {
+	background-color: $FamtivityBlue;
+	height: 100vh;
+}
+
+.selections {
+	background-color: $FamtivityGrey;
+}

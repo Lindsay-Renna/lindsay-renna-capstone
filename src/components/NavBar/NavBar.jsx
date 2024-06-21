@@ -52,7 +52,7 @@ function NavBar() {
 			</div>
 			<img
 				className="nav__logo"
-				src="/src/assets/Famtivity-logo.svg"
+				src="/src/assets/famtivitylogo.svg"
 				alt="famtivity logo"
 			/>
 			<ul

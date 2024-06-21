@@ -11,6 +11,7 @@
 	&__list {
 		@include flex-center-both;
 		flex-direction: column;
+		gap: 2rem;
 	}
 
 	&__link {
@@ -20,10 +21,10 @@
 	&__block {
 		@include flex-center-both;
 		flex-direction: column;
-		// border: 2px solid black;
 		border-radius: 20px;
 		background-color: $FamtivityGrey;
 		flex-grow: 1;
+		gap: 1.5rem;
 
 		&--pink {
 			position: relative;
@@ -45,12 +46,55 @@
 			}
 		}
 
+		&--purple {
+			&:hover {
+				background-color: $FamtivityPurple;
+
+				h4 {
+					color: white;
+				}
+			}
+
+			&:hover .activities__icon--default {
+				display: none;
+			}
+
+			&:hover .activities__icon--hover {
+				display: block;
+			}
+		}
+
+		&--blue {
+			&:hover {
+				background-color: $FamtivityBlue;
+
+				h4 {
+					color: white;
+				}
+			}
+
+			&:hover .activities__icon--default {
+				display: none;
+			}
+
+			&:hover .activities__icon--hover {
+				display: block;
+			}
+		}
+
 		img {
 			width: 8rem;
+			padding-top: 0.5rem;
 		}
 
 		.activities__icon--hover {
 			display: none;
 		}
+	}
+
+	&__title {
+		font-size: 1.5rem;
+		margin: 0;
+		padding-bottom: 0.5rem;
 	}
 }

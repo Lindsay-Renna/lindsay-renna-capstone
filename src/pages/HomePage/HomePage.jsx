@@ -1,4 +1,3 @@
-import MovieList from "../../components/ActivityChoiceBox/ActivityChoiceBox";
 import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 import "./HomePage.scss";

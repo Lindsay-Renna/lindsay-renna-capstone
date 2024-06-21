@@ -1,6 +1,6 @@
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./Hero.scss";
-import logo from "/src/assets/Famtivity-logo.svg";
+import logo from "/src/assets/famtivitylogo.svg";
 
 function Hero() {
 	return (
