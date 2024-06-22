@@ -5,17 +5,18 @@
 	flex-direction: column;
 	justify-content: space-between;
 
-	padding: 0 1rem;
+	padding: 0 0.5rem;
 	height: 85vh;
+	min-width: 70%;
 }
 
 .kids {
 	&__wrapper {
-		min-width: 10rem;
-		max-width: 10rem;
-		min-height: 16rem;
+		width: 100%;
+		min-height: 13rem;
 		@include flex-center-both;
 		flex-wrap: wrap;
+		order: -1;
 	}
 	&__header {
 		margin-top: 1rem;
@@ -27,6 +28,7 @@
 
 .flex-wrapper {
 	@include flex-center-both;
+	flex-wrap: wrap;
 	gap: 0.5rem;
 }
 
@@ -34,11 +36,11 @@
 	margin-bottom: 1rem;
 
 	&__wrapper {
-		min-width: 10rem;
-		max-width: 10rem;
-		min-height: 16rem;
+		width: 100%;
+		min-height: 13rem;
 		@include flex-center-both;
 		flex-wrap: wrap;
+		order: -1;
 	}
 
 	&__header {
@@ -50,14 +52,19 @@
 	}
 }
 
-.minus-button,
-.plus-button {
-	border-radius: 50px;
+.minus-button {
 	border: none;
-	background-color: black;
-	padding: 0 0.5rem 1rem 0.5rem;
-	color: white;
-	font-family: "Dosis";
-	font-weight: 600;
-	font-size: 4rem;
+	max-width: 40%;
+
+	.button__image {
+		width: 2.25rem;
+	}
+}
+.plus-button {
+	border: none;
+	max-width: 40%;
+
+	.button__image {
+		width: 2rem;
+	}
 }

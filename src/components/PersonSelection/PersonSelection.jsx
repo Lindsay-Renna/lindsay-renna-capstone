@@ -29,7 +29,11 @@ function PersonSelection() {
 				<h2 className="kids__header">How many kids?</h2>
 				<div className="flex-wrapper">
 					<button onClick={removeKid} className="minus-button">
-						-
+						<img
+							className="button__image"
+							src="src/assets/icons/minus-circle.svg"
+							alt="minus circle"
+						/>
 					</button>
 					<div className="kids__wrapper">
 						{[...Array(numKids)].map((_, index) => (
@@ -42,7 +46,11 @@ function PersonSelection() {
 						))}
 					</div>
 					<button onClick={addKid} className="plus-button">
-						+
+						<img
+							className="button__image"
+							src="src/assets/icons/plus-circle.svg"
+							alt="plus circle"
+						/>
 					</button>
 				</div>
 			</div>
@@ -51,7 +59,11 @@ function PersonSelection() {
 				<h2 className="adults__header">How many adults?</h2>
 				<div className="flex-wrapper">
 					<button onClick={removeAdult} className="minus-button">
-						-
+						<img
+							className="button__image"
+							src="src/assets/icons/minus-circle.svg"
+							alt="minus circle"
+						/>
 					</button>
 					<div className="adults__wrapper">
 						{[...Array(numAdults)].map((_, index) => (
@@ -64,7 +76,11 @@ function PersonSelection() {
 						))}
 					</div>
 					<button onClick={addAdult} className="plus-button">
-						+
+						<img
+							className="button__image"
+							src="src/assets/icons/plus-circle.svg"
+							alt="plus circle"
+						/>
 					</button>
 				</div>
 			</div>
