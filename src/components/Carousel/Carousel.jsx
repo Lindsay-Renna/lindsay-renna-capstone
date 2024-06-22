@@ -3,36 +3,34 @@ import "./Carousel.scss";
 import PersonSelection from "../PersonSelection/PersonSelection";
 import ChildAgeSelector from "../ChildAgeSelector/ChildAgeSelector";
 
-const ComponentOne = () => <PersonSelection />;
-const ComponentTwo = () => <ChildAgeSelector />;
-const ComponentThree = () => <div>Component Three</div>;
+const components = [
+	{
+		component: (props) => <PersonSelection {...props} />,
+		propsName: "personSelectProps",
+	},
+	{
+		component: (props) => <ChildAgeSelector {...props} />,
+		propsName: "childAgeSelectorProps",
+	},
+	{ component: () => <div>Component Three</div>, propsName: "" },
+];
 
-const components = [ComponentOne, ComponentTwo, ComponentThree];
-
-const Carousel = () => {
+const Carousel = ({ personSelectProps, childAgeSelectorProps }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const handleNext = () => {
-		setCurrentIndex((prevIndex) => {
-			if (prevIndex < components.length - 1) {
-				return prevIndex + 1;
-			} else {
-				return prevIndex;
-			}
-		});
+		setCurrentIndex((prevIndex) =>
+			prevIndex < components.length - 1 ? prevIndex + 1 : prevIndex
+		);
 	};
 
 	const handlePrevious = () => {
-		setCurrentIndex((prevIndex) => {
-			if (prevIndex > 0) {
-				return prevIndex - 1;
-			} else {
-				return prevIndex;
-			}
-		});
+		setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
 	};
 
-	const CurrentComponent = components[currentIndex];
+	const { component: CurrentComponent, propsName } = components[currentIndex];
+	const allProps = { personSelectProps, childAgeSelectorProps };
+	const componentProps = propsName ? allProps[propsName] : {};
 
 	return (
 		<div className="carousel">
@@ -48,9 +46,8 @@ const Carousel = () => {
 				)}
 			</div>
 			<div className="selections">
-				<CurrentComponent />
+				<CurrentComponent {...componentProps} />
 			</div>
-
 			<div className="button__wrapper">
 				{currentIndex < components.length - 1 && (
 					<button
@@ -60,7 +57,7 @@ const Carousel = () => {
 						<img
 							className="button__arrow"
 							src="src/assets/icons/arrow-right-small.svg"
-							alt="previous arrow"
+							alt="next arrow"
 						/>
 					</button>
 				)}

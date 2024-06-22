@@ -1,28 +1,14 @@
 import React, { useState } from "react";
 import "./PersonSelection.scss";
 
-function PersonSelection() {
-	const [numKids, setNumKids] = useState(0);
-	const [numAdults, setNumAdults] = useState(0);
-
-	const addKid = () => {
-		if (numKids < 8) {
-			setNumKids(numKids + 1);
-		}
-	};
-
-	const removeKid = () => setNumKids(Math.max(0, numKids - 1));
-
-	const addAdult = () => {
-		if (numAdults < 8) {
-			setNumAdults(numAdults + 1);
-		}
-	};
-
-	const removeAdult = () => setNumAdults(Math.max(0, numAdults - 1));
-
-	const numberOfPlayers = numKids + numAdults;
-
+function PersonSelection({
+	numKids,
+	numAdults,
+	addKid,
+	removeKid,
+	addAdult,
+	removeAdult,
+}) {
 	return (
 		<div className="person-selection">
 			<div className="kids">

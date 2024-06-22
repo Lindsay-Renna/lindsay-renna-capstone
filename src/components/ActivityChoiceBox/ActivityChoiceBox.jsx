@@ -38,7 +38,7 @@ function ActivityChoiceBox() {
 					</div>
 				</Link>
 
-				<Link className="activities__link" to="/movie-selection">
+				<Link className="activities__link" to="/movies">
 					<div className="activities__block activities__block--blue">
 						<img
 							className="activities__icon activities__icon--default"
