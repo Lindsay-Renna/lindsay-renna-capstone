@@ -1,5 +1,63 @@
+@use "../../styles/partials/global" as *;
+
+.person-selection {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	padding: 0 1rem;
+	height: 85vh;
+}
+
 .kids {
-	&__image {
-		width: 3rem;
+	&__wrapper {
+		min-width: 10rem;
+		max-width: 10rem;
+		min-height: 16rem;
+		@include flex-center-both;
+		flex-wrap: wrap;
 	}
+	&__header {
+		margin-top: 1rem;
+	}
+	&__image {
+		width: 4rem;
+	}
+}
+
+.flex-wrapper {
+	@include flex-center-both;
+	gap: 0.5rem;
+}
+
+.adults {
+	margin-bottom: 1rem;
+
+	&__wrapper {
+		min-width: 10rem;
+		max-width: 10rem;
+		min-height: 16rem;
+		@include flex-center-both;
+		flex-wrap: wrap;
+	}
+
+	&__header {
+		margin-top: 1rem;
+	}
+
+	&__image {
+		width: 4rem;
+	}
+}
+
+.minus-button,
+.plus-button {
+	border-radius: 50px;
+	border: none;
+	background-color: black;
+	padding: 0 0.5rem 1rem 0.5rem;
+	color: white;
+	font-family: "Dosis";
+	font-weight: 600;
+	font-size: 4rem;
 }

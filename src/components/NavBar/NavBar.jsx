@@ -4,11 +4,11 @@ import "./NavBar.scss";
 import { useState, useEffect, useRef } from "react";
 
 const navListArr = [
+	"Home",
 	"Browse Movies",
 	"Browse Games",
 	"Browse BoardGames",
 	"About",
-	"Contact",
 ];
 
 function NavBar() {
@@ -50,11 +50,13 @@ function NavBar() {
 			<div ref={hamburgerRef} className="hamburger" onClick={toggleHamburger}>
 				<Hamburger />
 			</div>
-			<img
-				className="nav__logo"
-				src="/src/assets/famtivitylogo.svg"
-				alt="famtivity logo"
-			/>
+			<Link className="nav__link" to="/">
+				<img
+					className="nav__logo"
+					src="/src/assets/famtivitylogo.svg"
+					alt="famtivity logo"
+				/>
+			</Link>
 			<ul
 				ref={menuRef}
 				className={hamburgerOpen ? "nav-list ham-nav" : "nav-list"}
