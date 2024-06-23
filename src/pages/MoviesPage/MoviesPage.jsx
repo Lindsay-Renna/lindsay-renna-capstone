@@ -4,46 +4,56 @@ import NavBar from "../../components/NavBar/NavBar";
 import Carousel from "../../components/Carousel/Carousel";
 
 function MoviesPage() {
-	const [numKids, setNumKids] = useState(0);
-	const [numAdults, setNumAdults] = useState(0);
+	const [data, setData] = useState({
+		numKids: 0,
+		numAdults: 0,
+		childAges: [],
+		categories: [],
+		movieAge: [],
+	});
 
 	const addKid = () => {
-		if (numKids < 8) {
-			setNumKids(numKids + 1);
-		}
+		setData((prevData) => {
+			if (prevData.numKids < 8) {
+				return { ...prevData, numKids: prevData.numKids + 1 };
+			}
+			return prevData;
+		});
 	};
 
-	const removeKid = () => setNumKids(Math.max(0, numKids - 1));
+	const removeKid = () => {
+		setData((prevData) => ({
+			...prevData,
+			numKids: Math.max(0, prevData.numKids - 1),
+		}));
+	};
 
 	const addAdult = () => {
-		if (numAdults < 8) {
-			setNumAdults(numAdults + 1);
-		}
+		setData((prevData) => {
+			if (prevData.numAdults < 8) {
+				return { ...prevData, numAdults: prevData.numAdults + 1 };
+			}
+			return prevData;
+		});
 	};
 
-	const removeAdult = () => setNumAdults(Math.max(0, numAdults - 1));
-
-	const personSelectProps = {
-		numKids,
-		numAdults,
-		addKid,
-		removeKid,
-		addAdult,
-		removeAdult,
+	const removeAdult = () => {
+		setData((prevData) => ({
+			...prevData,
+			numAdults: Math.max(0, prevData.numAdults - 1),
+		}));
 	};
-
-	const age = 1;
-	const childAgeSelectorProps = { age };
-
-	const numberOfPlayers = numKids + numAdults;
 
 	return (
 		<div id="movie-selection">
 			<NavBar />
 			<main className="movie-main">
 				<Carousel
-					personSelectProps={personSelectProps}
-					childAgeSelectorProps={childAgeSelectorProps}
+					data={data}
+					addKid={addKid}
+					removeKid={removeKid}
+					addAdult={addAdult}
+					removeAdult={removeAdult}
 				/>
 			</main>
 		</div>

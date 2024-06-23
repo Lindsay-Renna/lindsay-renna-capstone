@@ -1,36 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Carousel.scss";
 import PersonSelection from "../PersonSelection/PersonSelection";
 import ChildAgeSelector from "../ChildAgeSelector/ChildAgeSelector";
 
 const components = [
-	{
-		component: (props) => <PersonSelection {...props} />,
-		propsName: "personSelectProps",
-	},
-	{
-		component: (props) => <ChildAgeSelector {...props} />,
-		propsName: "childAgeSelectorProps",
-	},
-	{ component: () => <div>Component Three</div>, propsName: "" },
+	PersonSelection,
+	ChildAgeSelector,
+	ChildAgeSelector,
+	ChildAgeSelector,
+	ChildAgeSelector,
 ];
 
-const Carousel = ({ personSelectProps, childAgeSelectorProps }) => {
+const Carousel = (props) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [transition, setTransition] = useState("");
 
 	const handleNext = () => {
-		setCurrentIndex((prevIndex) =>
-			prevIndex < components.length - 1 ? prevIndex + 1 : prevIndex
-		);
+		if (currentIndex < components.length - 1) {
+			setTransition("next-exit");
+			setTimeout(() => {
+				setCurrentIndex((prevIndex) => prevIndex + 1);
+				setTransition("next-enter");
+				setTimeout(() => {
+					setTransition("");
+				}, 250);
+			}, 250);
+		}
 	};
 
 	const handlePrevious = () => {
-		setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+		if (currentIndex > 0) {
+			setTransition("prev-exit");
+			setTimeout(() => {
+				setCurrentIndex((prevIndex) => prevIndex - 1);
+				setTransition("prev-enter");
+				setTimeout(() => {
+					setTransition("");
+				}, 250);
+			}, 250);
+		}
 	};
 
-	const { component: CurrentComponent, propsName } = components[currentIndex];
-	const allProps = { personSelectProps, childAgeSelectorProps };
-	const componentProps = propsName ? allProps[propsName] : {};
+	const CurrentComponent = components[currentIndex];
 
 	return (
 		<div className="carousel">
@@ -45,21 +56,23 @@ const Carousel = ({ personSelectProps, childAgeSelectorProps }) => {
 					</button>
 				)}
 			</div>
-			<div className="selections">
-				<CurrentComponent {...componentProps} />
+			<div
+				className={`selections ${transition}`}
+				onTransitionEnd={() => setTransition("")}
+			>
+				<CurrentComponent {...props} />
 			</div>
 			<div className="button__wrapper">
-				{currentIndex < components.length - 1 && (
-					<button
-						onClick={handleNext}
-						disabled={currentIndex === components.length - 1}
-					>
+				{currentIndex < components.length - 1 ? (
+					<button onClick={handleNext}>
 						<img
 							className="button__arrow"
 							src="src/assets/icons/arrow-right-small.svg"
 							alt="next arrow"
 						/>
 					</button>
+				) : (
+					<button className="submit">Submit</button>
 				)}
 			</div>
 		</div>

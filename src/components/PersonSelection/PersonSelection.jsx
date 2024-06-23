@@ -1,14 +1,8 @@
-import React, { useState } from "react";
 import "./PersonSelection.scss";
 
-function PersonSelection({
-	numKids,
-	numAdults,
-	addKid,
-	removeKid,
-	addAdult,
-	removeAdult,
-}) {
+function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
+	const { numKids, numAdults } = data;
+
 	return (
 		<div className="person-selection">
 			<div className="kids">
