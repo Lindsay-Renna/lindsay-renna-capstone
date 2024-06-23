@@ -3,13 +3,7 @@ import "./Carousel.scss";
 import PersonSelection from "../PersonSelection/PersonSelection";
 import ChildAgeSelector from "../ChildAgeSelector/ChildAgeSelector";
 
-const components = [
-	PersonSelection,
-	ChildAgeSelector,
-	ChildAgeSelector,
-	ChildAgeSelector,
-	ChildAgeSelector,
-];
+const components = [PersonSelection, ChildAgeSelector, ChildAgeSelector];
 
 const Carousel = (props) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
