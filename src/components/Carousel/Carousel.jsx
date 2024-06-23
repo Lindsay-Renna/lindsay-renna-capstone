@@ -23,8 +23,8 @@ const Carousel = (props) => {
 				setTransition("next-enter");
 				setTimeout(() => {
 					setTransition("");
-				}, 250);
-			}, 250);
+				}, 200);
+			}, 200);
 		}
 	};
 
@@ -36,8 +36,8 @@ const Carousel = (props) => {
 				setTransition("prev-enter");
 				setTimeout(() => {
 					setTransition("");
-				}, 250);
-			}, 250);
+				}, 200);
+			}, 200);
 		}
 	};
 

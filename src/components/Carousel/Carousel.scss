@@ -79,17 +79,17 @@
 }
 
 .selections.next-enter {
-	animation: slideInFromRight 0.25s forwards;
+	animation: slideInFromRight 0.2s forwards ease-in-out;
 }
 
 .selections.next-exit {
-	animation: slideOutToLeft 0.25s forwards;
+	animation: slideOutToLeft 0.2s forwards ease-in-out;
 }
 
 .selections.prev-enter {
-	animation: slideInFromLeft 0.25s forwards;
+	animation: slideInFromLeft 0.2s forwards ease-in-out;
 }
 
 .selections.prev-exit {
-	animation: slideOutToRight 0.25s forwards;
+	animation: slideOutToRight 0.2s forwards ease-in-out;
 }
