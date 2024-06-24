@@ -8,7 +8,7 @@ function MoviesPage() {
 		numKids: 0,
 		numAdults: 0,
 		childAges: [],
-		categories: [],
+		genres: [],
 		movieAge: [],
 	});
 
