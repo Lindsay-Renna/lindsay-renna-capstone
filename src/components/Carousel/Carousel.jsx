@@ -2,9 +2,9 @@ import { useState } from "react";
 import "./Carousel.scss";
 import PersonSelection from "../PersonSelection/PersonSelection";
 import ChildAgeSelector from "../ChildAgeSelector/ChildAgeSelector";
-import MovieCategories from "../MovieCategories/MovieCategories";
+import MovieGenres from "../MovieGenres/MovieGenres";
 
-const components = [PersonSelection, ChildAgeSelector, MovieCategories];
+const components = [PersonSelection, ChildAgeSelector, MovieGenres];
 
 const Carousel = (props) => {
 	const [currentIndex, setCurrentIndex] = useState(0);

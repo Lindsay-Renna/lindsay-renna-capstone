@@ -9,7 +9,9 @@ function MoviesPage() {
 		numAdults: 0,
 		childAges: [],
 		genres: [],
-		movieAge: [],
+		movieAgeMin: 1990,
+		movieAgeMax: 2024,
+		watchProviders: [],
 	});
 
 	const addKid = () => {
