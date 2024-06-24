@@ -17,7 +17,7 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 						}
 					>
 						<img
-							src={`/src/assets/images/smile${index}.svg`}
+							src={`/src/assets/images/icon${index}.svg`}
 							alt="child icon"
 							className={
 								numKids > 4 ? "kids__image" : "kids__image kids__image--large"
