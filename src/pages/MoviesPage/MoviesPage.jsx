@@ -44,6 +44,15 @@ function MoviesPage() {
 		}));
 	};
 
+	const handleAgeSelect = (event, index) => {
+		const value = event.target.value;
+		setData((prevData) => {
+			const newChildAges = [...prevData.childAges];
+			newChildAges[index] = value;
+			return { ...prevData, childAges: newChildAges };
+		});
+	};
+
 	return (
 		<div id="movie-selection">
 			<NavBar />
@@ -54,6 +63,7 @@ function MoviesPage() {
 					removeKid={removeKid}
 					addAdult={addAdult}
 					removeAdult={removeAdult}
+					handleAgeSelect={handleAgeSelect}
 				/>
 			</main>
 		</div>

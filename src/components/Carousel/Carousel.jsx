@@ -66,7 +66,7 @@ const Carousel = (props) => {
 						/>
 					</button>
 				) : (
-					<button className="submit">Submit</button>
+					<button className="submit">SUBMIT</button>
 				)}
 			</div>
 		</div>

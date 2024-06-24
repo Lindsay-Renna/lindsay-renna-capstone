@@ -1,25 +1,43 @@
 import "./ChildAgeSelector.scss";
 
-function ChildAgeSelector({ data }) {
-	const { numKids, childAges } = data;
+function ChildAgeSelector({ data, handleAgeSelect }) {
+	const { numKids } = data;
 
-	console.log(numKids);
 	return (
-		<div>
-			<h3>How old are the kids?</h3>
+		<div className="age-select">
+			<h2 className="age-select__header">How old are the kids?</h2>
 			{[...Array(numKids)].map((_, index) => {
 				return (
-					<div key={index} className="selection-box">
-						<label>
-							{`Child ${index + 1}`}
-							<select name="childAge">
-								{Array.from({ length: 12 }).map((_, i) => (
+					<div
+						key={index}
+						className={
+							numKids > 4
+								? "age-select__wrapper age-select__wrapper--many"
+								: "age-select__wrapper"
+						}
+					>
+						<img
+							src={`/src/assets/images/smile${index}.svg`}
+							alt="child icon"
+							className={
+								numKids > 4 ? "kids__image" : "kids__image kids__image--large"
+							}
+						/>
+						<label>{`Child ${index + 1}`}</label>
+						<div key={index} className="age-select__dropdown">
+							<select
+								onChange={(event) => {
+									handleAgeSelect(event, index);
+								}}
+								name="childAge"
+							>
+								{Array.from({ length: 13 }).map((_, i) => (
 									<option key={i} value={i + 1}>
 										{i + 1}
 									</option>
 								))}
 							</select>
-						</label>
+						</div>
 					</div>
 				);
 			})}

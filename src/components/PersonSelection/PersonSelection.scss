@@ -13,7 +13,7 @@
 .kids {
 	&__wrapper {
 		width: 100%;
-		min-height: 13rem;
+		min-height: 15rem;
 		@include flex-center-both;
 		flex-wrap: wrap;
 		order: -1;
@@ -23,6 +23,10 @@
 	}
 	&__image {
 		width: 4rem;
+	}
+
+	&__image--large {
+		width: 6rem;
 	}
 }
 
@@ -37,7 +41,7 @@
 
 	&__wrapper {
 		width: 100%;
-		min-height: 13rem;
+		min-height: 15rem;
 		@include flex-center-both;
 		flex-wrap: wrap;
 		order: -1;
@@ -49,6 +53,10 @@
 
 	&__image {
 		width: 4rem;
+	}
+
+	&__image--large {
+		width: 6rem;
 	}
 }
 

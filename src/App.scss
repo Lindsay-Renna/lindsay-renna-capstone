@@ -23,3 +23,22 @@ a {
 ul {
 	list-style: none;
 }
+
+select {
+	box-sizing: border-box;
+	appearance: none;
+	background-color: transparent;
+	border: none;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	line-height: inherit;
+	outline: none;
+	text-align: center;
+	min-width: 3rem;
+
+	option {
+		padding-left: 1rem;
+	}
+}

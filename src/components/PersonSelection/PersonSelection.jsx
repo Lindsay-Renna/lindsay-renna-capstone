@@ -21,7 +21,9 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 								key={index}
 								src={`/src/assets/images/smile${index}.svg`}
 								alt="smile icon"
-								className="kids__image"
+								className={
+									numKids < 5 ? "kids__image kids__image--large" : "kids__image"
+								}
 							/>
 						))}
 					</div>
@@ -51,7 +53,11 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 								key={index}
 								src={`/src/assets/images/smile${index}.svg`}
 								alt="smile icon"
-								className="adults__image"
+								className={
+									numAdults < 5
+										? "adults__image adults__image--large"
+										: "adults__image"
+								}
 							/>
 						))}
 					</div>
