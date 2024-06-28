@@ -24,7 +24,9 @@ function Hero() {
 				Welcome to your ultimate family night planner - let's get started
 			</h3>
 			<div className="plan-button__wrapper">
-				<button className="plan-button">START HERE</button>
+				<Link to="activities" smooth={true}>
+					<button className="plan-button">START HERE</button>
+				</Link>
 				<div className="plan-button__overlay"></div>
 			</div>
 

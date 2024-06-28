@@ -15,8 +15,9 @@ h3 {
 a {
 	text-decoration: none;
 	color: black;
+
 	&:hover {
-		cursor: pointer;
+		cursor: url("/src/assets/icons/cursor.svg"), pointer;
 	}
 }
 
@@ -41,4 +42,8 @@ select {
 	option {
 		padding-left: 1rem;
 	}
+}
+
+button {
+	cursor: url("/src/assets/icons/cursor.svg"), pointer;
 }

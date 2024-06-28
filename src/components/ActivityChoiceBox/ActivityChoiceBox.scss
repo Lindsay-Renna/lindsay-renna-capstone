@@ -1,21 +1,36 @@
 @use "../../styles/partials/global" as *;
 
 .activities {
-	height: 100vh;
-	margin: 0 2rem;
+	min-height: 100vh;
+	margin: 0 1rem;
 
 	&__header {
 		padding-top: 2rem;
+
+		@include tablet {
+			padding-top: 4rem;
+			font-size: 2rem;
+		}
 	}
 
 	&__list {
 		@include flex-center-both;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 1rem;
+
+		@include tablet {
+			flex-direction: row;
+			margin-top: 10%;
+		}
 	}
 
 	&__link {
 		width: 100%;
+
+		@include tablet {
+			max-width: 60%;
+			min-height: 40rem;
+		}
 	}
 
 	&__block {
@@ -23,8 +38,19 @@
 		flex-direction: column;
 		border-radius: 20px;
 		background-color: $FamtivityGrey;
+		box-shadow: 0 2px 5px black;
 		flex-grow: 1;
+		min-height: 16rem;
 		gap: 1.5rem;
+		transition: transform 0.2s ease-in-out;
+
+		@include tablet {
+			min-height: 30rem;
+		}
+
+		&:hover {
+			transform: scale(1.04);
+		}
 
 		&--pink {
 			position: relative;

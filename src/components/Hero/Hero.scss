@@ -1,7 +1,7 @@
 @use "../../styles/partials/global" as *;
 
 .hero {
-	height: 100vh;
+	min-height: 94.5vh;
 	width: 100%;
 	background-image: url("/src/assets/tac-top-shapes-low-opacity.svg");
 	background-position: center;
@@ -60,7 +60,7 @@
 
 	.navigation-div {
 		position: absolute;
-		bottom: 1em;
+		bottom: 5em;
 		left: 50%;
 		transform: translatex(-50%);
 
@@ -78,5 +78,6 @@
 		font-family: "Dosis";
 		font-weight: 600;
 		font-size: 2rem;
+		cursor: pointer;
 	}
 }
