@@ -1,7 +1,9 @@
 import "./MoviesPage.scss";
 import { useState } from "react";
-import NavBar from "../../components/NavBar/NavBar";
 import Carousel from "../../components/Carousel/Carousel";
+import PersonSelection from "../../components/PersonSelection/PersonSelection";
+import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
+import MovieGenres from "../../components/MovieGenres/MovieGenres";
 
 function MoviesPage() {
 	const [data, setData] = useState({
@@ -57,7 +59,6 @@ function MoviesPage() {
 
 	return (
 		<div id="movie-selection">
-			<NavBar />
 			<main className="movie-main">
 				<Carousel
 					data={data}
@@ -66,7 +67,11 @@ function MoviesPage() {
 					addAdult={addAdult}
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
-				/>
+				>
+					<PersonSelection />
+					<ChildAgeSelector />
+					<MovieGenres />
+				</Carousel>
 			</main>
 		</div>
 	);

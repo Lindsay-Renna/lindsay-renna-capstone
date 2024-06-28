@@ -1,14 +1,11 @@
+import React from "react";
 import { useState } from "react";
 import "./Carousel.scss";
-import PersonSelection from "../PersonSelection/PersonSelection";
-import ChildAgeSelector from "../ChildAgeSelector/ChildAgeSelector";
-import MovieGenres from "../MovieGenres/MovieGenres";
 
-const components = [PersonSelection, ChildAgeSelector, MovieGenres];
-
-const Carousel = (props) => {
+const Carousel = ({ data, children, ...props }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [transition, setTransition] = useState("");
+	const components = children;
 
 	const handleNext = () => {
 		if (currentIndex < components.length - 1) {
@@ -55,7 +52,7 @@ const Carousel = (props) => {
 				className={`selections ${transition}`}
 				onTransitionEnd={() => setTransition("")}
 			>
-				<CurrentComponent {...props} />
+				{React.cloneElement(CurrentComponent, { ...props, data })}
 			</div>
 			<div className="button__wrapper">
 				{currentIndex < components.length - 1 ? (
