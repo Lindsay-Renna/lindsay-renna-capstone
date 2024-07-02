@@ -1,6 +1,11 @@
-API_KEY = "?api_key=215ab6e6c7575bb8e742c0f6632ec8fb";
-MOVIE_BASE_URL = "http://api.themoviedb.org/3/";
-MOVIE_BASE_IMAGE = "https://image.tmdb.org/t/p/w500/";
+// TMDB
+const API_KEY = "?api_key=df096200a439b9bad070f4dce8f30a6b";
+const MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
+const MOVIE_BASE_IMAGE = "https://image.tmdb.org/t/p/w500/";
+
+export function getPopularMovieEndpoint() {
+	return TMDB_URL + "popular" + API_KEY;
+}
 
 // primary_release_date.gte date(date yyyy-mm-dd)
 // Filter by all available release dates and only include those which are greater or equal to the specified value.
@@ -16,83 +21,38 @@ MOVIE_BASE_IMAGE = "https://image.tmdb.org/t/p/w500/";
 
 // with_watch_providers (string) use in conjunction with watch_region, can be a comma (AND) or pipe (OR) separated query
 
-const genres = [
-	{
-		id: 28,
-		name: "Action",
-	},
-	{
-		id: 12,
-		name: "Adventure",
-	},
-	{
-		id: 16,
-		name: "Animation",
-	},
-	{
-		id: 35,
-		name: "Comedy",
-	},
-	{
-		id: 80,
-		name: "Crime",
-	},
-	{
-		id: 99,
-		name: "Documentary",
-	},
-	{
-		id: 18,
-		name: "Drama",
-	},
-	{
-		id: 10751,
-		name: "Family",
-	},
-	{
-		id: 14,
-		name: "Fantasy",
-	},
-	{
-		id: 36,
-		name: "History",
-	},
-	{
-		id: 27,
-		name: "Horror",
-	},
-	{
-		id: 10402,
-		name: "Music",
-	},
-	{
-		id: 9648,
-		name: "Mystery",
-	},
-	{
-		id: 10749,
-		name: "Romance",
-	},
-	{
-		id: 878,
-		name: "Science Fiction",
-	},
-	{
-		id: 10770,
-		name: "TV Movie",
-	},
-	{
-		id: 53,
-		name: "Thriller",
-	},
-	{
-		id: 10752,
-		name: "War",
-	},
-	{
-		id: 37,
-		name: "Western",
-	},
+export const genreNames = [
+	{ id: 28, name: "Action" },
+
+	{ id: 12, name: "Adventure" },
+
+	{ id: 16, name: "Animation" },
+
+	{ id: 35, name: "Comedy" },
+
+	{ id: 80, name: "Crime" },
+
+	{ id: 18, name: "Drama" },
+
+	{ id: 10751, name: "Family" },
+
+	{ id: 14, name: "Fantasy" },
+
+	{ id: 36, name: "History" },
+
+	{ id: 27, name: "Horror" },
+
+	{ id: 10402, name: "Music" },
+
+	{ id: 9648, name: "Mystery" },
+
+	{ id: 10749, name: "Romance" },
+
+	{ id: 878, name: "Science Fiction" },
+
+	{ id: 53, name: "Thriller" },
+
+	{ id: 37, name: "Western" },
 ];
 
 const watchRegion = {

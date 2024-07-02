@@ -1,1 +1,36 @@
 @use "../../styles/partials/global" as *;
+
+.genres {
+	padding: 1rem;
+	@include flex-center-both;
+	min-height: 38rem;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: stretch;
+	justify-content: stretch;
+
+	@include tablet {
+		align-items: stretch;
+		flex-wrap: wrap;
+	}
+
+	&__wrapper {
+		min-width: 30%;
+	}
+
+	&__button {
+		cursor: pointer;
+		background-color: $FamtivityPink-40;
+		border-radius: 10px;
+		border: none;
+		font-family: "Dosis";
+		font-weight: 700;
+		width: 100%;
+		height: 100%;
+
+		img {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+}

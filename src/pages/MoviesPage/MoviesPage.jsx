@@ -6,6 +6,7 @@ import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector
 import MovieGenres from "../../components/MovieGenres/MovieGenres";
 
 function MoviesPage() {
+	const [isActive, setIsActive] = useState(false);
 	const [data, setData] = useState({
 		numKids: 0,
 		numAdults: 0,
@@ -57,6 +58,17 @@ function MoviesPage() {
 		});
 	};
 
+	const handleGenreSelect = (event) => {
+		const genreId = event.target.id;
+		setData((prevData) => {
+			const isSelected = prevData.genres.includes(genreId);
+			const newGenres = isSelected
+				? prevData.genres.filter((id) => id !== genreId)
+				: [...prevData.genres, genreId];
+			return { ...prevData, genres: newGenres };
+		});
+	};
+
 	return (
 		<div id="movie-selection">
 			<main className="movie-main">
@@ -67,6 +79,8 @@ function MoviesPage() {
 					addAdult={addAdult}
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
+					handleGenreSelect={handleGenreSelect}
+					isActive={isActive}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />
