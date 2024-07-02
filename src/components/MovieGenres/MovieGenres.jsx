@@ -1,7 +1,13 @@
 import "./MovieGenres.scss";
 
-function MovieGenres() {
-	return <div>MovieGenres</div>;
+function MovieGenres(data) {
+	const { genres } = data;
+
+	return (
+		<div>
+			<h4>What kind of movie would you like to watch?</h4>
+		</div>
+	);
 }
 
 export default MovieGenres;

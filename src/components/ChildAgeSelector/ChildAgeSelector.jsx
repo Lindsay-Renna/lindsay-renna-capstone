@@ -1,7 +1,7 @@
 import "./ChildAgeSelector.scss";
 
 function ChildAgeSelector({ data, handleAgeSelect }) {
-	const { numKids } = data;
+	const { numKids, childAges } = data;
 
 	return (
 		<div className="age-select">
@@ -30,6 +30,7 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 									handleAgeSelect(event, index);
 								}}
 								name="childAge"
+								defaultValue={childAges[index]}
 							>
 								{Array.from({ length: 13 }).map((_, i) => (
 									<option key={i} value={i + 1}>
