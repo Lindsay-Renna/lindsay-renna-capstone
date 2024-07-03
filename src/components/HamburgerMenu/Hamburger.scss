@@ -7,7 +7,8 @@
 	justify-content: space-around;
 	flex-flow: column nowrap;
 	cursor: pointer;
-	z-index: 10;
+	@include custom-pointer;
+	z-index: 999;
 	padding-left: 0.5rem;
 
 	@include tablet {
