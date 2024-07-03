@@ -4,6 +4,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 import MovieGenres from "../../components/MovieGenres/MovieGenres";
+import SliderComponent from "../../components/SliderComponent/SliderComponent";
 
 function MoviesPage() {
 	const [data, setData] = useState({
@@ -11,8 +12,10 @@ function MoviesPage() {
 		numAdults: 0,
 		childAges: [],
 		genres: [],
-		movieAgeMin: 1990,
-		movieAgeMax: 2024,
+		minYear: 1980,
+		maxYear: 2024,
+		minLength: 60,
+		maxLength: 210,
 		watchProviders: [],
 	});
 
@@ -68,6 +71,13 @@ function MoviesPage() {
 		});
 	};
 
+	const handleSliderChange = (field, value) => {
+		setData((prevData) => ({
+			...prevData,
+			[field]: value,
+		}));
+	};
+
 	return (
 		<div id="movie-selection">
 			<main className="movie-main">
@@ -79,10 +89,12 @@ function MoviesPage() {
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
 					handleGenreSelect={handleGenreSelect}
+					handleSliderChange={handleSliderChange}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />
 					<MovieGenres />
+					<SliderComponent />
 				</Carousel>
 			</main>
 		</div>
