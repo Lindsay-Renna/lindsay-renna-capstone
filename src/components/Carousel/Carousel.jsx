@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Carousel.scss";
 
-const Carousel = ({ data, children, ...props }) => {
+const Carousel = ({ handleQuerySubmit, data, children, ...props }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [transition, setTransition] = useState("");
 	const components = children;
+	const navigate = useNavigate();
 
 	const handleNext = () => {
 		if (currentIndex < components.length - 1) {
@@ -34,6 +36,10 @@ const Carousel = ({ data, children, ...props }) => {
 	};
 
 	const CurrentComponent = components[currentIndex];
+
+	const handleSubmit = () => {
+		navigate("/movies/results", { state: { data } });
+	};
 
 	return (
 		<div className="carousel">
@@ -64,7 +70,9 @@ const Carousel = ({ data, children, ...props }) => {
 						/>
 					</button>
 				) : (
-					<button className="submit">SUBMIT</button>
+					<button onClick={handleSubmit} className="submit">
+						SUBMIT
+					</button>
 				)}
 			</div>
 		</div>

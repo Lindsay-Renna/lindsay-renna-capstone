@@ -29,9 +29,12 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 								onChange={(event) => {
 									handleAgeSelect(event, index);
 								}}
+								defaultValue=""
 								name="childAge"
-								defaultValue={childAges[index]}
 							>
+								<option value="" disabled>
+									- select -
+								</option>
 								{Array.from({ length: 13 }).map((_, i) => (
 									<option key={i} value={i + 1}>
 										{i + 1}

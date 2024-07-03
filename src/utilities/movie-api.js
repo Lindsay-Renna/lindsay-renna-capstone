@@ -7,6 +7,10 @@ export function getPopularMovieEndpoint() {
 	return TMDB_URL + "popular" + API_KEY;
 }
 
+export function getSuggestedMoviesEndpoint() {
+	return TMDB_URL + "query" + API_KEY;
+}
+
 // primary_release_date.gte date(date yyyy-mm-dd)
 // Filter by all available release dates and only include those which are greater or equal to the specified value.
 
