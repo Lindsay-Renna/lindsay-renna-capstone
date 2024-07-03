@@ -59,7 +59,9 @@ function NavBar() {
 			</Link>
 			<ul
 				ref={menuRef}
-				className={hamburgerOpen ? "nav-list ham-nav" : "nav-list"}
+				className={
+					hamburgerOpen ? "nav-list ham-nav" : "nav-list nav-list--closed"
+				}
 			>
 				{navListArr.map((item) => (
 					<NavLink
