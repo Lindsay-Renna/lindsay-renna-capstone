@@ -1,1 +1,27 @@
 @use "../../styles/partials/global" as *;
+
+.results {
+	&__error {
+		@include flex-center-both;
+		flex-direction: column;
+
+		&__text {
+			font-size: 2rem;
+		}
+
+		&__link {
+			background-color: $FamtivityPurple;
+			border: 3px solid black;
+			border-radius: 10px;
+			width: max-content;
+			height: max-content;
+			padding: 1rem;
+			font-family: "Dosis";
+			font-size: 2rem;
+
+			&:hover {
+				@include custom-pointer;
+			}
+		}
+	}
+}
