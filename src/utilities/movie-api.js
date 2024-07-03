@@ -61,7 +61,7 @@ const watchRegion = {
 	native_name: "Canada",
 };
 
-const providers = [
+export const providers = [
 	{ provider_name: "Netflix", provider_id: 8 },
 	{
 		provider_name: "Disney Plus",

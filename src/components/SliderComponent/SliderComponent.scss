@@ -23,7 +23,8 @@
 }
 
 .MuiSlider-root {
-	color: $FamtivityPink;
+	color: $FamtivityPink !important;
+
 	&:hover {
 		cursor: url("/src/assets/icons/cursor.svg"), pointer;
 	}

@@ -36,6 +36,10 @@
 		background-color: $FamtivityPurple;
 		background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 
+		&:hover {
+			@include custom-pointer;
+		}
+
 		option {
 			background-color: $FamtivityPurple;
 		}

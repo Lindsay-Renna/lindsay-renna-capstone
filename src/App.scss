@@ -6,10 +6,17 @@ body {
 	font-family: "Dosis";
 	background-color: #f8f8ec;
 	color: black;
+	cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
 }
 
 h3 {
 	font-size: 1rem;
+}
+
+p {
+	&:hover {
+		cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
+	}
 }
 
 a {
@@ -17,7 +24,7 @@ a {
 	color: black;
 
 	&:hover {
-		cursor: url("/src/assets/icons/cursor.svg"), pointer;
+		@include custom-pointer;
 	}
 }
 
@@ -45,5 +52,5 @@ select {
 }
 
 button {
-	cursor: url("/src/assets/icons/cursor.svg"), pointer;
+	@include custom-pointer;
 }

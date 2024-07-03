@@ -5,6 +5,7 @@ import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 import MovieGenres from "../../components/MovieGenres/MovieGenres";
 import SliderComponent from "../../components/SliderComponent/SliderComponent";
+import ProviderSelection from "../../components/ProviderSelection/ProviderSelection";
 
 function MoviesPage() {
 	const [data, setData] = useState({
@@ -95,6 +96,7 @@ function MoviesPage() {
 					<ChildAgeSelector />
 					<MovieGenres />
 					<SliderComponent />
+					<ProviderSelection />
 				</Carousel>
 			</main>
 		</div>
