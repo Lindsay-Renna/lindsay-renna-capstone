@@ -76,10 +76,6 @@ export const providers = [
 		provider_id: 230,
 	},
 	{
-		provider_name: "Crave Starz",
-		provider_id: 305,
-	},
-	{
 		provider_name: "Apple TV",
 		provider_id: 2,
 	},
