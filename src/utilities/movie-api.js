@@ -1,14 +1,11 @@
 // TMDB
 const API_KEY = "?api_key=df096200a439b9bad070f4dce8f30a6b";
 const MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
+export const MOVIE_QUERY_URL = "https://api.themoviedb.org/3/discover/movie?";
 const MOVIE_BASE_IMAGE = "https://image.tmdb.org/t/p/w500/";
 
 export function getPopularMovieEndpoint() {
 	return TMDB_URL + "popular" + API_KEY;
-}
-
-export function getSuggestedMoviesEndpoint() {
-	return TMDB_URL + "query" + API_KEY;
 }
 
 // primary_release_date.gte date(date yyyy-mm-dd)

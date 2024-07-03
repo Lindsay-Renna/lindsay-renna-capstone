@@ -1,5 +1,4 @@
 import "./MoviesPage.scss";
-import axios from "axios";
 import { useState } from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
@@ -7,7 +6,6 @@ import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector
 import MovieGenres from "../../components/MovieGenres/MovieGenres";
 import SliderComponent from "../../components/SliderComponent/SliderComponent";
 import ProviderSelection from "../../components/ProviderSelection/ProviderSelection";
-import { getSuggestedMoviesEndpoint } from "../../utilities/movie-api.js";
 
 function MoviesPage() {
 	const [data, setData] = useState({
