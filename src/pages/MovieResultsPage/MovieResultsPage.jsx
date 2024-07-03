@@ -1,17 +1,16 @@
 import "./MovieResultsPage.scss";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { MOVIE_QUERY_URL } from "../../utilities/movie-api.js";
+import { useEffect, useState } from "react";
+import { MOVIE_QUERY_URL, API_KEY } from "../../utilities/movie-api.js";
 
 function MovieResultsPage() {
 	const location = useLocation();
 	const { data } = location.state || {};
+	const [movieResults, setMovieResults] = useState([]);
 	console.log(data);
 
 	const options = {
-		method: "GET",
-		url: MOVIE_QUERY_URL,
 		params: {
 			"certification.lte": "3",
 			certification_country: "CA",
@@ -25,24 +24,23 @@ function MovieResultsPage() {
 			watch_region: "CA",
 			"with_runtime.gte": `${data?.minLength}`,
 			"with_runtime.lte": `${data?.maxLength}`,
-			with_genres: data?.genres?.join("%7C"),
-			with_watch_providers: data?.watchProviders?.join("%7C"),
+			with_genres: data?.genres?.join("|"),
+			with_watch_providers: data?.watchProviders?.join("|"),
 		},
 		headers: {
 			accept: "application/json",
-			Authorization: "Bearer 215ab6e6c7575bb8e742c0f6632ec8fb",
+			Authorization: `Bearer ${API_KEY}`,
 		},
 	};
 
 	const getMovieResults = async () => {
-		await axios
-			.request(options)
-			.then(function (response) {
-				console.log(response.data);
-			})
-			.catch(function (error) {
-				console.error(error);
-			});
+		try {
+			const response = await axios.get(MOVIE_QUERY_URL, options);
+			console.log(response.data);
+			setMovieResults(response.data.results);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
