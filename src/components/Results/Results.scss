@@ -1,0 +1,16 @@
+@use "../../styles/partials/global" as *;
+
+.result-box {
+	@include flex-center-both;
+	flex-wrap: wrap;
+	margin: 3rem 0;
+
+	&__item {
+		width: 50%;
+	}
+
+	&__image {
+		width: 20rem;
+		border-radius: 10px;
+	}
+}

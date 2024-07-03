@@ -2,9 +2,9 @@
 // export const API_KEY = "df096200a439b9bad070f4dce8f30a6b";
 export const API_KEY =
 	"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMTVhYjZlNmM3NTc1YmI4ZTc0MmMwZjY2MzJlYzhmYiIsIm5iZiI6MTcyMDAyMDczNS41OTgxMzIsInN1YiI6IjY2Njg2MmE4ZjI2YjM1MjU3NGE2YmVkNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9z-oZZbzC_6pk8Sv1VWOGP63IN91RFGBOuTVM8uXGLs";
-const MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
+export const MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
 export const MOVIE_QUERY_URL = "https://api.themoviedb.org/3/discover/movie?";
-const MOVIE_BASE_IMAGE = "https://image.tmdb.org/t/p/w500/";
+export const MOVIE_BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
 export function getPopularMovieEndpoint() {
 	return TMDB_URL + "popular" + API_KEY;

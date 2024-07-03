@@ -1,6 +1,7 @@
 @use "../../styles/partials/global" as *;
 
 .results {
+	margin: 0 1rem;
 	&__error {
 		@include flex-center-both;
 		flex-direction: column;
@@ -23,5 +24,17 @@
 				@include custom-pointer;
 			}
 		}
+	}
+
+	.restart-button {
+		border-radius: 10px;
+		border: none;
+		background-color: black;
+		color: white;
+		padding: 1rem 1.5rem;
+		font-family: "Dosis";
+		font-weight: 600;
+		font-size: 2rem;
+		@include custom-pointer;
 	}
 }

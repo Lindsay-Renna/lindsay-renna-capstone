@@ -2,7 +2,12 @@ import "./MovieResultsPage.scss";
 import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { MOVIE_QUERY_URL, API_KEY } from "../../utilities/movie-api.js";
+import {
+	MOVIE_QUERY_URL,
+	API_KEY,
+	MOVIE_BASE_IMAGE_URL,
+} from "../../utilities/movie-api.js";
+import Results from "../../components/Results/Results.jsx";
 
 function MovieResultsPage() {
 	const location = useLocation();
@@ -10,6 +15,16 @@ function MovieResultsPage() {
 	const [movieResults, setMovieResults] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+
+	const prepareData = (results) => {
+		return results.map((movie) => ({
+			title: movie.original_title,
+			image: MOVIE_BASE_IMAGE_URL + movie.backdrop_path,
+			id: movie.id,
+			release_date: movie.release_date,
+		}));
+	};
+
 	console.log(data);
 
 	const options = {
@@ -68,9 +83,14 @@ function MovieResultsPage() {
 					</Link>
 				</div>
 			) : movieResults.length ? (
-				<div>
-					<h2>Here are some movies picked just for you:</h2>
-				</div>
+				<>
+					<h2>Here are some movies picked just for your family</h2>
+					<Results preparedData={prepareData(movieResults)} />
+
+					<Link to="/movies" className="restart-button">
+						Start over?
+					</Link>
+				</>
 			) : (
 				<div className="results__error">
 					<p className="results__error__text">

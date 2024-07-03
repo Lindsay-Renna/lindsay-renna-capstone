@@ -1,7 +1,8 @@
 Must-do's :
 
-- sizing for selections (all components), tablet and desktop
+- sizing for selections (all components) - tablet and desktop sizing
 - validation on number of kids and ages
+- navbar links
 
 Want-to-do's :
 

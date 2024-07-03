@@ -28,13 +28,13 @@ nav {
 	position: relative;
 	display: flex;
 	align-items: center;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.25);
 
 	@include tablet {
 		justify-content: space-around;
 	}
 
-	.nav__link {
+	.nav__logo__link {
 		flex-grow: 1;
 
 		@include tablet {
@@ -53,13 +53,37 @@ nav {
 			display: contents;
 		}
 
+		&__link {
+			@include tablet {
+				font-weight: 600;
+				padding: 0.5rem 1rem 0.25rem 1rem;
+				margin: 1rem 0;
+
+				&:hover {
+					background-color: $FamtivityPurple-40;
+					border-radius: 10px;
+				}
+
+				&--active {
+					border-bottom: 2px solid $FamtivityPurple;
+					color: $FamtivityPurple;
+					font-weight: 600;
+					padding: 0.5rem 1rem 0.25rem 1rem;
+					margin: 1rem 0;
+
+					&:hover {
+						background-color: none;
+					}
+				}
+			}
+		}
+
 		&.ham-nav {
 			border-top: 2px solid black;
 			display: flex;
 			flex-direction: column;
 			background-color: white;
 			margin-top: 3rem;
-			position: absolute;
 			height: auto;
 			width: 50vw;
 			position: absolute;
@@ -80,6 +104,7 @@ nav {
 
 			@include tablet {
 				border-bottom: none;
+				padding: 0;
 			}
 		}
 	}
