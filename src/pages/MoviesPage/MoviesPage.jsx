@@ -79,6 +79,17 @@ function MoviesPage() {
 		}));
 	};
 
+	const handleProviderSelect = (event) => {
+		const providerId = parseInt(event.currentTarget.id);
+		setData((prevData) => {
+			const isSelected = prevData.watchProviders.includes(providerId);
+			const newProviders = isSelected
+				? prevData.watchProviders.filter((id) => id !== providerId)
+				: [...prevData.watchProviders, providerId];
+			return { ...prevData, watchProviders: newProviders };
+		});
+	};
+
 	return (
 		<div id="movie-selection">
 			<main className="movie-main">
@@ -91,6 +102,7 @@ function MoviesPage() {
 					handleAgeSelect={handleAgeSelect}
 					handleGenreSelect={handleGenreSelect}
 					handleSliderChange={handleSliderChange}
+					handleProviderSelect={handleProviderSelect}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />

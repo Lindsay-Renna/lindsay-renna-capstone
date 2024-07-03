@@ -2,12 +2,16 @@
 
 .provider {
 	padding: 0 0.5rem;
+	display: flex;
+	flex-direction: column;
+	height: 90%;
 
 	&__selections {
 		@include flex-center-both;
 		gap: 0.5rem;
 		flex-wrap: wrap;
 		align-items: stretch;
+		flex-grow: 1;
 
 		@include tablet {
 		}
@@ -31,33 +35,31 @@
 		width: fit-content;
 		height: 100%;
 
-		&--active {
-			background-color: $FamtivityPink;
-			color: white;
-		}
-
 		&:hover {
 			@include custom-pointer;
 		}
 
-		img {
-			width: 5rem;
-			height: 5rem;
+		.provider__icon {
+			width: 6rem;
+			height: 6rem;
 			border-radius: 20px;
+
 			transition: transform 0.2s ease-in-out;
 
 			&:hover {
-				transform: scale(1.05);
+				transform: scale(1.08);
 				@include custom-pointer;
 			}
 
 			&--active {
-				border: 2px solid $FamtivityPink;
+				outline: 4px solid $FamtivityPink;
+				outline-offset: -0.125rem;
 			}
 		}
 
 		p {
-			margin: 0;
+			margin: 0.5rem 0;
+			font-size: 1rem;
 		}
 	}
 }
