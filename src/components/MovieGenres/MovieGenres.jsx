@@ -3,30 +3,31 @@ import { genreNames } from "../../utilities/movie-api.js";
 
 function MovieGenres({ data, handleGenreSelect }) {
 	const { genres } = data;
-	console.log(data);
 
 	return (
-		<div>
+		<div className="genre">
 			<h2>What kind of movie would you like to watch?</h2>
-			<div className="genres">
-				{genreNames.map((genre, index) => {
+			<div className="genre__selections">
+				{genreNames.map((genre) => {
 					const isActive = genres.includes(genre.id);
 
 					return (
-						<div key={genre.id} className="genres__wrapper">
+						<div key={genre.id} className="genre__wrapper">
 							<button
 								onClick={handleGenreSelect}
 								id={genre.id}
 								className={
-									isActive ? "active genres__button" : "genres__button"
+									isActive
+										? "genre__button--active genre__button"
+										: "genre__button"
 								}
 							>
 								<img
-									className="genres__icon"
-									src=""
+									className="genre__icon"
+									src={`src/assets/icons/genres/genre-icon-${genre.name}.svg`}
 									alt={`${genre.name} icon`}
 								/>
-								{genre.name}
+								<p>{genre.name}</p>
 							</button>
 						</div>
 					);

@@ -1,36 +1,49 @@
 @use "../../styles/partials/global" as *;
 
-.genres {
-	padding: 1rem;
-	@include flex-center-both;
-	min-height: 38rem;
-	flex-direction: column;
-	gap: 0.5rem;
-	align-items: stretch;
-	justify-content: stretch;
+.genre {
+	padding: 0 0.5rem;
 
-	@include tablet {
-		align-items: stretch;
+	&__selections {
+		@include flex-center-both;
+		gap: 0.5rem;
 		flex-wrap: wrap;
+		align-items: stretch;
+
+		@include tablet {
+		}
 	}
 
 	&__wrapper {
-		min-width: 30%;
+		min-width: 43%;
+		min-height: 4.5rem;
+
+		@include tablet {
+		}
 	}
 
 	&__button {
 		cursor: pointer;
-		background-color: $FamtivityPink-40;
+		background-color: white;
 		border-radius: 10px;
-		border: none;
+		border: 2px solid $FamtivityPink;
+		box-shadow: 0 2px 2px black;
 		font-family: "Dosis";
 		font-weight: 700;
 		width: 100%;
 		height: 100%;
 
+		&--active {
+			background-color: $FamtivityPink;
+			color: white;
+		}
+
 		img {
 			width: 1.5rem;
 			height: 1.5rem;
+		}
+
+		p {
+			margin: 0;
 		}
 	}
 }
