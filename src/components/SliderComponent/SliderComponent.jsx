@@ -12,13 +12,13 @@ function SliderComponent({ data, handleSliderChange }) {
 	];
 
 	const marksLength = [
-		{ value: 30, label: "30 min" },
+		{ value: 30, label: "" },
 		{ value: 60, label: "1 hr" },
-		{ value: 90, label: "1.5 hrs" },
+		{ value: 90, label: "" },
 		{ value: 120, label: "2 hrs" },
-		{ value: 150, label: "2.5 hrs" },
+		{ value: 150, label: "" },
 		{ value: 180, label: "3 hrs" },
-		{ value: 210, label: "3.5 hrs" },
+		{ value: 210, label: "" },
 		{ value: 250, label: "4 hrs" },
 	];
 
@@ -54,6 +54,7 @@ function SliderComponent({ data, handleSliderChange }) {
 			<div className="length-slider">
 				<h2>How long should the movie be?</h2>
 				<div className="sliders__container">
+					<h3>{`${minLength / 60}hrs to ${maxLength / 60}hrs`}</h3>
 					<Slider
 						value={[minLength, maxLength]}
 						marks={marksLength}

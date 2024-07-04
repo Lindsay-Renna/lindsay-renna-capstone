@@ -5,6 +5,7 @@
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+
 	height: 94.5vh;
 
 	&__profile {
@@ -45,6 +46,20 @@
 }
 
 .login-request {
-	margin: 0;
-	padding: 2rem;
+	padding: 4rem 1rem;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		border-radius: 20px;
+		background-color: $FamtivityGrey;
+		box-shadow: 0 2px 5px black;
+		flex-grow: 1;
+		min-height: 20rem;
+		gap: 1.5rem;
+	}
+
+	&__header {
+		margin: 2rem 0;
+	}
 }

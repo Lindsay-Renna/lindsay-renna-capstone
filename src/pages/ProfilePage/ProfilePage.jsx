@@ -50,12 +50,14 @@ const ProfilePage = ({ profileData, isLoggedIn }) => {
 					</div>
 				)
 			) : (
-				<>
-					<h2 className="login-request">
-						<strong>Please login to access your profile!</strong>
-					</h2>
-					<LoginButton />
-				</>
+				<div className="login-request">
+					<div className="login-request__container">
+						<h2 className="login-request__header">
+							Please login to access your profile!
+						</h2>
+						<LoginButton />
+					</div>
+				</div>
 			)}
 		</section>
 	);
