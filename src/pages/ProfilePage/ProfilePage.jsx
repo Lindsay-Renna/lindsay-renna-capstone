@@ -21,9 +21,9 @@ const ProfilePage = ({ profileData, isLoggedIn }) => {
 				)
 			) : (
 				<>
-					<p>
+					<h2 className="login-request">
 						<strong>Please login to access your profile!</strong>
-					</p>
+					</h2>
 					<LoginButton />
 				</>
 			)}

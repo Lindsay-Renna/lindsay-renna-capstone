@@ -1,6 +1,12 @@
 @use "../../styles/partials/global" as *;
 
 .profile-page {
+	background-image: url("/src/assets/tac-top-shapes-low-opacity.svg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 94.5vh;
+
 	&__logout-wrapper {
 		margin: 2rem;
 	}
@@ -9,4 +15,9 @@
 		width: 15rem;
 		border-radius: 10px;
 	}
+}
+
+.login-request {
+	margin: 0;
+	padding: 2rem;
 }

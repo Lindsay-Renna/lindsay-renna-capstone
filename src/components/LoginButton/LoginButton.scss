@@ -1,1 +1,14 @@
 @use "../../styles/partials/global" as *;
+
+.sign-on-partners {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	.login-button {
+		@include flex-center-both;
+		&__text {
+			margin: 0 1rem;
+		}
+	}
+}

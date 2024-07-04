@@ -5,13 +5,14 @@ import "dotenv/config";
 import dotenv from "dotenv";
 import boardgameRoutes from "./routes/boardgames.js";
 import authRoutes from "./routes/auth.js";
-// Add http headers, small layer of security
 import helmet from "helmet";
 
 // Passport library and Github Strategy
 import passport from "passport";
 import passportGitHub from "passport-github2";
+import passportGoogle from "passport-google-oauth20";
 const GitHubStrategy = passportGitHub.Strategy;
+const GoogleStrategy = passportGoogle.Strategy;
 
 // Knex instance
 import Knex from "knex";
@@ -46,11 +47,6 @@ app.use(
 
 // Initialize Passport middleware
 app.use(passport.initialize());
-
-// Passport.session middleware alters the `req` object with the `user` value
-// by converting session id from the client cookie into a deserialized user object.
-// This middleware also requires `serializeUser` and `deserializeUser` functions written below
-// Additional information: https://stackoverflow.com/questions/22052258/what-does-passport-session-middleware-do
 app.use(passport.session());
 
 // Initialize GitHub strategy middleware
@@ -98,9 +94,43 @@ passport.use(
 	)
 );
 
-// `serializeUser` determines which data of the auth user object should be stored in the session
-// The data comes from `done` function of the strategy
-// The result of the method is attached to the session as `req.session.passport.user = 12345`
+// Initialize Google strategy middleware
+passport.use(
+	new GoogleStrategy(
+		{
+			clientID: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			callbackURL: process.env.GOOGLE_CALLBACK_URL,
+		},
+		(_accessToken, _refreshToken, profile, done) => {
+			knexUser("users")
+				.select("id")
+				.where({ google_id: profile.id })
+				.then((user) => {
+					if (user.length) {
+						done(null, user[0]);
+					} else {
+						knexUser("users")
+							.insert({
+								google_id: profile.id,
+								avatar_url: profile.photos[0].value,
+								username: profile.displayName,
+							})
+							.then((userId) => {
+								done(null, { id: userId[0] });
+							})
+							.catch((err) => {
+								console.log("Error creating a user", err);
+							});
+					}
+				})
+				.catch((err) => {
+					console.log("Error fetching a user", err);
+				});
+		}
+	)
+);
+
 passport.serializeUser((user, done) => {
 	console.log("serializeUser (user object):", user);
 
