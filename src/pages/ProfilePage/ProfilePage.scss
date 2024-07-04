@@ -1,0 +1,12 @@
+@use "../../styles/partials/global" as *;
+
+.profile-page {
+	&__logout-wrapper {
+		margin: 2rem;
+	}
+
+	&__avatar {
+		width: 15rem;
+		border-radius: 10px;
+	}
+}

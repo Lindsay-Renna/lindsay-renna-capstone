@@ -1,10 +1,10 @@
 import LoginButton from "../../components/LoginButton/LoginButton";
 import LogoutButton from "../../components/LogoutButton/LogoutButton";
+import "./ProfilePage.scss";
 
 const ProfilePage = ({ profileData, isLoggedIn }) => {
 	return (
 		<section className="profile-page">
-			<h1>Profile Page</h1>
 			{isLoggedIn ? (
 				profileData && (
 					<>

@@ -1,3 +1,5 @@
+import "./LoginButton.scss";
+
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 const LoginButton = () => {

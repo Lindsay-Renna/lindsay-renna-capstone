@@ -58,7 +58,7 @@ function App() {
 						element={<BoardgameResultsPage />}
 					/>
 					<Route
-						path="profile"
+						path="/profile"
 						element={
 							<ProfilePage profileData={profileData} isLoggedIn={isLoggedIn} />
 						}
