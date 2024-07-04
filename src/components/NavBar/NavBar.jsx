@@ -11,7 +11,7 @@ const navListArr = [
 	{ name: "About", path: "/about", id: 4 },
 ];
 
-function NavBar() {
+function NavBar({ isLoggedIn }) {
 	const [hamburgerOpen, setHamburgerOpen] = useState(false);
 	const menuRef = useRef(null);
 	const hamburgerRef = useRef(null);
@@ -75,13 +75,13 @@ function NavBar() {
 					</NavLink>
 				))}
 			</ul>
-			<Link className="login">
+			<Link to="/profile" className="login">
 				<img
 					className="login__logo"
 					src="/src/assets/icons/user-account-red.svg"
 					alt="user account logo"
 				/>
-				<p className="login__title">Login / Sign Up</p>
+				<p className="login__title">{isLoggedIn ? "Profile" : "Login"}</p>
 			</Link>
 		</nav>
 	);

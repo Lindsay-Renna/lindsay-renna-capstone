@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
@@ -10,12 +12,37 @@ import VideogameResultsPage from "./pages/VideogameResultsPage/VideogameResultsP
 import BoardgamePage from "./pages/BoardgamePage/BoardgamePage";
 import BoardgameResultsPage from "./pages/BoardgameResultsPage/BoardgameResultsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import AuthFailPage from "./pages/AuthFailPage/AuthFailPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {
+	const [isAuthenticating, setIsAuthenticating] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [profileData, setProfileData] = useState(null);
+
+	useEffect(() => {
+		axios
+			.get(`${SERVER_URL}/auth/profile`, { withCredentials: true })
+			.then((res) => {
+				setIsAuthenticating(false);
+				setIsLoggedIn(true);
+				setProfileData(res.data);
+			})
+			.catch((err) => {
+				if (err.response.status === 401) {
+					setIsAuthenticating(false);
+					setIsLoggedIn(false);
+				} else {
+					console.log("Error authenticating", err);
+				}
+			});
+	}, []);
+
 	return (
 		<>
 			<BrowserRouter>
-				<NavBar />
+				<NavBar isLoggedIn={isLoggedIn} />
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/movies" element={<MoviesPage />} />
@@ -30,7 +57,14 @@ function App() {
 						path="/boardgames/results"
 						element={<BoardgameResultsPage />}
 					/>
+					<Route
+						path="profile"
+						element={
+							<ProfilePage profileData={profileData} isLoggedIn={isLoggedIn} />
+						}
+					/>
 					<Route path="/*" element={<NotFoundPage />} />
+					<Route path="/auth-fail" element={<AuthFailPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>
