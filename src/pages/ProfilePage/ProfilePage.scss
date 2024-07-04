@@ -7,17 +7,40 @@
 	background-repeat: no-repeat;
 	height: 94.5vh;
 
+	&__profile {
+		padding: 1rem;
+		@include flex-center-both;
+		flex-direction: column;
+	}
+
 	&__header {
-		margin: 0;
+		margin: 1rem 0;
 	}
 
 	&__logout-wrapper {
 		margin: 2rem;
+		position: absolute;
+		bottom: 10px;
+		left: 40%;
+
+		a {
+			@include flex-center-both;
+			gap: 0.5rem;
+		}
 	}
 
 	&__avatar {
-		width: 15rem;
-		border-radius: 10px;
+		width: 10rem;
+		border-radius: 40px;
+	}
+
+	&__info {
+		display: flex;
+		margin-bottom: 2rem;
+	}
+
+	&__watch-list {
+		width: 100%;
 	}
 }
 

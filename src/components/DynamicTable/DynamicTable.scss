@@ -1,0 +1,29 @@
+@use "../../styles/partials/global" as *;
+
+.dynamic-table {
+	border-radius: 10px;
+	padding: 0 1rem;
+	text-align: left;
+	width: 100%;
+
+	th:first-child {
+		width: 98%;
+	}
+
+	thead {
+		background-color: $FamtivityPurple;
+	}
+}
+
+.delete-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+
+	&:hover {
+		@include custom-pointer;
+	}
+}
+
+.accordion {
+	width: 100%;
+}

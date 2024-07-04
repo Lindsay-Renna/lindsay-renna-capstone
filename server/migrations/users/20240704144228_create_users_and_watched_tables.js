@@ -11,7 +11,8 @@ export const up = function (knex) {
 		.createTable("watched", (table) => {
 			table.increments("id").primary();
 			table.integer("user_id").unsigned().notNullable();
-			table.text("movie_id").notNullable();
+			table.integer("movie_id").notNullable();
+			table.string("movie_name", 250).notNullable();
 			table.timestamp("updated_at").defaultTo(knex.fn.now());
 			table
 				.foreign("user_id")
