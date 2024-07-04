@@ -1,7 +1,17 @@
 import express from "express";
+import expressSession from "express-session";
 import cors from "cors";
 import boardgameRoutes from "./routes/boardgames.js";
 import "dotenv/config";
+import helmet from "helmet";
+
+// Add http headers, small layer of security
+import helmet from "helmet";
+
+// Passport library and Github Strategy
+import passport from "passport";
+import passportGitHub from "passport-github2";
+const GitHubStrategy = passportGitHub.Strategy;
 
 const app = express();
 app.use(cors());
