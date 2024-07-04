@@ -1,0 +1,8 @@
+@use "../../styles/partials/global" as *;
+
+.logout-button {
+	img {
+		max-width: 2rem;
+		height: auto;
+	}
+}
