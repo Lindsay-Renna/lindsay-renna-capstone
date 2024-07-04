@@ -27,14 +27,15 @@ List the functionality that your app will include. These can be written as user 
 
 Frontend: Developed using React.js for a dynamic and responsive user interface.
 
-- Client libraries: - react - react-router - axios
-  Backend: Node.js and Express.js for server-side operations and API management.
+Client libraries: react, react-router, axios
+
+Backend: Node.js and Express.js for server-side operations and API management, MySQL for boardgame database.
 
 ### APIs
 
-TIMD (The Internet Movie Database)
-IGDB (Internet Game Database)
-BGG (Board Game Geek)
+TMDB (Movie Database)
+RAWG (Videogame Database)
+BGG (Board Game Geek) - scraped data to create MySQL database
 
 ### Sitemap
 
@@ -62,4 +63,6 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 
 ## Nice-to-haves
 
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+- add additional support for older gaming systems (PS3 / XBOX and older)
+- carousel of top popular games / movies / boardgames on front page
+- account creation where the user can store a family profile so they do not need to input kids / ages each time

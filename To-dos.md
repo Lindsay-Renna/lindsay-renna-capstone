@@ -9,3 +9,7 @@ Want-to-do's :
 - change select option hover colour from blue
 - unique adult img icons
 - - and - buttons background should be transparent
+
+Features:
+
+- carousel of top popular games / movies
