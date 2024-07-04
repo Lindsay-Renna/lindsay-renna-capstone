@@ -1,9 +1,11 @@
 @use "../../styles/partials/global" as *;
 
-.activities {
+#activities {
 	min-height: 100vh;
 	margin: 0 1rem;
+}
 
+.activities {
 	&__header {
 		padding-top: 2rem;
 

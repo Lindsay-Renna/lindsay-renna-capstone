@@ -3,10 +3,10 @@ import "./ActivityChoiceBox.scss";
 
 function ActivityChoiceBox() {
 	return (
-		<div className="activities">
+		<div id="activities">
 			<h2 className="activities__header">Choose your activity type</h2>
 			<div className="activities__list">
-				<Link className="activities__link" to="/videogame-selection">
+				<Link className="activities__link" to="/videogames">
 					<div className="activities__block activities__block--pink">
 						<img
 							className="activities__icon activities__icon--default"
@@ -22,7 +22,7 @@ function ActivityChoiceBox() {
 					</div>
 				</Link>
 
-				<Link className="activities__link" to="/boardgame-selection">
+				<Link className="activities__link" to="/boardgames">
 					<div className="activities__block activities__block--purple">
 						<img
 							className="activities__icon activities__icon--default"

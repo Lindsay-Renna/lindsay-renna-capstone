@@ -25,8 +25,6 @@ function MovieResultsPage() {
 		}));
 	};
 
-	console.log(data);
-
 	const options = {
 		params: {
 			"certification.lte": "3",
@@ -53,7 +51,6 @@ function MovieResultsPage() {
 	const getMovieResults = async () => {
 		try {
 			const response = await axios.get(MOVIE_QUERY_URL, options);
-			console.log(response.data);
 			setMovieResults(response.data.results);
 			setLoading(false);
 		} catch (error) {
@@ -72,7 +69,10 @@ function MovieResultsPage() {
 	return (
 		<div className="results">
 			{loading ? (
-				<p>loading ... </p>
+				<>
+					<p>loading ... </p>
+					<img src="/src/assets/icegif-1262.gif" alt="loading image" />
+				</>
 			) : error ? (
 				<div className="results__error">
 					<p className="results__error__text">
@@ -86,10 +86,6 @@ function MovieResultsPage() {
 				<>
 					<h2>Here are some movies picked just for your family</h2>
 					<Results preparedData={prepareData(movieResults)} />
-
-					<Link to="/movies" className="restart-button">
-						Start over?
-					</Link>
 				</>
 			) : (
 				<div className="results__error">

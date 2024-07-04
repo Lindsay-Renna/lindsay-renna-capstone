@@ -12,5 +12,26 @@
 	&__image {
 		width: 20rem;
 		border-radius: 10px;
+		box-shadow: 0 2px 5px black;
+	}
+
+	&__buttons {
+		@include flex-center-both;
+		gap: 4rem;
+		margin-top: 2rem;
+		align-items: stretch;
+
+		.restart-button,
+		.page-button {
+			border-radius: 10px;
+			border: none;
+			background-color: $FamtivityPurple;
+			color: black;
+			padding: 1rem 1.5rem;
+			font-family: "Dosis";
+			font-weight: 600;
+			font-size: 2rem;
+			@include custom-pointer;
+		}
 	}
 }
