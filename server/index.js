@@ -75,6 +75,7 @@ passport.use(
 						knexUser("users")
 							.insert({
 								github_id: profile.id,
+								google_id: null,
 								avatar_url: profile._json.avatar_url,
 								username: profile.username,
 							})
@@ -113,6 +114,7 @@ passport.use(
 						knexUser("users")
 							.insert({
 								google_id: profile.id,
+								github_id: null,
 								avatar_url: profile.photos[0].value,
 								username: profile.displayName,
 							})

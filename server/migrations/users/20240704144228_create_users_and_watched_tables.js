@@ -2,8 +2,8 @@ export const up = function (knex) {
 	return knex.schema
 		.createTable("users", (table) => {
 			table.increments("id").primary();
-			table.integer("github_id").nullable();
-			table.integer("google_id").nullable();
+			table.integer("github_id").defaultTo(null);
+			table.string("google_id", 250).defaultTo(null);
 			table.string("avatar_url").notNullable();
 			table.string("username").notNullable();
 			table.timestamp("updated_at").defaultTo(knex.fn.now());

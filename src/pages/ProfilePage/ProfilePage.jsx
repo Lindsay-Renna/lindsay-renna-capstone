@@ -7,8 +7,10 @@ const ProfilePage = ({ profileData, isLoggedIn }) => {
 		<section className="profile-page">
 			{isLoggedIn ? (
 				profileData && (
-					<>
-						<h2>Hello, {profileData.username}</h2>
+					<div className="profile-page__profile">
+						<h2 className="profile-page__header">
+							Hello, {profileData.username}
+						</h2>
 						<img
 							className="profile-page__avatar"
 							src={profileData.avatar_url}
@@ -17,7 +19,7 @@ const ProfilePage = ({ profileData, isLoggedIn }) => {
 						<div className="profile-page__logout-wrapper">
 							<LogoutButton />
 						</div>
-					</>
+					</div>
 				)
 			) : (
 				<>

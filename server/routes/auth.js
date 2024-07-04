@@ -23,10 +23,12 @@ router.get(
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 router.get(
 	"/google/callback",
-	passport.authenticate("google", { failureRedirect: "/login" }),
+	passport.authenticate("google", {
+		failureRedirect: `${process.env.CLIENT_URL}/login`,
+	}),
 	(req, res) => {
 		// Successful authentication
-		res.redirect("/");
+		res.redirect(process.env.CLIENT_URL);
 	}
 );
 

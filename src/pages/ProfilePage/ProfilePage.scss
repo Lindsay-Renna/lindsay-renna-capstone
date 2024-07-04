@@ -7,6 +7,10 @@
 	background-repeat: no-repeat;
 	height: 94.5vh;
 
+	&__header {
+		margin: 0;
+	}
+
 	&__logout-wrapper {
 		margin: 2rem;
 	}
