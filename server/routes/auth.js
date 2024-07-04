@@ -1,6 +1,4 @@
-import initKnex from "knex";
-import configuration from "../knexfile.js";
-const knex = initKnex(configuration);
+import { knexUser } from "../knexfile.js";
 import express from "express";
 const router = express.Router();
 

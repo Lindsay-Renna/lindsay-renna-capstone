@@ -2,6 +2,7 @@ import express from "express";
 import expressSession from "express-session";
 import cors from "cors";
 import "dotenv/config";
+import dotenv from "dotenv";
 import boardgameRoutes from "./routes/boardgames.js";
 import authRoutes from "./routes/auth.js";
 // Add http headers, small layer of security
@@ -13,12 +14,11 @@ import passportGitHub from "passport-github2";
 const GitHubStrategy = passportGitHub.Strategy;
 
 // Knex instance
-import createKnex from "knex";
-import knexFile from "./knexfile.js";
-const knex = createKnex(knexFile);
+import Knex from "knex";
+import { knexBG, knexUser } from "./knexfile.js";
 
 // Import .env files for environment variables (keys and secrets)
-import dotenv from "dotenv";
+
 dotenv.config();
 
 const app = express();
@@ -67,7 +67,7 @@ passport.use(
 			console.log("GitHub profile:", profile);
 
 			// First let's check if we already have this user in our DB
-			knex("users")
+			knexUser("users")
 				.select("id")
 				.where({ github_id: profile.id })
 				.then((user) => {
@@ -76,7 +76,7 @@ passport.use(
 						done(null, user[0]);
 					} else {
 						// If user isn't found, we create a record
-						knex("users")
+						knexUser("users")
 							.insert({
 								github_id: profile.id,
 								avatar_url: profile._json.avatar_url,
@@ -114,7 +114,7 @@ passport.deserializeUser((userId, done) => {
 	console.log("deserializeUser (user id):", userId);
 
 	// Query user information from the database for currently authenticated user
-	knex("users")
+	knexUser("users")
 		.where({ id: userId })
 		.then((user) => {
 			// Remember that knex will return an array of records, so we need to get a single record from it

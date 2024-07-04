@@ -10,7 +10,7 @@
 	}
 
 	&__image {
-		width: 20rem;
+		width: 80%;
 		border-radius: 10px;
 		box-shadow: 0 2px 5px black;
 
@@ -24,9 +24,13 @@
 
 	&__buttons {
 		@include flex-center-both;
-		gap: 4rem;
+		gap: 2rem;
 		margin-top: 2rem;
 		align-items: stretch;
+
+		@include tablet {
+			gap: 4rem;
+		}
 
 		.restart-button,
 		.page-button {
@@ -37,7 +41,7 @@
 			padding: 1rem 1.5rem;
 			font-family: "Dosis";
 			font-weight: 600;
-			font-size: 2rem;
+			font-size: 1rem;
 			@include custom-pointer;
 			@include box-shadow;
 			transition: transform 0.2s ease-in-out;
@@ -45,6 +49,10 @@
 			&:hover {
 				transform: scale(0.98);
 				@include custom-pointer;
+			}
+
+			@include tablet {
+				font-size: 2rem;
 			}
 		}
 	}

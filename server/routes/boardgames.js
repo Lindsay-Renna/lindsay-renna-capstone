@@ -1,6 +1,4 @@
-import initKnex from "knex";
-import configuration from "../knexfile.js";
-const knex = initKnex(configuration);
+import { knexBG } from "../knexfile.js";
 import express from "express";
 const router = express.Router();
 
@@ -8,7 +6,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
 	try {
-		const boardgames = await knex("bgg").select("*").limit(10);
+		const boardgames = await knexBG("bgg").select("*").limit(10);
 		boardgames.forEach((game) => {
 			const image = JSON.parse(unescape(game.image_urls));
 			const video = JSON.parse(unescape(game.video_urls));
@@ -35,7 +33,7 @@ router.get("/results", async (req, res) => {
 	try {
 		const { num_players, min_age, max_time, category } = req.body;
 
-		const boardgames = await knex("bgg")
+		const boardgames = await knexBG("bgg")
 			.where("min_players", "<=", num_players)
 			.andWhere("max_players", ">=", num_players)
 			.andWhere("min_time", "<=", max_time)
@@ -71,7 +69,7 @@ router.get("/results", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 		const { id } = req.params;
-		const boardgame = await knex("bgg").where({ bgg_id: id }).first();
+		const boardgame = await knexBG("bgg").where({ bgg_id: id }).first();
 
 		if (!boardgame) {
 			return res
