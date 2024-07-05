@@ -10,20 +10,6 @@ export function getPopularMovieEndpoint() {
 	return TMDB_URL + "popular" + API_KEY;
 }
 
-// primary_release_date.gte date(date yyyy-mm-dd)
-// Filter by all available release dates and only include those which are greater or equal to the specified value.
-
-// primary_release_date.lte date(date yyyy-mm-dd)
-// Filter by all available release dates and only include those which are less or equal to the specified value. Expected format is YYYY-MM-DD.
-
-// with_genres (string) Only include movies with the specified genres. Expected value is an integer (the id of a genre). Multiple values can be specified. Comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'.
-
-// with_runtime.gte (int32)
-
-// watch_region (CA)
-
-// with_watch_providers (string) use in conjunction with watch_region, can be a comma (AND) or pipe (OR) separated query
-
 export const genreNames = [
 	{ id: 28, name: "Action" },
 
@@ -51,7 +37,7 @@ export const genreNames = [
 
 	{ id: 10749, name: "Romance" },
 
-	{ id: 878, name: "Science Fiction" },
+	{ id: 878, name: "Sci-Fi" },
 
 	{ id: 53, name: "Thriller" },
 

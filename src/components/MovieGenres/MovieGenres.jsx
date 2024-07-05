@@ -6,7 +6,7 @@ function MovieGenres({ data, handleGenreSelect }) {
 
 	return (
 		<div className="genre">
-			<h2>What kind of movie would you like to watch?</h2>
+			<h2 className="genre__header">Choose some genres?</h2>
 			<div className="genre__selections">
 				{genreNames.map((genre) => {
 					const isActive = genres.includes(genre.id);
@@ -24,7 +24,7 @@ function MovieGenres({ data, handleGenreSelect }) {
 							>
 								<img
 									className="genre__icon"
-									src={`src/assets/icons/genres/genre-icon-${genre.name}.svg`}
+									src={`src/assets/icons/genres/genre-icon-${genre.name}.png`}
 									alt={`${genre.name} icon`}
 								/>
 								<p>{genre.name}</p>
