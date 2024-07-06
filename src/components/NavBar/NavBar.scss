@@ -28,6 +28,7 @@ nav {
 	position: relative;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.25);
 
 	@include tablet {
@@ -35,8 +36,8 @@ nav {
 	}
 
 	.nav__logo__link {
-		flex-grow: 1;
 		cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
+		padding-left: 1rem;
 
 		@include tablet {
 			display: none;
@@ -44,6 +45,7 @@ nav {
 
 		.nav__logo {
 			width: 10rem;
+
 			@include custom-pointer;
 		}
 	}
@@ -136,11 +138,7 @@ nav {
 
 		&__logo {
 			width: 1.75rem;
-			padding: 0 0.5rem 0 0;
-
-			@include tablet {
-				padding: 0 0.5rem 0 0;
-			}
+			margin-right: 0.75rem;
 		}
 
 		&__title {
