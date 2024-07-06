@@ -37,7 +37,7 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 								</option>
 								{Array.from({ length: 13 }).map((_, i) => (
 									<option key={i} value={i + 1}>
-										{i + 1}
+										&nbsp;&nbsp;{i + 1}
 									</option>
 								))}
 							</select>

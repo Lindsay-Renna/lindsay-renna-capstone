@@ -6,6 +6,10 @@
 	flex-direction: column;
 	height: 90%;
 
+	&__header {
+		margin-top: 1rem;
+	}
+
 	&__selections {
 		@include flex-center-both;
 		gap: 0.5rem;
@@ -51,9 +55,18 @@
 				@include custom-pointer;
 			}
 
+			&:active {
+				transform: scale(0.98);
+				box-shadow: 3px 2px 22px 0.5px rgba(0, 0, 0, 0.24);
+			}
+
 			&--active {
 				outline: 4px solid $FamtivityPink;
 				outline-offset: -0.125rem;
+
+				&:hover {
+					transform: none;
+				}
 			}
 		}
 

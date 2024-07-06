@@ -2,6 +2,10 @@
 
 .results {
 	margin: 0 1rem;
+
+	&__header {
+		margin-top: 2rem;
+	}
 	&__error {
 		@include flex-center-both;
 		flex-direction: column;
@@ -24,5 +28,13 @@
 				@include custom-pointer;
 			}
 		}
+	}
+}
+
+.loading {
+	margin-top: 5rem;
+
+	&__image {
+		width: 15rem;
 	}
 }

@@ -17,21 +17,23 @@ function Results({ preparedData }) {
 
 	return (
 		<div className="result-box">
-			{visibleData.map((item) => {
-				return (
-					<div key={item.id} className="result-box__item">
-						<img
-							className="result-box__image"
-							id={item.id}
-							src={item.image}
-							alt={item.title}
-						/>
-						<p>
-							{item.title} ({dateToYear(item.release_date)})
-						</p>
-					</div>
-				);
-			})}
+			<div className="result-box__list">
+				{visibleData.map((item) => {
+					return (
+						<div key={item.id} className="result-box__item">
+							<img
+								className="result-box__image"
+								id={item.id}
+								src={item.image}
+								alt={item.title}
+							/>
+							<p>
+								{item.title} ({dateToYear(item.release_date)})
+							</p>
+						</div>
+					);
+				})}
+			</div>
 			<div className="result-box__buttons">
 				<Link to="/#activities" className="restart-button">
 					Start over?

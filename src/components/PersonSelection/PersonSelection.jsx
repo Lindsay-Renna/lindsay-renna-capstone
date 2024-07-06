@@ -11,7 +11,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={removeKid} className="minus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/minus-circle.svg"
+							src="src/assets/icons/minus-circle.png"
 							alt="minus circle"
 						/>
 					</button>
@@ -30,7 +30,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={addKid} className="plus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/plus-circle.svg"
+							src="src/assets/icons/plus-circle.png"
 							alt="plus circle"
 						/>
 					</button>
@@ -43,7 +43,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={removeAdult} className="minus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/minus-circle.svg"
+							src="src/assets/icons/minus-circle.png"
 							alt="minus circle"
 						/>
 					</button>
@@ -64,7 +64,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={addAdult} className="plus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/plus-circle.svg"
+							src="src/assets/icons/plus-circle.png"
 							alt="plus circle"
 						/>
 					</button>

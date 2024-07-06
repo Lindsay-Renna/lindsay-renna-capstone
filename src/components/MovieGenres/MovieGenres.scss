@@ -43,9 +43,26 @@
 		width: 100%;
 		height: 100%;
 
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: scale(1.05);
+			@include custom-pointer;
+		}
+
+		&:active {
+			transform: scale(0.98);
+			box-shadow: 3px 2px 22px 0.5px rgba(0, 0, 0, 0.24);
+		}
+
 		&--active {
 			background-color: $FamtivityPink;
 			color: white;
+
+			&:hover {
+				transform: none;
+				@include custom-pointer;
+			}
 		}
 
 		img {

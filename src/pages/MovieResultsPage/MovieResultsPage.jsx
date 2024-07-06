@@ -69,10 +69,13 @@ function MovieResultsPage() {
 	return (
 		<div className="results">
 			{loading ? (
-				<>
-					<p>loading ... </p>
-					<img src="/src/assets/icegif-1262.gif" alt="loading image" />
-				</>
+				<div className="loading">
+					<img
+						className="loading__image"
+						src="/src/assets/loading.svg"
+						alt="loading image"
+					/>
+				</div>
 			) : error ? (
 				<div className="results__error">
 					<p className="results__error__text">
@@ -84,7 +87,9 @@ function MovieResultsPage() {
 				</div>
 			) : movieResults.length ? (
 				<>
-					<h2>Here are some movies picked just for your family</h2>
+					<h2 className="results__header">
+						Here are some movies picked just for your family
+					</h2>
 					<Results preparedData={prepareData(movieResults)} />
 				</>
 			) : (

@@ -1,17 +1,22 @@
 @use "../../styles/partials/global" as *;
 
 .result-box {
-	@include flex-center-both;
-	flex-wrap: wrap;
 	margin: 3rem 0;
+
+	&__list {
+		@include flex-center-both;
+		flex-wrap: wrap;
+	}
 
 	&__item {
 		width: 50%;
+		margin-bottom: 1rem;
 	}
 
 	&__image {
 		width: 80%;
 		border-radius: 10px;
+		margin-bottom: 1rem;
 		box-shadow: 0 2px 5px black;
 
 		transition: transform 0.2s ease-in-out;
@@ -49,6 +54,11 @@
 			&:hover {
 				transform: scale(0.98);
 				@include custom-pointer;
+			}
+
+			&:active {
+				transform: scale(0.98);
+				box-shadow: 3px 2px 22px 0.5px rgba(0, 0, 0, 0.24);
 			}
 
 			@include tablet {

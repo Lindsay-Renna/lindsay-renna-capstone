@@ -6,7 +6,7 @@ function ProviderSelection({ handleProviderSelect, data }) {
 
 	return (
 		<div className="provider">
-			<h2>Where do you watch?</h2>
+			<h2 className="provider__header">Where do you watch?</h2>
 			<div className="provider__selections">
 				{providers.map((provider) => {
 					const isActive = watchProviders.includes(provider.provider_id);

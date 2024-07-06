@@ -40,8 +40,14 @@
 			@include custom-pointer;
 		}
 
+		select {
+			text-indent: -8px;
+		}
+
 		option {
 			background-color: $FamtivityPurple;
+			padding-left: 1rem; // Add padding to the left
+			text-indent: 1rem; // Indent text to simulate padding
 		}
 	}
 }

@@ -37,7 +37,7 @@ function SliderComponent({ data, handleSliderChange }) {
 			<div className="decade-slider">
 				<h2>Which decade(s) should we include?</h2>
 				<div className="sliders__container">
-					<h3>{`${minYear} to ${maxYear}`}</h3>
+					<h3>{`${minYear} to ${maxYear == 2020 ? "current" : maxYear}`}</h3>
 					<Slider
 						value={[minYear, maxYear]}
 						step={10}
@@ -54,7 +54,9 @@ function SliderComponent({ data, handleSliderChange }) {
 			<div className="length-slider">
 				<h2>How long should the movie be?</h2>
 				<div className="sliders__container">
-					<h3>{`${minLength / 60}hrs to ${maxLength / 60}hrs`}</h3>
+					<h3>{`${minLength == 30 ? "30 min" : minLength / 60}hrs to ${
+						maxLength / 60
+					}hrs`}</h3>
 					<Slider
 						value={[minLength, maxLength]}
 						marks={marksLength}

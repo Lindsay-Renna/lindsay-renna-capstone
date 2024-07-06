@@ -3,10 +3,9 @@
 .person-selection {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-
+	justify-content: center;
+	gap: 2rem;
 	padding: 0 0.5rem;
-	height: 85vh;
 	min-width: 70%;
 }
 
@@ -63,16 +62,26 @@
 .minus-button {
 	border: none;
 	max-width: 40%;
+	padding: 0;
+
+	&:active {
+		transform: scale(0.98);
+	}
 
 	.button__image {
-		width: 2.25rem;
+		width: 2.75rem;
 	}
 }
 .plus-button {
 	border: none;
 	max-width: 40%;
+	padding: 0;
 
 	.button__image {
-		width: 2rem;
+		width: 2.5rem;
+
+		&:active {
+			transform: scale(0.98);
+		}
 	}
 }
