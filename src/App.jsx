@@ -14,6 +14,7 @@ import BoardgameResultsPage from "./pages/BoardgameResultsPage/BoardgameResultsP
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import AuthFailPage from "./pages/AuthFailPage/AuthFailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import TestPage from "./pages/TestPage/TestPage";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {

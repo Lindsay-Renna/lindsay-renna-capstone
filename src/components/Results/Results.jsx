@@ -2,7 +2,7 @@ import "./Results.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Results({ preparedData }) {
+function Results({ preparedData, handleClick }) {
 	const [currentPage, setCurrentPage] = useState(0);
 	const itemsPerPage = 4;
 
@@ -22,6 +22,7 @@ function Results({ preparedData }) {
 					return (
 						<div key={item.id} className="result-box__item">
 							<img
+								onClick={() => handleClick(item.id)}
 								className="result-box__image"
 								id={item.id}
 								src={item.image}

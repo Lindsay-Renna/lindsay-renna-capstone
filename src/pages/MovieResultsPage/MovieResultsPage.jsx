@@ -4,8 +4,8 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
 	MOVIE_QUERY_URL,
-	API_KEY,
 	MOVIE_BASE_IMAGE_URL,
+	MOVIE_BASE_URL,
 } from "../../utilities/movie-api.js";
 import Results from "../../components/Results/Results.jsx";
 
@@ -14,7 +14,12 @@ function MovieResultsPage() {
 	const { data } = location.state || {};
 	const [movieResults, setMovieResults] = useState([]);
 	const [loading, setLoading] = useState(true);
+
 	const [error, setError] = useState(null);
+	const [movieDetails, setMovieDetails] = useState(null);
+
+	const movieApiKey = import.meta.env.VITE_MOVIE_API_KEY;
+	const movieApiToken = import.meta.env.VITE_MOVIE_API_TOKEN;
 
 	const prepareData = (results) => {
 		return results.map((movie) => ({
@@ -44,13 +49,14 @@ function MovieResultsPage() {
 		},
 		headers: {
 			accept: "application/json",
-			Authorization: `Bearer ${API_KEY}`,
+			Authorization: `Bearer ${movieApiToken}`,
 		},
 	};
 
 	const getMovieResults = async () => {
 		try {
 			const response = await axios.get(MOVIE_QUERY_URL, options);
+			console.log(response.data);
 			setMovieResults(response.data.results);
 			setLoading(false);
 		} catch (error) {
@@ -65,6 +71,22 @@ function MovieResultsPage() {
 			getMovieResults();
 		}
 	}, [data]);
+
+	async function getMovieDetails(id) {
+		try {
+			const response = await axios.get(
+				MOVIE_BASE_URL + `${id}?api_key=` + movieApiKey
+			);
+			const movie = response.data;
+			setMovieDetails(movie);
+			console.log(movie);
+		} catch (error) {}
+	}
+
+	const handleClick = async (id) => {
+		await getMovieDetails(id);
+		setModalOpen(true);
+	};
 
 	return (
 		<div className="results">
@@ -90,7 +112,10 @@ function MovieResultsPage() {
 					<h2 className="results__header">
 						Here are some movies picked just for your family
 					</h2>
-					<Results preparedData={prepareData(movieResults)} />
+					<Results
+						preparedData={prepareData(movieResults)}
+						handleClick={handleClick}
+					/>
 				</>
 			) : (
 				<div className="results__error">
