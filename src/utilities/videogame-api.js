@@ -18,16 +18,16 @@ const vgGenres = [
 	{ id: 34, name: "Educational" },
 ];
 
-const vgPlatforms = [
+export const systemNames = [
 	{ id: 4, name: "PC" },
 	{ id: 187, name: "PlayStation 5" },
-	{ id: 1, name: "Xbox One" },
 	{ id: 18, name: "PlayStation 4" },
+	{ id: 1, name: "Xbox One" },
+	{ id: 14, name: "Xbox 360" },
 	{ id: 186, name: "Xbox Series S/X" },
 	{ id: 7, name: "Nintendo Switch" },
 	{ id: 3, name: "iOS" },
 	{ id: 21, name: "Android" },
-	{ id: 14, name: "Xbox 360" },
 ];
 
 const vgTags = [

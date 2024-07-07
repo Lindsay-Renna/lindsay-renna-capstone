@@ -3,7 +3,7 @@ import { useState } from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
-import SliderComponent from "../../components/SliderComponent/SliderComponent";
+import GamingSystems from "../../components/GamingSystems/GamingSystems";
 
 function VideogamePage() {
 	const [data, setData] = useState({
@@ -57,14 +57,14 @@ function VideogamePage() {
 		});
 	};
 
-	const handleGenreSelect = (event) => {
-		const genreId = parseInt(event.currentTarget.id);
+	const handleSystemSelect = (event) => {
+		const systemId = parseInt(event.currentTarget.id);
 		setData((prevData) => {
-			const isSelected = prevData.genres.includes(genreId);
-			const newGenres = isSelected
-				? prevData.genres.filter((id) => id !== genreId)
-				: [...prevData.genres, genreId];
-			return { ...prevData, genres: newGenres };
+			const isSelected = prevData.systems.includes(systemId);
+			const newSystems = isSelected
+				? prevData.systems.filter((id) => id !== systemId)
+				: [...prevData.systems, systemId];
+			return { ...prevData, systems: newSystems };
 		});
 	};
 
@@ -86,10 +86,11 @@ function VideogamePage() {
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
 					handleSliderChange={handleSliderChange}
+					handleSystemSelect={handleSystemSelect}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />
-					<SliderComponent />
+					<GamingSystems />
 				</Carousel>
 			</main>
 		</div>

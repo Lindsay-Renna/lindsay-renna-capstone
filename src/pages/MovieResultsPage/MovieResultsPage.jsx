@@ -33,7 +33,7 @@ function MovieResultsPage() {
 
 	const options = {
 		params: {
-			"certification.lte": "3",
+			certification: "G|PG",
 			certification_country: "CA",
 			include_adult: "false",
 			include_video: "false",
