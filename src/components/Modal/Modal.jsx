@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 ReactModal.setAppElement("#root");
 
-function Modal({ modalOpen, setModalOpen, id, children }) {
+function Modal({ modalOpen, setModalOpen, id, handleDelete, children }) {
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {
@@ -22,8 +22,8 @@ function Modal({ modalOpen, setModalOpen, id, children }) {
 
 	return (
 		<ReactModal
-			className="modal"
-			overlayClassName="modalOverlay"
+			className="react-modal"
+			overlayClassName="react-modalOverlay"
 			isOpen={modalOpen}
 			onRequestClose={() => setModalOpen(false)}
 			contentLabel="Delete Confirmation"
@@ -31,32 +31,14 @@ function Modal({ modalOpen, setModalOpen, id, children }) {
 			shouldCloseOnEsc={true}
 		>
 			<div
-				className="modal__closer"
+				className="react-modal__closer"
 				onClick={() => {
 					setModalOpen(false);
 				}}
 			>
 				<img src="/src/assets/icons/close-circle.svg" alt="close x" />
 			</div>
-			<div className="modal__children">{children}</div>
-			<div className="modal__buttons">
-				<button
-					className="cancel-button"
-					onClick={() => {
-						setModalOpen(false);
-					}}
-				>
-					Cancel
-				</button>
-				<button
-					className="delete-button"
-					onClick={() => {
-						handleDelete(id);
-					}}
-				>
-					Delete
-				</button>
-			</div>
+			<div className="react-modal__children">{children}</div>
 		</ReactModal>
 	);
 }

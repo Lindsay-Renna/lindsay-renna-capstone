@@ -1,28 +1,31 @@
 @use "../../styles/partials/global" as *;
 
-.modal {
+.react-modal {
 	padding: 1rem 1rem 2.5rem 1rem;
 	box-sizing: border-box;
-	position: absolute;
-	background-color: rgba(173, 29, 29, 0.877);
-	z-index: 1001;
-	top: 50%;
+	position: fixed;
+	background-color: white;
+	height: 30rem;
+	width: 30rem;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
+	z-index: 1000;
+	top: 35%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
 	@include tablet {
-		min-height: 40rem;
-		min-width: 40rem;
-		top: 5rem;
+		top: 19.75rem;
 		left: 50%;
-		border-radius: 4px;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.226);
+		height: 30rem;
+		width: 40rem;
+
 		padding: 1rem 1rem 2.5rem 2rem;
 	}
 
 	@include desktop {
-		width: 10rem;
-		height: 10rem;
+		width: 42rem;
+		height: 16.375rem;
 	}
 
 	&:focus {
@@ -34,24 +37,11 @@
 		width: 100%;
 		justify-content: flex-end;
 		cursor: pointer;
-	}
 
-	&__children {
-		min-height: 92%;
-
-		@include tablet {
-			min-height: 70%;
-			padding: 0 4rem 0 2rem;
-		}
-	}
-
-	&__buttons {
-		@include flex-center-horizontal;
-		gap: 1rem;
-
-		@include tablet {
-			justify-content: flex-end;
-			padding-right: 4rem;
+		img {
+			width: 2rem;
+			height: 2rem;
+			@include custom-pointer;
 		}
 	}
 
@@ -74,35 +64,13 @@
 	}
 }
 
-.modalOverlay {
-	@include tablet {
-		position: fixed;
-		background-color: rgba(0, 0, 0, 0.25);
-		@include flex-center-both;
-		z-index: 1000;
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-	}
-}
-
-.delete-button,
-.cancel-button {
-	padding: 0.5rem 3.8rem;
-	cursor: pointer;
-	font-size: 0.8125rem;
-
-	@include tablet {
-		padding: 0.5rem 1rem;
-		font-size: 0.875rem;
-	}
-}
-
-.line-break {
-	display: none;
-
-	@include tablet {
-		display: block;
-	}
+.react-modalOverlay {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	@include flex-center-both;
+	z-index: 1001;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
 }

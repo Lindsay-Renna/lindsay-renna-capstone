@@ -8,15 +8,16 @@ import {
 	MOVIE_BASE_URL,
 } from "../../utilities/movie-api.js";
 import Results from "../../components/Results/Results.jsx";
+import Modal from "../../components/Modal/Modal.jsx";
 
 function MovieResultsPage() {
 	const location = useLocation();
 	const { data } = location.state || {};
 	const [movieResults, setMovieResults] = useState([]);
 	const [loading, setLoading] = useState(true);
-
 	const [error, setError] = useState(null);
 	const [movieDetails, setMovieDetails] = useState(null);
+	const [modalOpen, setModalOpen] = useState(false);
 
 	const movieApiKey = import.meta.env.VITE_MOVIE_API_KEY;
 	const movieApiToken = import.meta.env.VITE_MOVIE_API_TOKEN;
@@ -127,6 +128,33 @@ function MovieResultsPage() {
 					</Link>
 				</div>
 			)}
+			<Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
+				{movieDetails ? (
+					<>
+						<img
+							className="movie-modal_poster"
+							src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
+							alt={movieDetails.original_title}
+						/>
+						<p>
+							{movieDetails.original_title +
+								"  " +
+								"(" +
+								movieDetails.release_date.slice(0, 4) +
+								")"}
+						</p>
+						<p>{movieDetails.overview}</p>
+						<div className="movie-modal_genres">
+							{movieDetails.genres.map((genre) => {
+								return <span key={genre.id}>{genre.name + ", "}</span>;
+							})}
+						</div>
+						<p>{movieDetails.runtime + " min"}</p>
+					</>
+				) : (
+					<p>loading...</p>
+				)}
+			</Modal>
 		</div>
 	);
 }

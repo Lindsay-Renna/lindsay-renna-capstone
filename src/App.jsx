@@ -5,7 +5,6 @@ import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import NavBar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 import MovieResultsPage from "./pages/MovieResultsPage/MovieResultsPage";
 import VideogamePage from "./pages/VideogamesPage/VideogamePage";
 import VideogameResultsPage from "./pages/VideogameResultsPage/VideogameResultsPage";
@@ -14,7 +13,6 @@ import BoardgameResultsPage from "./pages/BoardgameResultsPage/BoardgameResultsP
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import AuthFailPage from "./pages/AuthFailPage/AuthFailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import TestPage from "./pages/TestPage/TestPage";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {

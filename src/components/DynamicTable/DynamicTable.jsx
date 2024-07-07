@@ -1,10 +1,5 @@
 import "./DynamicTable.scss";
 import Accordion from "react-bootstrap/Accordion";
-import AccordionCollapse from "react-bootstrap/AccordionCollapse";
-import AccordionButton from "react-bootstrap/AccordionButton";
-import AccordionBody from "react-bootstrap/AccordionBody";
-import AccordionHeader from "react-bootstrap/AccordionHeader";
-import AccordionItem from "react-bootstrap/AccordionItem";
 
 function DynamicTable({ movies, handleRemoveMovie }) {
 	return (
