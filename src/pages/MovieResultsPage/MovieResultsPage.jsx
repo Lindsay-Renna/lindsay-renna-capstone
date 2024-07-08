@@ -31,13 +31,23 @@ function MovieResultsPage() {
 		}));
 	};
 
-	const cert = {
-		certification: Math.min(...data.childAges) > 8 ? "G|PG" : "G|PG|PG13",
+	const cert = Math.min(...data.childAges) > 8 ? "G|PG" : "G|PG|PG13";
+	const currentDate = new Date();
+	const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
+	const currentYear = currentDate.getFullYear();
+	const month =
+		data.maxYear === currentYear
+			? String(currentMonth - 3).padStart(2, "0")
+			: "12";
+	const getLastDayOfMonth = (year, month) => {
+		return new Date(year, month, 0).getDate();
 	};
+
+	const lastDay = getLastDayOfMonth(data.maxYear, month);
 
 	const options = {
 		params: {
-			certification: { cert },
+			certification: cert,
 			certification_country: "CA",
 			include_adult: "false",
 			include_video: "false",
@@ -45,7 +55,7 @@ function MovieResultsPage() {
 			with_original_language: "en",
 			page: "1",
 			"primary_release_date.gte": `${data?.minYear}-01-01`,
-			"primary_release_date.lte": `${data?.maxYear}-12-31`,
+			"primary_release_date.lte": `${data?.maxYear}-${month}-${lastDay}`,
 			sort_by: "popularity.desc",
 			watch_region: "CA",
 			"with_runtime.gte": `${data?.minLength}`,
