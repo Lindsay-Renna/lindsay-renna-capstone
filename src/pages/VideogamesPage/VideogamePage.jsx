@@ -5,6 +5,7 @@ import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 import GamingSystems from "../../components/GamingSystems/GamingSystems";
 import VideogameGenre from "../../components/VideogameGenre/VideogameGenre";
+import VideogameTagSelection from "../../components/VideogameTagSelection/VideogameTagSelection";
 
 function VideogamePage() {
 	const [data, setData] = useState({
@@ -105,6 +106,7 @@ function VideogamePage() {
 					<ChildAgeSelector />
 					<GamingSystems />
 					<VideogameGenre />
+					<VideogameTagSelection />
 				</Carousel>
 			</main>
 		</div>

@@ -3,7 +3,6 @@ import { systemNames } from "../../utilities/videogame-api.js";
 
 function GamingSystems({ data, handleSystemSelect }) {
 	const { systems } = data;
-	console.log(systems);
 
 	return (
 		<div className="system">

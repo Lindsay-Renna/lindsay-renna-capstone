@@ -1,4 +1,5 @@
 // RAWG API
+export const VG_BASE_URL = "https://api.rawg.io/api/games?key=";
 
 export const vgGenres = [
 	{ id: 4, name: "Action" },

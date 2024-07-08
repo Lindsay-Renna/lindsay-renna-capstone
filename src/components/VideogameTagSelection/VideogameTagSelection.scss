@@ -1,0 +1,42 @@
+@use "../../styles/partials/global" as *;
+.tags {
+	padding: 0 0.5rem;
+	display: flex;
+	flex-direction: column;
+	height: 45rem;
+
+	&__header {
+		font-size: 1.25rem;
+		margin: 1rem 0;
+
+		@include tablet {
+			font-size: 1.5rem;
+			margin: 1rem 0 2rem 0;
+		}
+
+		@include desktop {
+			font-size: 2rem;
+		}
+	}
+
+	&__selections {
+		@include flex-center-both;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		align-items: stretch;
+		flex-grow: 1;
+
+		@include tablet {
+			gap: 1.5rem;
+		}
+	}
+}
+
+.switch__wrapper {
+	height: 8rem;
+	width: 25rem;
+}
+
+.react-switch-selector-option-label {
+	font-weight: 600;
+}
