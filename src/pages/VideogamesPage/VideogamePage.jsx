@@ -4,6 +4,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 import GamingSystems from "../../components/GamingSystems/GamingSystems";
+import VideogameGenre from "../../components/VideogameGenre/VideogameGenre";
 
 function VideogamePage() {
 	const [data, setData] = useState({
@@ -11,7 +12,7 @@ function VideogamePage() {
 		numAdults: 0,
 		childAges: [],
 		systems: [],
-		gameType: [],
+		genres: [],
 		minYear: 1980,
 		maxYear: 2024,
 	});
@@ -91,6 +92,7 @@ function VideogamePage() {
 					<PersonSelection />
 					<ChildAgeSelector />
 					<GamingSystems />
+					<VideogameGenre />
 				</Carousel>
 			</main>
 		</div>

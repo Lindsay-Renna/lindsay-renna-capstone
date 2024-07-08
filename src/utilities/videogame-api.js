@@ -1,6 +1,6 @@
 // RAWG API
 
-const vgGenres = [
+export const vgGenres = [
 	{ id: 4, name: "Action" },
 	{ id: 51, name: "Indie" },
 	{ id: 3, name: "Adventure" },
@@ -19,13 +19,12 @@ const vgGenres = [
 ];
 
 export const systemNames = [
-	{ id: 4, name: "PC" },
 	{ id: 187, name: "PlayStation 5" },
 	{ id: 18, name: "PlayStation 4" },
 	{ id: 1, name: "Xbox One" },
-	{ id: 14, name: "Xbox 360" },
 	{ id: 186, name: "Xbox Series S/X" },
 	{ id: 7, name: "Nintendo Switch" },
+	{ id: 4, name: "PC" },
 	{ id: 3, name: "iOS" },
 	{ id: 21, name: "Android" },
 ];
