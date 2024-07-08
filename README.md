@@ -48,9 +48,7 @@ Discovery:
 ### Tech Stack
 
 Frontend: Developed using React.js for a dynamic and responsive user interface.
-
 Client libraries: react, react-router, axios
-
 Backend: Node.js and Express.js for server-side operations and API management, MySQL for boardgame database, Passport.js for user login
 
 ### APIs
@@ -284,5 +282,6 @@ Testing and Bug Fixing: 5 days
 - manage a family profile so users do not need to input kids / ages each time
 
 ```
+
 
 ```
