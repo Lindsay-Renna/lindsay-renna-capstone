@@ -31,13 +31,18 @@ function MovieResultsPage() {
 		}));
 	};
 
+	const cert = {
+		certification: Math.min(...data.childAges) > 8 ? "G|PG" : "G|PG|PG13",
+	};
+
 	const options = {
 		params: {
-			certification: "G|PG",
+			certification: { cert },
 			certification_country: "CA",
 			include_adult: "false",
 			include_video: "false",
 			language: "en-US",
+			with_original_language: "en",
 			page: "1",
 			"primary_release_date.gte": `${data?.minYear}-01-01`,
 			"primary_release_date.lte": `${data?.maxYear}-12-31`,
@@ -79,6 +84,7 @@ function MovieResultsPage() {
 				MOVIE_BASE_URL + `${id}?api_key=` + movieApiKey
 			);
 			const movie = response.data;
+
 			setMovieDetails(movie);
 			console.log(movie);
 		} catch (error) {}

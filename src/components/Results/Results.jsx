@@ -12,6 +12,10 @@ function Results({ preparedData, handleClick }) {
 		setCurrentPage((prevPage) => prevPage + 1);
 	};
 
+	const seePrev = () => {
+		setCurrentPage((prevPage) => prevPage - 1);
+	};
+
 	const startIndex = currentPage * itemsPerPage;
 	const visibleData = preparedData.slice(startIndex, startIndex + itemsPerPage);
 
@@ -36,6 +40,11 @@ function Results({ preparedData, handleClick }) {
 				})}
 			</div>
 			<div className="result-box__buttons">
+				{currentPage > 0 && (
+					<button className="page-button" onClick={seePrev}>
+						See prev...
+					</button>
+				)}
 				<Link to="/#activities" className="restart-button">
 					Start over?
 				</Link>

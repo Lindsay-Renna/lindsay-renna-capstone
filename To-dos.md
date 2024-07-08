@@ -7,9 +7,9 @@ Must-do's :
 
 Want-to-do's :
 
-- change select option hover colour from blue
+- change select option hover colour from blue in slider
 - unique adult img icons
-- - and - buttons background should be transparent
+- add support for additional languages
 
 Features:
 

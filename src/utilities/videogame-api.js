@@ -11,7 +11,6 @@ export const vgGenres = [
 	{ id: 83, name: "Platformer" },
 	{ id: 1, name: "Racing" },
 	{ id: 15, name: "Sports" },
-	{ id: 19, name: "Family" },
 	{ id: 6, name: "Fighting" },
 	{ id: 34, name: "Educational" },
 ];
@@ -41,4 +40,30 @@ const vgTags = [
 		id: 18,
 		name: "Co-op",
 	},
+	{
+		id: 411,
+		name: "Cooperative",
+	},
+	{
+		id: 19,
+		name: "Split Screen",
+	},
+	{
+		id: 107,
+		name: "Family Friendly",
+	},
+	{
+		id: 37,
+		name: "Sandbox",
+	},
+	{
+		id: 75,
+		name: "Local Co-op",
+	},
+	{
+		id: 72,
+		name: "Local Multiplayer",
+	},
 ];
+
+const esrb_rating = "E,E10";
