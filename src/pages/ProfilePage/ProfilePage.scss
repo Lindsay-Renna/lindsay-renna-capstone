@@ -1,0 +1,65 @@
+@use "../../styles/partials/global" as *;
+
+.profile-page {
+	background-image: url("/src/assets/tac-top-shapes-low-opacity.svg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	height: 94.5vh;
+
+	&__profile {
+		padding: 1rem;
+		@include flex-center-both;
+		flex-direction: column;
+	}
+
+	&__header {
+		margin: 1rem 0;
+	}
+
+	&__logout-wrapper {
+		margin: 2rem;
+		position: absolute;
+		bottom: 10px;
+		left: 40%;
+
+		a {
+			@include flex-center-both;
+			gap: 0.5rem;
+		}
+	}
+
+	&__avatar {
+		width: 10rem;
+		border-radius: 40px;
+	}
+
+	&__info {
+		display: flex;
+		margin-bottom: 2rem;
+	}
+
+	&__watch-list {
+		width: 100%;
+	}
+}
+
+.login-request {
+	padding: 4rem 1rem;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		border-radius: 20px;
+		background-color: $FamtivityGrey;
+		box-shadow: 0 2px 5px black;
+		flex-grow: 1;
+		min-height: 20rem;
+		gap: 1.5rem;
+	}
+
+	&__header {
+		margin: 2rem 0;
+	}
+}

@@ -1,0 +1,76 @@
+@use "../../styles/partials/global" as *;
+
+.react-modal {
+	padding: 1rem 1rem 2.5rem 1rem;
+	box-sizing: border-box;
+	position: fixed;
+	background-color: white;
+	height: 30rem;
+	width: 30rem;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
+	z-index: 1000;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	@include tablet {
+		top: 19.75rem;
+		left: 50%;
+		height: 30rem;
+		width: 40rem;
+
+		padding: 1rem 1rem 2.5rem 2rem;
+	}
+
+	@include desktop {
+		width: 42rem;
+		height: 16.375rem;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&__closer {
+		display: flex;
+		width: 100%;
+		justify-content: flex-end;
+		cursor: pointer;
+
+		img {
+			width: 2rem;
+			height: 2rem;
+			@include custom-pointer;
+		}
+	}
+
+	&__header {
+		font-size: 1.75rem;
+
+		@include tablet {
+			margin: 0;
+			font-size: 2rem;
+		}
+	}
+
+	&__text {
+		font-size: 1rem;
+		line-height: 1.625rem;
+
+		@include tablet {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.react-modalOverlay {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	@include flex-center-both;
+	z-index: 1001;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}

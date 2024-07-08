@@ -1,0 +1,87 @@
+@use "../../styles/partials/global" as *;
+
+.person-selection {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2rem;
+	padding: 0 0.5rem;
+	min-width: 70%;
+}
+
+.kids {
+	&__wrapper {
+		width: 100%;
+		min-height: 15rem;
+		@include flex-center-both;
+		flex-wrap: wrap;
+		order: -1;
+	}
+	&__header {
+		margin-top: 1rem;
+	}
+	&__image {
+		width: 4rem;
+	}
+
+	&__image--large {
+		width: 6rem;
+	}
+}
+
+.flex-wrapper {
+	@include flex-center-both;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.adults {
+	margin-bottom: 1rem;
+
+	&__wrapper {
+		width: 100%;
+		min-height: 15rem;
+		@include flex-center-both;
+		flex-wrap: wrap;
+		order: -1;
+	}
+
+	&__header {
+		margin-top: 1rem;
+	}
+
+	&__image {
+		width: 4rem;
+	}
+
+	&__image--large {
+		width: 6rem;
+	}
+}
+
+.minus-button {
+	border: none;
+	max-width: 40%;
+	padding: 0;
+
+	&:active {
+		transform: scale(0.98);
+	}
+
+	.button__image {
+		width: 2.75rem;
+	}
+}
+.plus-button {
+	border: none;
+	max-width: 40%;
+	padding: 0;
+
+	.button__image {
+		width: 2.5rem;
+
+		&:active {
+			transform: scale(0.98);
+		}
+	}
+}

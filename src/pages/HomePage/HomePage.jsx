@@ -1,15 +1,27 @@
-import MovieList from "../../components/MovieList/MovieList";
-import NavBar from "../../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
 import "./HomePage.scss";
 import Hero from "../../components/Hero/Hero";
+import ActivityChoiceBox from "../../components/ActivityChoiceBox/ActivityChoiceBox";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function HomePage() {
+	const { hash } = useLocation();
+
+	useEffect(() => {
+		if (hash) {
+			const element = document.getElementById(hash.replace("#", ""));
+			if (element) {
+				element.scrollIntoView({ behavior: "smooth" });
+			}
+		}
+	}, [hash]);
+
 	return (
 		<div id="home-page">
-			<NavBar />
 			<Hero />
-			<MovieList />
+			<main className="homepage-main">
+				<ActivityChoiceBox />
+			</main>
 		</div>
 	);
 }

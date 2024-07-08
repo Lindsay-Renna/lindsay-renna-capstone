@@ -23,42 +23,131 @@
 }
 
 nav {
-	background-color: white;
-	height: 2.5rem;
+	background-color: $FamtivityGrey;
+	height: 3rem;
 	position: relative;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+
+	@include tablet {
+		justify-content: space-around;
+	}
+
+	.nav__logo__link {
+		cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
+		padding-left: 1rem;
+
+		@include tablet {
+			display: none;
+		}
+
+		.nav__logo {
+			width: 10rem;
+
+			@include custom-pointer;
+		}
+	}
 
 	.nav-list {
 		display: none;
 
 		@include tablet {
-			display: flex;
+			display: contents;
+		}
+
+		&__link {
+			font-weight: 600;
+			&--active {
+				color: $FamtivityPurple;
+				font-weight: 600;
+			}
+
+			@include tablet {
+				font-weight: 600;
+				padding: 0.5rem 1rem 0.25rem 1rem;
+				margin: 1rem 0;
+
+				&:hover {
+					background-color: $FamtivityPurple-40;
+					border-radius: 10px;
+				}
+
+				&--active {
+					border-bottom: 2px solid $FamtivityPurple;
+					color: $FamtivityPurple;
+					font-weight: 600;
+					padding: 0.5rem 1rem 0.25rem 1rem;
+					margin: 1rem 0;
+
+					&:hover {
+						background-color: transparent;
+					}
+				}
+			}
 		}
 
 		&.ham-nav {
 			display: flex;
 			flex-direction: column;
 			background-color: white;
-			margin-top: 2.5rem;
-			position: absolute;
+			margin-top: 3rem;
 			height: auto;
-			width: 50vw;
+			width: 100vw;
 			position: absolute;
 			top: 0;
 			left: 0;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			padding: 0;
 			animation: slideDown 0.25s forwards;
+			z-index: 99;
+			opacity: 1;
+
+			@include tablet {
+				width: 50vw;
+			}
 		}
 
-		&:not(.ham-nav) {
+		&.nav-list--closed {
 			animation: slideUp 0.5s forwards;
+			opacity: 0;
 		}
 
 		&__item {
 			padding: 1rem 0;
 			border-bottom: 1px solid #ccc;
+
+			&:hover {
+				background-color: $FamtivityPurple-40;
+
+				@include tablet {
+					background-color: transparent;
+				}
+			}
+
+			@include tablet {
+				border-bottom: none;
+				padding: 0;
+			}
+		}
+	}
+
+	.login {
+		@include flex-center-both;
+
+		&__logo {
+			width: 1.75rem;
+			margin-right: 0.75rem;
+		}
+
+		&__title {
+			display: none;
+
+			@include tablet {
+				display: initial;
+				margin: 0;
+			}
 		}
 	}
 }

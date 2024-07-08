@@ -1,59 +1,83 @@
+@use "../../styles/partials/global" as *;
+
 .hero {
-	height: 100vh;
+	min-height: 94.5vh;
 	width: 100%;
-	background-image: url("/src/assets/hero-small.png");
-	background-position: left;
+	background-image: url("/src/assets/tac-top-shapes-low-opacity.svg");
+	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-}
 
-.tagline {
-	font-size: 3rem;
-	margin: 4rem 1rem 8rem 1rem;
-	line-height: 1.1;
-	font-family: "Dosis";
-	font-weight: 200;
+	.logo__container {
+		@include flex-center-both;
 
-	&--small {
-		font-size: 1.75rem;
-		margin: 0;
+		.logo {
+			width: 60vw;
+			display: none;
+
+			@include tablet {
+				display: block;
+				padding-top: 2rem;
+				text-align: center;
+			}
+
+			@include desktop {
+				width: 40vw;
+			}
+		}
 	}
-}
 
-.logo__container {
-	display: block;
-}
+	.tagline {
+		font-size: 1.75rem;
+		line-height: 1.1;
+		font-family: "Dosis";
+		font-weight: 500;
+		margin: 0;
+		padding: 2rem 0;
+	}
 
-.logo {
-	width: 40vw;
-}
+	.icon__container {
+		display: flex;
+		place-content: center;
+		gap: 1rem;
 
-.icon {
-	width: 50px;
-}
-.icon__container {
-	display: flex;
-	place-content: center;
-	gap: 1rem;
-}
+		.icon {
+			width: 50px;
+		}
+	}
 
-.planning-button {
-	border-radius: 10px;
-	background-color: #62b5e5;
-	color: white;
-	padding: 1rem;
-	font-family: "Dosis";
-	font-weight: 600;
-	font-size: 2rem;
-}
+	.hero__header {
+		font-size: 3rem;
+		margin: 4rem 1rem 8rem 1rem;
+		line-height: 1.1;
+		font-family: "Dosis";
+		font-weight: 500;
 
-.navigation-div {
-	position: absolute;
-	bottom: 1em; /*adjust the number depends on your need*/
-	left: 50%;
-	transform: translatex(-50%);
-}
+		@include tablet {
+			margin: 4rem 2rem 8rem 2rem;
+		}
+	}
 
-.arrow-link {
-	width: 50px;
+	.navigation-div {
+		position: absolute;
+		bottom: 5em;
+		left: 50%;
+		transform: translatex(-50%);
+
+		.arrow-link {
+			width: 50px;
+		}
+	}
+
+	.plan-button {
+		border-radius: 10px;
+		border: none;
+		background-color: black;
+		color: white;
+		padding: 1rem;
+		font-family: "Dosis";
+		font-weight: 600;
+		font-size: 2rem;
+		@include custom-pointer;
+	}
 }

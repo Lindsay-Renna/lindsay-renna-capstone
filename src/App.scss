@@ -1,9 +1,13 @@
 @use "./styles/partials/global" as *;
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 body {
 	margin: 0;
 	padding: 0;
 	font-family: "Dosis";
+	background-color: #f8f8ec;
+	color: black;
+	cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
 }
 
 h3 {
@@ -11,11 +15,39 @@ h3 {
 }
 
 a {
+	text-decoration: none;
+	color: black;
+
 	&:hover {
-		cursor: pointer;
+		@include custom-pointer;
 	}
 }
 
 ul {
 	list-style: none;
+}
+
+select {
+	box-sizing: border-box;
+	appearance: none;
+	background-color: transparent;
+	border: none;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	line-height: inherit;
+	outline: none;
+	text-align: center;
+	min-width: 3rem;
+
+	option {
+		padding-left: 1rem;
+	}
+}
+
+button {
+	&:hover {
+		@include custom-pointer;
+	}
 }

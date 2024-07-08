@@ -1,0 +1,78 @@
+@use "../../styles/partials/global" as *;
+
+.provider {
+	padding: 0 0.5rem;
+	display: flex;
+	flex-direction: column;
+	height: 90%;
+
+	&__header {
+		margin-top: 1rem;
+	}
+
+	&__selections {
+		@include flex-center-both;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		align-items: stretch;
+		flex-grow: 1;
+
+		@include tablet {
+		}
+	}
+
+	&__wrapper {
+		min-width: 43%;
+		min-height: 4.5rem;
+
+		@include tablet {
+		}
+	}
+
+	&__button {
+		cursor: pointer;
+		background-color: $FamtivityGrey;
+		border: none;
+
+		font-family: "Dosis";
+		font-weight: 700;
+		width: fit-content;
+		height: 100%;
+
+		&:hover {
+			@include custom-pointer;
+		}
+
+		.provider__icon {
+			width: 6rem;
+			height: 6rem;
+			border-radius: 20px;
+
+			transition: transform 0.2s ease-in-out;
+
+			&:hover {
+				transform: scale(1.08);
+				@include custom-pointer;
+			}
+
+			&:active {
+				transform: scale(0.98);
+				box-shadow: 3px 2px 22px 0.5px rgba(0, 0, 0, 0.24);
+			}
+
+			&--active {
+				outline: 4px solid $FamtivityPink;
+				outline-offset: -0.125rem;
+
+				&:hover {
+					transform: none;
+				}
+			}
+		}
+
+		p {
+			margin: 0.5rem 0;
+			font-size: 1rem;
+		}
+	}
+}

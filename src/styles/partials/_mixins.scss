@@ -11,3 +11,22 @@
 		@content;
 	}
 }
+
+@mixin flex-center-both {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-center-horizontal {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin custom-pointer {
+	cursor: url("/src/assets/icons/cursor.svg"), pointer;
+}
+
+@mixin box-shadow {
+	box-shadow: 0 2px 5px black;
+}

@@ -1,0 +1,39 @@
+@use "../../styles/partials/global" as *;
+
+.not-found {
+	@include flex-center-both;
+	height: 100;
+
+	&__image-wrapper {
+		width: 100%;
+		height: 100vh;
+		background-image: url("/src/assets/404-background-2.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 2rem;
+	}
+
+	&__image {
+		width: 80%;
+
+		margin: 5rem auto;
+
+		@include tablet {
+			width: 50%;
+		}
+
+		@include desktop {
+			width: 30%;
+		}
+	}
+
+	&__text {
+		@include tablet {
+			font-size: 1.5rem;
+		}
+	}
+}

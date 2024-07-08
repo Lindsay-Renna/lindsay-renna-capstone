@@ -1,5 +1,13 @@
+@use "../../styles/partials/global" as *;
+
 #home-page {
 	height: 100vh;
-	background-color: #f8f8ec;
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.homepage-main {
+	background-color: $FamtivityYellow;
 }
