@@ -7,7 +7,7 @@ import boardgameRoutes from "./routes/boardgames.js";
 import authRoutes from "./routes/auth.js";
 import helmet from "helmet";
 
-// Passport library and Github Strategy
+// Passport library and Github
 import passport from "passport";
 import passportGitHub from "passport-github2";
 import passportGoogle from "passport-google-oauth20";
