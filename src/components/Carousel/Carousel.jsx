@@ -39,6 +39,10 @@ const Carousel = ({
 		}
 	};
 
+	const allAgesSelected =
+		data.childAges.length === data.numKids &&
+		data.childAges.every((age) => age !== undefined && age !== "");
+
 	const CurrentComponent = components[currentIndex];
 
 	return (
@@ -62,7 +66,10 @@ const Carousel = ({
 			</div>
 			<div className="button__wrapper">
 				{currentIndex < components.length - 1 ? (
-					<button onClick={handleNext}>
+					<button
+						onClick={handleNext}
+						disabled={currentIndex === 1 && !allAgesSelected}
+					>
 						<img
 							className="button__arrow"
 							src="src/assets/icons/arrow-right-small.svg"
