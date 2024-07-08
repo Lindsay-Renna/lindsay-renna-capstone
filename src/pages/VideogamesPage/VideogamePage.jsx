@@ -69,6 +69,17 @@ function VideogamePage() {
 		});
 	};
 
+	const handleGenreSelect = (event) => {
+		const genreId = parseInt(event.currentTarget.id);
+		setData((prevData) => {
+			const isSelected = prevData.genres.includes(genreId);
+			const newGenres = isSelected
+				? prevData.genres.filter((id) => id !== genreId)
+				: [...prevData.genres, genreId];
+			return { ...prevData, genres: newGenres };
+		});
+	};
+
 	const handleSliderChange = (field, value) => {
 		setData((prevData) => ({
 			...prevData,
@@ -88,6 +99,7 @@ function VideogamePage() {
 					handleAgeSelect={handleAgeSelect}
 					handleSliderChange={handleSliderChange}
 					handleSystemSelect={handleSystemSelect}
+					handleGenreSelect={handleGenreSelect}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />

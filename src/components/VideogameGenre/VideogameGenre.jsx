@@ -6,7 +6,7 @@ function VideogameGenre({ data, handleGenreSelect }) {
 
 	return (
 		<div className="vg-genre">
-			<h2 className="vg-genre__header">Choose some gametags?</h2>
+			<h2 className="vg-genre__header">Choose some genres?</h2>
 			<div className="vg-genre__selections">
 				{vgGenres.map((genre) => {
 					const isActive = genres.includes(genre.id);
