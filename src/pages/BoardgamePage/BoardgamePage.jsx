@@ -13,7 +13,7 @@ function BoardgamePage() {
 		numKids: 0,
 		numAdults: 0,
 		childAges: [],
-		categories: [],
+		category: null,
 		cooperative: true,
 		minLength: 0,
 		maxLength: 60,
@@ -65,11 +65,8 @@ function BoardgamePage() {
 	const handleCategorySelect = (event) => {
 		const categoryId = parseInt(event.currentTarget.id);
 		setData((prevData) => {
-			const isSelected = prevData.categories.includes(categoryId);
-			const newCategories = isSelected
-				? prevData.genres.filter((id) => id !== categoryId)
-				: [...prevData.categories, categoryId];
-			return { ...prevData, categories: newCategories };
+			const newCategory = prevData.category === categoryId ? null : categoryId;
+			return { ...prevData, category: newCategory };
 		});
 	};
 

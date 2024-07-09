@@ -141,7 +141,7 @@ Response:
         "rank": 19108,
         "year":2016,
         "description":"The penguin mommies and their babies live on an island, but the tasty fi..."
-        "image_urls": "https://cf.geekdo-images.com\/345Or5KjNbH_VSPnc7QxsA__original\/img\/RaiEXUeGiDqWTXcCQXTBS1f3tWM=/0x0/filters:format(jpeg)/pic3242728.jpg"
+        "image_urls": "https://cf.geekdo-images.com/345Or5KjNbH_VSPnc7QxsA__original/img/RaiEXUeGiDqWTXcCQXTBS1f3tWM=/0x0/filters:format(jpeg)/pic3242728.jpg"
     },
     ...
 ]

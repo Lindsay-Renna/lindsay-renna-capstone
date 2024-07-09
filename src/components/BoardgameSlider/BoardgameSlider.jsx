@@ -26,9 +26,9 @@ function BoardgameSlider({ data, handleSliderChange, handleToggle }) {
 			<div className="bg-length-slider">
 				<h2 className="bg-sliders__header">How long should the game be?</h2>
 				<div className="bg-sliders__container">
-					<h3>{`${minLength == 30 ? "30 min" : minLength / 60}hrs to ${
-						maxLength / 60
-					}hrs`}</h3>
+					<h3>{`${minLength == 30 ? "30 min" : minLength / 60 + "hrs"} to ${
+						maxLength == 30 ? "30 min" : maxLength / 60 + "hrs"
+					}`}</h3>
 					<Slider
 						value={[minLength, maxLength]}
 						marks={marksLength}
