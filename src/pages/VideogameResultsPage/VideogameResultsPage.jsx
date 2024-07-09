@@ -15,43 +15,49 @@ function VideogameResultsPage() {
 	const [videogameDetails, setVideogameDetails] = useState(null);
 	const [modalOpen, setModalOpen] = useState(false);
 
-	const vgAPI = import.meta.env.VITE_RAWG_API_KEY;
+	const vgAPI = `?key=${import.meta.env.VITE_RAWG_API_KEY}`;
 	const { childAges, systems, genres, cooperative } = data;
 
 	const prepareData = (results) => {
 		return results.map((game) => ({
-			title: game.original_title,
-			image: MOVIE_BASE_IMAGE_URL + movie.backdrop_path,
+			title: game.name,
+			image: game.background_image,
 			id: game.id,
-			release_date: game.release_date,
+			release_date: game.released,
 		}));
 	};
 
 	const platforms = systems.join(",");
 	const genresList = genres.join(",");
-	const esrb = Math.min(...childAges) > 9 ? "E,E10" : "E";
+	const esrb = Math.min(...childAges) > 9 ? "everyone,everyon10" : "everyone";
 	const tags = cooperative ? "co-op,multiplayer" : "multiplayer";
 
-	const params = {
-		key: vgAPI,
-		platforms,
-		genresList,
-		tags,
-		esrb,
-	};
-
-	const getVideogameResults = async (params) => {
+	const getVideogameResults = async () => {
 		try {
-			const response = await axios.get(
-				"https://cors-anywhere.herokuapp.com/" + VG_BASE_URL,
-				{ params }
-			);
-			console.log(response.data);
-			setVideogameResults(response.data.results);
-			setLoading(false);
+			const response = await axios.get(VG_BASE_URL + vgAPI, {
+				params: {
+					platforms: platforms,
+					genres: genresList,
+					tags: tags,
+					page_size: 40,
+				},
+			});
+			const games = response.data.results;
+			console.log(games);
+			const filteredGames = games.filter((game) => {
+				const esrbRating = game.esrb_rating
+					? game.esrb_rating.name.toLowerCase()
+					: "";
+				if (Math.min(...childAges) > 9) {
+					return esrbRating === "everyone" || esrbRating === "everyone 10+";
+				}
+				return esrbRating === "everyone";
+			});
+			setVideogameResults(filteredGames);
 		} catch (error) {
-			console.error(error);
-			setError(true);
+			console.error("Error fetching games:", error);
+			setError("An error occurred while fetching games.");
+		} finally {
 			setLoading(false);
 		}
 	};
@@ -64,13 +70,10 @@ function VideogameResultsPage() {
 
 	async function getVideogameDetail(id) {
 		try {
-			const response = await axios.get(
-				"https://cors-anywhere.herokuapp.com/" + VG_BASE_URL + vgAPI + id
-			);
+			const response = await axios.get(VG_BASE_URL + `/${id}` + vgAPI);
 			const game = response.data;
-
-			setVideogameDetails(game);
 			console.log(game);
+			setVideogameDetails(game);
 		} catch (error) {}
 	}
 
@@ -94,7 +97,7 @@ function VideogameResultsPage() {
 					<p className="results__error__text">
 						Oh no! Something went wrong with your results.
 					</p>
-					<Link to="/movies" className="results__error__link">
+					<Link to="/videogames" className="results__error__link">
 						Want to try again?
 					</Link>
 				</div>
@@ -122,24 +125,28 @@ function VideogameResultsPage() {
 				{videogameDetails ? (
 					<>
 						<img
-							className="movie-modal_poster"
-							src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
-							alt={movieDetails.original_title}
+							className="videogame-modal_poster"
+							src={videogameDetails.background_image}
+							alt={videogameDetails.name}
 						/>
 						<p>
-							{movieDetails.original_title +
-								"  " +
-								"(" +
-								movieDetails.release_date.slice(0, 4) +
-								")"}
+							<strong>{videogameDetails.name}</strong>
 						</p>
-						<p>{movieDetails.overview}</p>
-						<div className="movie-modal_genres">
-							{movieDetails.genres.map((genre) => {
-								return <span key={genre.id}>{genre.name + ", "}</span>;
+						<p>{videogameDetails.description_raw}</p>
+						<div className="videogame-modal_genres">
+							{videogameDetails.platforms.map((platform) => {
+								return (
+									<span key={platform.platform.id}>
+										{platform.platform.name + ", "}
+									</span>
+								);
 							})}
 						</div>
-						<p>{movieDetails.runtime + " min"}</p>
+						{videogameDetails.metacritic ? (
+							<p>Metacritic score: {videogameDetails.metacritic}</p>
+						) : (
+							<p></p>
+						)}
 					</>
 				) : (
 					<p>loading...</p>

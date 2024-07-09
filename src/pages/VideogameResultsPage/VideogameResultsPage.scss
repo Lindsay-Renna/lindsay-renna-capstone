@@ -1,1 +1,21 @@
 @use "../../styles/partials/global" as *;
+
+.videogame-modal_poster {
+	width: 8rem;
+
+	@include tablet {
+		width: 10rem;
+	}
+}
+
+.videogame-modal_genres {
+	display: flex;
+
+	span {
+		padding-left: 0.25rem;
+
+		&:first-of-type {
+			padding-left: 0;
+		}
+	}
+}

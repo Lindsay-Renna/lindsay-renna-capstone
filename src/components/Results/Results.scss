@@ -11,6 +11,10 @@
 	&__item {
 		width: 50%;
 		margin-bottom: 1rem;
+
+		@include tablet {
+			max-width: 40rem;
+		}
 	}
 
 	&__image {
@@ -18,12 +22,16 @@
 		border-radius: 10px;
 		margin-bottom: 1rem;
 		box-shadow: 0 2px 5px black;
-
 		transition: transform 0.2s ease-in-out;
 
 		&:hover {
 			transform: scale(1.08);
 			@include custom-pointer;
+		}
+
+		@include tablet {
+			width: 80%;
+			max-width: 25rem;
 		}
 	}
 
@@ -62,7 +70,7 @@
 			}
 
 			@include tablet {
-				font-size: 2rem;
+				font-size: 1.5rem;
 			}
 		}
 		.page-button {
