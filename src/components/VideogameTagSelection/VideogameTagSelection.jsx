@@ -11,7 +11,7 @@ function VideogameTagSelection({ data, handleToggle }) {
 						id="compSelector"
 						initial={data.cooperative ? 0 : 1}
 						onChange={(value) => handleToggle(value)}
-						selectedBackgroundColor={"#50c6e0"}
+						selectedBackgroundColor={"#bb8abf"}
 						hasPadding
 						border={"2px solid black"}
 						fontSize={"1.5rem"}

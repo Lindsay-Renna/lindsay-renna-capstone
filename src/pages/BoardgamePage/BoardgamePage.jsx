@@ -6,6 +6,7 @@ import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 
 import BoardgameSlider from "../../components/BoardgameSlider/BoardgameSlider";
+import GameCategories from "../../components/GameCategories/GameCategories";
 
 function BoardgamePage() {
 	const [data, setData] = useState({
@@ -13,7 +14,6 @@ function BoardgamePage() {
 		numAdults: 0,
 		childAges: [],
 		categories: [],
-		mechanics: [],
 		cooperative: true,
 		minLength: 0,
 		maxLength: 60,
@@ -62,14 +62,14 @@ function BoardgamePage() {
 		});
 	};
 
-	const handleGenreSelect = (event) => {
-		const genreId = parseInt(event.currentTarget.id);
+	const handleCategorySelect = (event) => {
+		const categoryId = parseInt(event.currentTarget.id);
 		setData((prevData) => {
-			const isSelected = prevData.genres.includes(genreId);
-			const newGenres = isSelected
-				? prevData.genres.filter((id) => id !== genreId)
-				: [...prevData.genres, genreId];
-			return { ...prevData, genres: newGenres };
+			const isSelected = prevData.categories.includes(categoryId);
+			const newCategories = isSelected
+				? prevData.genres.filter((id) => id !== categoryId)
+				: [...prevData.categories, categoryId];
+			return { ...prevData, categories: newCategories };
 		});
 	};
 
@@ -91,6 +91,8 @@ function BoardgamePage() {
 		navigate("/boardgames/results", { state: { data } });
 	};
 
+	console.log(data);
+
 	return (
 		<div id="boardgame-selection">
 			<main className="boardgame-main">
@@ -101,7 +103,7 @@ function BoardgamePage() {
 					addAdult={addAdult}
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
-					handleGenreSelect={handleGenreSelect}
+					handleCategorySelect={handleCategorySelect}
 					handleSliderChange={handleSliderChange}
 					handleSubmit={handleSubmit}
 					handleToggle={handleToggle}
@@ -109,6 +111,7 @@ function BoardgamePage() {
 					<PersonSelection />
 					<ChildAgeSelector />
 					<BoardgameSlider />
+					<GameCategories />
 				</Carousel>
 			</main>
 		</div>

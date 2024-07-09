@@ -8,11 +8,34 @@
 
 	&__header {
 		font-size: 1.25rem;
-		margin-top: 1rem;
+		margin: 1rem 0;
 
 		@include tablet {
 			font-size: 1.5rem;
 		}
+	}
+
+	.MuiSlider-root {
+		color: $FamtivityBlue !important;
+
+		&:hover {
+			cursor: url("/src/assets/icons/cursor.svg"), pointer;
+		}
+	}
+
+	.css-ltlhnc-MuiSlider-root {
+		height: 1rem;
+	}
+
+	.css-cp2j25-MuiSlider-thumb {
+		width: 1.875rem;
+		height: 1.875rem;
+		border-radius: 25%;
+	}
+
+	.css-1ucwjgd-MuiSlider-markLabel,
+	.css-1bvr8oc-MuiSlider-markLabel {
+		line-height: 2.5rem;
 	}
 
 	.bg-length-slider {
