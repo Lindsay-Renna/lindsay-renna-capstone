@@ -7,36 +7,61 @@
 
 	&__header {
 		font-size: 1.25rem;
-		margin: 1rem 0;
+		margin: 1rem 0 2rem 0;
 
 		@include tablet {
-			font-size: 1.5rem;
-			margin: 1rem 0 2rem 0;
-		}
-
-		@include desktop {
 			font-size: 2rem;
+			margin: 1rem 0 2rem 0;
 		}
 	}
 
 	&__selections {
-		@include flex-center-both;
-		gap: 0.75rem;
+		display: flex;
+		justify-content: center;
 		flex-wrap: wrap;
 		align-items: stretch;
 		flex-grow: 1;
+		gap: 2rem;
 
 		@include tablet {
 			gap: 1.5rem;
 		}
 	}
 }
+.tags__image__wrapper {
+	width: 100%;
+	@include flex-center-both;
 
+	img {
+		width: 100%;
+		max-width: 19rem;
+
+		@include tablet {
+			max-width: 25rem;
+		}
+	}
+}
 .switch__wrapper {
-	height: 8rem;
-	width: 25rem;
+	max-height: 15rem;
+	width: 90%;
+	text-align: center;
+
+	@include tablet {
+		max-width: 50rem;
+	}
 }
 
 .react-switch-selector-option-label {
 	font-weight: 600;
+}
+
+.react-switch-selector-wrapper,
+.react-switch-selector-disabled,
+.react-switch-selector-option,
+.react-switch-selector-option-selected,
+.react-switch-selector-option-unselected,
+.react-switch-selector-option-label {
+	&:hover {
+		@include custom-pointer;
+	}
 }

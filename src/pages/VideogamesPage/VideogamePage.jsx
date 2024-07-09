@@ -1,5 +1,6 @@
 import "./VideogamePage.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
@@ -14,9 +15,11 @@ function VideogamePage() {
 		childAges: [],
 		systems: [],
 		genres: [],
-		minYear: 1980,
-		maxYear: 2024,
+		cooperative: true,
+		splitScreen: true,
 	});
+
+	const navigate = useNavigate();
 
 	const addKid = () => {
 		setData((prevData) => {
@@ -81,11 +84,15 @@ function VideogamePage() {
 		});
 	};
 
-	const handleSliderChange = (field, value) => {
+	const handleToggle = (value) => {
 		setData((prevData) => ({
 			...prevData,
-			[field]: value,
+			cooperative: value,
 		}));
+	};
+
+	const handleSubmit = () => {
+		navigate("/videogames/results", { state: { data } });
 	};
 
 	return (
@@ -98,9 +105,10 @@ function VideogamePage() {
 					addAdult={addAdult}
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
-					handleSliderChange={handleSliderChange}
 					handleSystemSelect={handleSystemSelect}
 					handleGenreSelect={handleGenreSelect}
+					handleToggle={handleToggle}
+					handleSubmit={handleSubmit}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />
