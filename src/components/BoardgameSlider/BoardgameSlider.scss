@@ -1,0 +1,95 @@
+@use "../../styles/partials/global" as *;
+
+.bg-sliders {
+	@include flex-center-both;
+	height: 100%;
+	justify-content: space-around;
+	flex-direction: column;
+
+	&__header {
+		font-size: 1.25rem;
+		margin-top: 1rem;
+
+		@include tablet {
+			font-size: 1.5rem;
+		}
+	}
+
+	.bg-length-slider {
+		width: 90%;
+		max-width: 40rem;
+		min-height: 30%;
+	}
+
+	&__container {
+		min-height: 3rem;
+		padding: 1rem 2rem;
+	}
+}
+
+.competitive {
+	padding: 0 0.5rem;
+	display: flex;
+	flex-direction: column;
+	height: 45rem;
+
+	&__header {
+		font-size: 1.25rem;
+		margin: 1rem 0 2rem 0;
+
+		@include tablet {
+			font-size: 1.5rem;
+			margin: 1rem 0 2rem 0;
+		}
+	}
+
+	&__selections {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-items: stretch;
+		flex-grow: 1;
+		gap: 2rem;
+
+		@include tablet {
+			gap: 1.5rem;
+		}
+	}
+}
+.competitive__image__wrapper {
+	width: 100%;
+	@include flex-center-both;
+
+	img {
+		width: 100%;
+		max-width: 12rem;
+
+		@include tablet {
+			max-width: 15rem;
+		}
+	}
+}
+.switch__wrapper {
+	max-height: 15rem;
+	width: 90%;
+	text-align: center;
+
+	@include tablet {
+		max-width: 50rem;
+	}
+}
+
+.react-switch-selector-option-label {
+	font-weight: 600;
+}
+
+.react-switch-selector-wrapper,
+.react-switch-selector-disabled,
+.react-switch-selector-option,
+.react-switch-selector-option-selected,
+.react-switch-selector-option-unselected,
+.react-switch-selector-option-label {
+	&:hover {
+		@include custom-pointer;
+	}
+}

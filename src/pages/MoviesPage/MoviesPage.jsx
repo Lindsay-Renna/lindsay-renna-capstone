@@ -5,7 +5,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 import MovieGenres from "../../components/MovieGenres/MovieGenres";
-import SliderComponent from "../../components/SliderComponent/SliderComponent";
+import MoviesSlider from "../../components/MoviesSlider/MoviesSlider";
 import ProviderSelection from "../../components/ProviderSelection/ProviderSelection";
 
 function MoviesPage() {
@@ -97,6 +97,8 @@ function MoviesPage() {
 		navigate("/movies/results", { state: { data } });
 	};
 
+	console.log(data.childAges);
+
 	return (
 		<div id="movie-selection">
 			<main className="movie-main">
@@ -115,7 +117,7 @@ function MoviesPage() {
 					<PersonSelection />
 					<ChildAgeSelector />
 					<MovieGenres />
-					<SliderComponent />
+					<MoviesSlider />
 					<ProviderSelection />
 				</Carousel>
 			</main>

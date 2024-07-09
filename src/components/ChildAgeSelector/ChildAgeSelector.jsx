@@ -29,7 +29,7 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 								onChange={(event) => {
 									handleAgeSelect(event, index);
 								}}
-								defaultValue=""
+								value={childAges[index] !== undefined ? childAges[index] : ""}
 								name="childAge"
 							>
 								<option value="" disabled>

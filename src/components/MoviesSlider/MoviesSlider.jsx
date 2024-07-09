@@ -1,7 +1,7 @@
-import "./SliderComponent.scss";
+import "./MoviesSlider.scss";
 import Slider from "@mui/material/Slider";
 
-function SliderComponent({ data, handleSliderChange }) {
+function MoviesSlider({ data, handleSliderChange }) {
 	const { minYear, maxYear, minLength, maxLength } = data;
 	const marksDecade = [
 		{ value: 1980, label: "1980's" },
@@ -74,4 +74,4 @@ function SliderComponent({ data, handleSliderChange }) {
 	);
 }
 
-export default SliderComponent;
+export default MoviesSlider;
