@@ -14,8 +14,9 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	overflow: scroll;
+	scrollbar-width: none;
 
-	::-webkit-scrollbar {
+	&::-webkit-scrollbar {
 		display: none; /* for Chrome, Safari, and Opera */
 	}
 
@@ -30,7 +31,6 @@
 
 	@include desktop {
 		width: 42rem;
-		height: 16.375rem;
 	}
 
 	&:focus {

@@ -134,10 +134,14 @@ function VideogameResultsPage() {
 						</p>
 						<p>{videogameDetails.description_raw}</p>
 						<div className="videogame-modal_genres">
-							{videogameDetails.platforms.map((platform) => {
+							<strong>Platforms: </strong>
+							{videogameDetails.platforms.map((platform, index) => {
+								const isLastItem =
+									index === videogameDetails.platforms.length - 1;
 								return (
 									<span key={platform.platform.id}>
-										{platform.platform.name + ", "}
+										{platform.platform.name}
+										{isLastItem ? "" : ", "}
 									</span>
 								);
 							})}

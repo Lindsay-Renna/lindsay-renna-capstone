@@ -29,7 +29,7 @@ function App() {
 				setProfileData(res.data);
 			})
 			.catch((err) => {
-				if (err.response.status === 401) {
+				if (err.response && err.response.status === 401) {
 					setIsAuthenticating(false);
 					setIsLoggedIn(false);
 				} else {
