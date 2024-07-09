@@ -1,7 +1,9 @@
 import DynamicTable from "../../components/DynamicTable/DynamicTable";
 import LoginButton from "../../components/LoginButton/LoginButton";
 import LogoutButton from "../../components/LogoutButton/LogoutButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+import axios from "axios";
 import "./ProfilePage.scss";
 
 const initialMovies = [
@@ -16,8 +18,28 @@ const initialMovies = [
 	{ id: 7, name: "Fight Club" },
 ];
 
-const ProfilePage = ({ profileData, isLoggedIn }) => {
+const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [movies, setMovies] = useState(initialMovies);
+	const [isAuthenticating, setIsAuthenticating] = useState(true);
+	const [profileData, setProfileData] = useState(null);
+
+	useEffect(() => {
+		axios
+			.get(`${SERVER_URL}/auth/profile`, { withCredentials: true })
+			.then((res) => {
+				setIsAuthenticating(false);
+				setIsLoggedIn(true);
+				setProfileData(res.data);
+			})
+			.catch((err) => {
+				if (err.response && err.response.status == 401) {
+					setIsAuthenticating(false);
+					setIsLoggedIn(false);
+				} else {
+					console.log("Error authenticating", err);
+				}
+			});
+	}, []);
 
 	const handleRemoveMovie = (id) => {
 		setMovies(movies.filter((movie) => movie.id !== id));

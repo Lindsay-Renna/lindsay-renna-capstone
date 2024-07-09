@@ -16,27 +16,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {
-	const [isAuthenticating, setIsAuthenticating] = useState(true);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [profileData, setProfileData] = useState(null);
-
-	useEffect(() => {
-		axios
-			.get(`${SERVER_URL}/auth/profile`, { withCredentials: true })
-			.then((res) => {
-				setIsAuthenticating(false);
-				setIsLoggedIn(true);
-				setProfileData(res.data);
-			})
-			.catch((err) => {
-				if (err.response && err.response.status === 401) {
-					setIsAuthenticating(false);
-					setIsLoggedIn(false);
-				} else {
-					console.log("Error authenticating", err);
-				}
-			});
-	}, []);
 
 	return (
 		<>
@@ -59,7 +39,10 @@ function App() {
 					<Route
 						path="/profile"
 						element={
-							<ProfilePage profileData={profileData} isLoggedIn={isLoggedIn} />
+							<ProfilePage
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
 						}
 					/>
 					<Route path="/*" element={<NotFoundPage />} />
