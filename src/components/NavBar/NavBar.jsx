@@ -50,7 +50,11 @@ function NavBar({ isLoggedIn }) {
 			<div ref={hamburgerRef} className="hamburger" onClick={toggleHamburger}>
 				<Hamburger />
 			</div>
-			<Link className="nav__logo__link" to="/">
+			<Link
+				className="nav__logo__link"
+				to="/"
+				onClick={() => setHamburgerOpen(false)}
+			>
 				<img
 					className="nav__logo"
 					src="/src/assets/famtivitylogo.svg"
@@ -70,12 +74,17 @@ function NavBar({ isLoggedIn }) {
 						className={({ isActive }) =>
 							isActive ? "nav-list__link--active" : "nav-list__link"
 						}
+						onClick={() => setHamburgerOpen(false)}
 					>
 						<li className="nav-list__item">{item.name}</li>
 					</NavLink>
 				))}
 			</ul>
-			<Link to="/profile" className="login">
+			<Link
+				to="/profile"
+				className="login"
+				onClick={() => setHamburgerOpen(false)}
+			>
 				<img
 					className="login__logo"
 					src="/src/assets/icons/user-account-red.svg"
