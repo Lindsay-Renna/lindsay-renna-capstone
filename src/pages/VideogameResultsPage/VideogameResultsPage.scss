@@ -1,13 +1,29 @@
 @use "../../styles/partials/global" as *;
 
-.videogame-modal_poster {
-	width: 8rem;
+.videogame-modal {
+	&__images {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 1rem;
+	}
 
-	@include tablet {
-		width: 10rem;
+	&__poster {
+		width: 12rem;
+		border-radius: 10px;
+
+		@include tablet {
+			width: 15rem;
+		}
+	}
+
+	&__esrb {
+		width: auto;
+		height: 4rem;
 	}
 }
 
+.videogame-modal_platforms,
 .videogame-modal_genres {
 	display: flex;
 
@@ -15,7 +31,7 @@
 		padding-left: 0.25rem;
 
 		&:first-of-type {
-			padding-left: 0;
+			padding-left: 0.5rem;
 		}
 	}
 }

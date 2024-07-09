@@ -28,20 +28,21 @@ function VideogameResultsPage() {
 	};
 
 	const platforms = systems.join(",");
-	const genresList = genres.join(",");
-	const esrb = Math.min(...childAges) > 9 ? "everyone,everyon10" : "everyone";
-	const tags = cooperative ? "co-op,multiplayer" : "multiplayer";
+	const tags = cooperative ? "co-op" : "local-multiplayer";
+
+	const params = {
+		platforms,
+		tags,
+		page_size: 100,
+	};
+
+	if (genres.length > 0) {
+		params.genres = genres.join(",");
+	}
 
 	const getVideogameResults = async () => {
 		try {
-			const response = await axios.get(VG_BASE_URL + vgAPI, {
-				params: {
-					platforms: platforms,
-					genres: genresList,
-					tags: tags,
-					page_size: 40,
-				},
-			});
+			const response = await axios.get(VG_BASE_URL + vgAPI, { params });
 			const games = response.data.results;
 			console.log(games);
 			const filteredGames = games.filter((game) => {
@@ -124,16 +125,27 @@ function VideogameResultsPage() {
 			<Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
 				{videogameDetails ? (
 					<>
-						<img
-							className="videogame-modal_poster"
-							src={videogameDetails.background_image}
-							alt={videogameDetails.name}
-						/>
+						<div className="videogame-modal__images">
+							<img
+								className="videogame-modal__poster"
+								src={videogameDetails.background_image}
+								alt={videogameDetails.name}
+							/>
+							{videogameDetails.esrb_rating ? (
+								<img
+									className="videogame-modal__esrb"
+									src={`/src/assets/icons/esrb-${videogameDetails.esrb_rating.id}.png`}
+									alt="ESRB rating"
+								/>
+							) : (
+								<></>
+							)}
+						</div>
 						<p>
 							<strong>{videogameDetails.name}</strong>
 						</p>
 						<p>{videogameDetails.description_raw}</p>
-						<div className="videogame-modal_genres">
+						<div className="videogame-modal_platforms">
 							<strong>Platforms: </strong>
 							{videogameDetails.platforms.map((platform, index) => {
 								const isLastItem =
@@ -146,8 +158,23 @@ function VideogameResultsPage() {
 								);
 							})}
 						</div>
+						<div className="videogame-modal_genres">
+							<strong>Genres: </strong>
+							{videogameDetails.genres.map((genre, index) => {
+								const isLastItem = index === videogameDetails.genres.length - 1;
+								return (
+									<span key={genre.id}>
+										{genre.name}
+										{isLastItem ? "" : ", "}
+									</span>
+								);
+							})}
+						</div>
 						{videogameDetails.metacritic ? (
-							<p>Metacritic score: {videogameDetails.metacritic}</p>
+							<p>
+								<strong>Metacritic score: </strong>
+								{videogameDetails.metacritic}
+							</p>
 						) : (
 							<p></p>
 						)}
