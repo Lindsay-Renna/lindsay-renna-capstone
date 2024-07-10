@@ -27,7 +27,7 @@ function MovieResultsPage() {
 			title: movie.original_title,
 			image: MOVIE_BASE_IMAGE_URL + movie.backdrop_path,
 			id: movie.id,
-			release_date: movie.release_date,
+			release_date: movie.release_date.slice(0, 4),
 		}));
 	};
 
@@ -153,19 +153,20 @@ function MovieResultsPage() {
 							alt={movieDetails.original_title}
 						/>
 						<p>
-							{movieDetails.original_title +
-								"  " +
-								"(" +
-								movieDetails.release_date.slice(0, 4) +
-								")"}
+							<strong>{movieDetails.original_title}</strong>
+							{"  " + "(" + movieDetails.release_date.slice(0, 4) + ")"}
 						</p>
 						<p>{movieDetails.overview}</p>
 						<div className="movie-modal_genres">
+							<strong>Genres: </strong>
 							{movieDetails.genres.map((genre) => {
 								return <span key={genre.id}>{genre.name + ", "}</span>;
 							})}
 						</div>
-						<p>{movieDetails.runtime + " min"}</p>
+						<p>
+							<strong>Runtime: </strong>
+							{movieDetails.runtime + " min"}
+						</p>
 					</>
 				) : (
 					<p>loading...</p>

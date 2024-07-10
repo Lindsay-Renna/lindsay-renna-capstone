@@ -6,8 +6,6 @@ function Results({ preparedData, handleClick }) {
 	const [currentPage, setCurrentPage] = useState(0);
 	const itemsPerPage = 4;
 
-	const dateToYear = (date) => date.slice(0, 4);
-
 	const seeMore = () => {
 		setCurrentPage((prevPage) => prevPage + 1);
 	};
@@ -33,7 +31,7 @@ function Results({ preparedData, handleClick }) {
 								alt={item.title}
 							/>
 							<p>
-								{item.title} ({dateToYear(item.release_date)})
+								{item.title} {item.release_date}
 							</p>
 						</div>
 					);

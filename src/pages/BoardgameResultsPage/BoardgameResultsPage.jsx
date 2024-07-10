@@ -4,11 +4,12 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
+import { BG_API_BASE_URL } from "../../utilities/boardgame-api.js";
 
 function BoardgameResultsPage() {
 	const location = useLocation();
 	const { data } = location.state || {};
-	const [boardgameResults, setboardgameResults] = useState([]);
+	const [boardgameResults, setBoardgameResults] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [boardgameDetails, setboardgameDetails] = useState(null);
@@ -26,18 +27,20 @@ function BoardgameResultsPage() {
 	const options = {
 		min_age: Math.min(...data.childAges),
 		num_players: parseInt(data.numKids + data.numAdults),
-		min_time: data.minLength,
 		max_time: data.maxLength,
+		category: data.category,
+		mechanics: data.cooperative === true ? "Cooperative" : "",
 	};
 
 	const getBoardgameResults = async () => {
 		try {
-			const response = await axios.get(
-				"http://localhost:8080/boardgames/results",
+			const response = await axios.post(
+				`${BG_API_BASE_URL}/boardgames/results`,
 				options
 			);
+			const sortedBoardgames = response.data.sort((a, b) => b.rank - a.rank);
 			console.log(response.data);
-			setboardgameResults(response.data);
+			setBoardgameResults(sortedBoardgames);
 			setLoading(false);
 		} catch (error) {
 			console.error(error);
@@ -52,20 +55,11 @@ function BoardgameResultsPage() {
 		}
 	}, [data]);
 
-	async function getMovieDetails(id) {
-		try {
-			const response = await axios.get(
-				MOVIE_BASE_URL + `${id}?api_key=` + movieApiKey
-			);
-			const movie = response.data;
-
-			setMovieDetails(movie);
-			console.log(movie);
-		} catch (error) {}
-	}
-
-	const handleClick = async (id) => {
-		await getMovieDetails(id);
+	const handleClick = (id) => {
+		const selectedBoardgame = boardgameResults.find(
+			(game) => game.bgg_id === id
+		);
+		setboardgameDetails(selectedBoardgame);
 		setModalOpen(true);
 	};
 
@@ -84,11 +78,11 @@ function BoardgameResultsPage() {
 					<p className="results__error__text">
 						Oh no! Something went wrong with your results.
 					</p>
-					<Link to="/movies" className="results__error__link">
+					<Link to="/boardgames" className="results__error__link">
 						Want to try again?
 					</Link>
 				</div>
-			) : movieResults.length ? (
+			) : boardgameResults.length ? (
 				<>
 					<h2 className="results__header">
 						Here are some movies picked just for your family
@@ -114,18 +108,25 @@ function BoardgameResultsPage() {
 						<img
 							className="movie-modal_poster"
 							src={boardgameDetails.image_urls[0]}
-							alt={boardgameDetails.title}
+							alt={boardgameDetails.name}
 						/>
 						<p>
-							{boardgameDetails.title +
-								"  " +
-								"(" +
-								boardgameDetails.year +
-								")"}
+							<strong>{boardgameDetails.name}</strong>
+							{"  " + "(" + boardgameDetails.year + ")"}
 						</p>
-						<p>{boardgameDetails.min_age}</p>
-						<p>{boardgameDetails.min_players}</p>
-						<p>{boardgameDetails.min_time + " min"}</p>
+						<p>{boardgameDetails.description}</p>
+						<p>
+							<strong>Minimum Age: </strong>
+							{boardgameDetails.min_age}
+						</p>
+						<p>
+							<strong>Minimum Players: </strong>
+							{boardgameDetails.min_players}
+						</p>
+						<p>
+							<strong>Recommended Time: </strong>
+							{boardgameDetails.min_time + " min"}
+						</p>
 					</>
 				) : (
 					<p>loading...</p>
