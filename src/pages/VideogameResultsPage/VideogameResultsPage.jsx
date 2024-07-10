@@ -23,7 +23,7 @@ function VideogameResultsPage() {
 			title: game.name,
 			image: game.background_image,
 			id: game.id,
-			release_date: game.released,
+			release_date: game.released.slice(0, 4),
 		}));
 	};
 
@@ -33,7 +33,7 @@ function VideogameResultsPage() {
 	const params = {
 		platforms,
 		tags,
-		page_size: 100,
+		page_size: 50,
 	};
 
 	if (genres.length > 0) {
@@ -48,11 +48,15 @@ function VideogameResultsPage() {
 			const filteredGames = games.filter((game) => {
 				const esrbRating = game.esrb_rating
 					? game.esrb_rating.name.toLowerCase()
-					: "";
+					: null;
 				if (Math.min(...childAges) > 9) {
-					return esrbRating === "everyone" || esrbRating === "everyone 10+";
+					return (
+						esrbRating === "everyone" ||
+						esrbRating === "everyone 10+" ||
+						esrbRating === null
+					);
 				}
-				return esrbRating === "everyone";
+				return esrbRating === "everyone" || esrbRating === null;
 			});
 			setVideogameResults(filteredGames);
 		} catch (error) {
@@ -138,7 +142,10 @@ function VideogameResultsPage() {
 									alt="ESRB rating"
 								/>
 							) : (
-								<></>
+								<span className="videogame-modal__esrb-warning">
+									* this game is not yet rated and may not be appropriate for
+									all ages
+								</span>
 							)}
 						</div>
 						<p>
@@ -146,29 +153,34 @@ function VideogameResultsPage() {
 						</p>
 						<p>{videogameDetails.description_raw}</p>
 						<div className="videogame-modal_platforms">
-							<strong>Platforms: </strong>
-							{videogameDetails.platforms.map((platform, index) => {
-								const isLastItem =
-									index === videogameDetails.platforms.length - 1;
-								return (
-									<span key={platform.platform.id}>
-										{platform.platform.name}
-										{isLastItem ? "" : ", "}
-									</span>
-								);
-							})}
+							<ul>
+								<strong>Platforms: </strong>
+								{videogameDetails.platforms.map((platform, index) => {
+									const isLastItem =
+										index === videogameDetails.platforms.length - 1;
+									return (
+										<li key={platform.platform.id}>
+											{platform.platform.name}
+											{isLastItem ? "" : ", "}
+										</li>
+									);
+								})}
+							</ul>
 						</div>
 						<div className="videogame-modal_genres">
-							<strong>Genres: </strong>
-							{videogameDetails.genres.map((genre, index) => {
-								const isLastItem = index === videogameDetails.genres.length - 1;
-								return (
-									<span key={genre.id}>
-										{genre.name}
-										{isLastItem ? "" : ", "}
-									</span>
-								);
-							})}
+							<ul>
+								<strong>Genres: </strong>
+								{videogameDetails.genres.map((genre, index) => {
+									const isLastItem =
+										index === videogameDetails.genres.length - 1;
+									return (
+										<li key={genre.id}>
+											{genre.name}
+											{isLastItem ? "" : ", "}
+										</li>
+									);
+								})}
+							</ul>
 						</div>
 						{videogameDetails.metacritic ? (
 							<p>

@@ -31,7 +31,7 @@ function Results({ preparedData, handleClick }) {
 								alt={item.title}
 							/>
 							<p>
-								{item.title} {item.release_date}
+								{item.title} ({item.release_date})
 							</p>
 						</div>
 					);

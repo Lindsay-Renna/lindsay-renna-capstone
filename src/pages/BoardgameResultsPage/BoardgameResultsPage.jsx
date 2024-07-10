@@ -97,7 +97,7 @@ function BoardgameResultsPage() {
 					<p className="results__error__text">
 						No results found. Please try different criteria.
 					</p>
-					<Link to="/movies" className="results__error__link">
+					<Link to="/boardgames" className="results__error__link">
 						Want to try again?
 					</Link>
 				</div>
@@ -106,7 +106,7 @@ function BoardgameResultsPage() {
 				{boardgameDetails ? (
 					<>
 						<img
-							className="movie-modal_poster"
+							className="boardgame-modal_poster"
 							src={boardgameDetails.image_urls[0]}
 							alt={boardgameDetails.name}
 						/>

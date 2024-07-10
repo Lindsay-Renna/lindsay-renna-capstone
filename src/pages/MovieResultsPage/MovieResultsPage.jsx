@@ -147,11 +147,21 @@ function MovieResultsPage() {
 			<Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
 				{movieDetails ? (
 					<>
-						<img
-							className="movie-modal_poster"
-							src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
-							alt={movieDetails.original_title}
-						/>
+						<div className="poster-tagline">
+							<Link
+								to={`https://www.imdb.com/title/${movieDetails.imdb_id}`}
+								target="_blank"
+							>
+								<img
+									className="movie-modal_poster"
+									src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
+									alt={movieDetails.original_title}
+								/>
+							</Link>
+							<span className="movie-modal_tagline">
+								"{movieDetails.tagline}"
+							</span>
+						</div>
 						<p>
 							<strong>{movieDetails.original_title}</strong>
 							{"  " + "(" + movieDetails.release_date.slice(0, 4) + ")"}
