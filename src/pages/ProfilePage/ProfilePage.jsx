@@ -6,42 +6,52 @@ const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 import axios from "axios";
 import "./ProfilePage.scss";
 
-const initialMovies = [
-	{ id: 22, name: "The Godfather" },
-	{ id: 33, name: "Jurassic Park" },
-	{ id: 1, name: "Inception" },
-	{ id: 2, name: "The Dark Knight" },
-	{ id: 3, name: "Pulp Fiction" },
-	{ id: 4, name: "The Shawshank Redemption" },
-	{ id: 5, name: "The Matrix" },
-	{ id: 6, name: "Forrest Gump" },
-	{ id: 7, name: "Fight Club" },
-];
-
 const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
-	const [movies, setMovies] = useState(initialMovies);
+	const [movies, setMovies] = useState([]);
 	const [isAuthenticating, setIsAuthenticating] = useState(true);
 	const [profileData, setProfileData] = useState(null);
 
-	useEffect(() => {
-		axios
-			.get(`${SERVER_URL}/auth/profile`, { withCredentials: true })
-			.then((res) => {
-				setIsAuthenticating(false);
-				setIsLoggedIn(true);
-				setProfileData(res.data);
-			})
-			.catch((err) => {
-				if (err.response && err.response.status == 401) {
-					setIsAuthenticating(false);
-					setIsLoggedIn(false);
-				} else {
-					console.log("Error authenticating", err);
-				}
+	const authenticateUser = async () => {
+		try {
+			const res = await axios.get(`${SERVER_URL}/auth/profile`, {
+				withCredentials: true,
 			});
+			console.log(res.data);
+			setIsAuthenticating(false);
+			setIsLoggedIn(true);
+			setProfileData(res.data);
+			getWatchedList(res.data.id);
+		} catch (err) {
+			if (err.response && err.response.status == 401) {
+				setIsAuthenticating(false);
+				setIsLoggedIn(false);
+			} else {
+				console.log("Error authenticating", err);
+			}
+		}
+	};
+
+	const getWatchedList = async (id) => {
+		try {
+			const res = await axios.get(`${SERVER_URL}/user/${id}/watched-list`);
+			const movies = res.data;
+			console.log(movies);
+			setMovies(movies);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	useEffect(() => {
+		authenticateUser();
 	}, []);
 
 	const handleRemoveMovie = (id) => {
+		try {
+			axios.delete(`${SERVER_URL}/user/${id}`);
+		} catch (error) {
+			console.log(err);
+		}
 		setMovies(movies.filter((movie) => movie.id !== id));
 	};
 

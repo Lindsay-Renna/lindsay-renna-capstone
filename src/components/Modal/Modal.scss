@@ -10,7 +10,7 @@
 	border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
 	z-index: 1000;
-	top: 45%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	overflow: scroll;
@@ -25,12 +25,13 @@
 		left: 50%;
 		height: 40rem;
 		width: 85vw;
+		max-width: 50rem;
 
 		padding: 1rem 1rem 2.5rem 2rem;
 	}
 
 	@include desktop {
-		width: 42rem;
+		width: 50rem;
 	}
 
 	&:focus {
@@ -38,34 +39,11 @@
 	}
 
 	&__closer {
-		display: flex;
-		width: 100%;
-		justify-content: flex-end;
-		cursor: pointer;
-
-		img {
-			width: 2rem;
-			height: 2rem;
-			@include custom-pointer;
-		}
-	}
-
-	&__header {
-		font-size: 1.75rem;
-
-		@include tablet {
-			margin: 0;
-			font-size: 2rem;
-		}
-	}
-
-	&__text {
-		font-size: 1rem;
-		line-height: 1.625rem;
-
-		@include tablet {
-			margin-bottom: 0;
-		}
+		display: inline;
+		float: right;
+		text-align: right;
+		width: 2rem;
+		@include custom-pointer;
 	}
 }
 
