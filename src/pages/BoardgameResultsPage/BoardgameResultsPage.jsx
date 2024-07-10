@@ -85,7 +85,7 @@ function BoardgameResultsPage() {
 			) : boardgameResults.length ? (
 				<>
 					<h2 className="results__header">
-						Here are some movies picked just for your family
+						Here are some games picked just for your family
 					</h2>
 					<Results
 						preparedData={prepareData(boardgameResults)}

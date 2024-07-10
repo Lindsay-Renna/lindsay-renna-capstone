@@ -43,6 +43,8 @@ const Carousel = ({
 		data.childAges.length === data.numKids &&
 		data.childAges.every((age) => age !== undefined && age !== "");
 
+	const peopleAdded = data.numKids !== 0 || data.numAdults !== 0;
+
 	const isSystemSelectionStep =
 		components[currentIndex]?.type.name === "GamingSystems";
 	const isSystemSelected = data.systems ? data.systems.length > 0 : true;
@@ -73,6 +75,7 @@ const Carousel = ({
 					<button
 						onClick={handleNext}
 						disabled={
+							(currentIndex === 0 && !peopleAdded) ||
 							(currentIndex === 1 && !allAgesSelected) ||
 							(isSystemSelectionStep && !isSystemSelected)
 						}
