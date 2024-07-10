@@ -61,25 +61,66 @@
 	}
 }
 
-.movie-modal_poster {
-	width: 8rem;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px black;
+.movie-modal {
+	&__poster {
+		width: 8rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px black;
 
-	@include tablet {
-		width: 12rem;
-		margin-bottom: 1rem;
+		@include tablet {
+			width: 12rem;
+			margin-bottom: 1rem;
+		}
 	}
-}
 
-.movie-modal_genres {
-	display: flex;
+	&__genres {
+		display: flex;
 
-	span {
-		padding-left: 0.25rem;
+		span {
+			padding-left: 0.25rem;
 
-		&:first-of-type {
-			padding-left: 0.5rem;
+			&:first-of-type {
+				padding-left: 0.5rem;
+			}
+		}
+	}
+
+	&__watch-list {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 1rem;
+		position: absolute;
+		bottom: 20px;
+		right: 30px;
+
+		p {
+			margin: 0;
+		}
+
+		&:hover {
+			.movie-modal__watch-icon {
+				display: none;
+			}
+			.movie-modal__watch-icon--blue {
+				display: inline;
+			}
+		}
+	}
+
+	&__watch-icon {
+		width: 1.5rem;
+
+		@include tablet {
+			width: 2.5rem;
+		}
+
+		&:hover {
+			@include custom-pointer;
+		}
+
+		&--blue {
+			display: none;
 		}
 	}
 }

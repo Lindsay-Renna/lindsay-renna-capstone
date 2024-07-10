@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 ReactModal.setAppElement("#root");
 
-function Modal({ modalOpen, setModalOpen, id, handleDelete, children }) {
+function Modal({ modalOpen, setModalOpen, isLoggedIn, children }) {
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {

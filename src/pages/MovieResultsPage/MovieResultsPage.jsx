@@ -9,8 +9,9 @@ import {
 } from "../../utilities/movie-api.js";
 import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
+const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
-function MovieResultsPage() {
+function MovieResultsPage({ isLoggedIn }) {
 	const location = useLocation();
 	const { data } = location.state || {};
 	const [movieResults, setMovieResults] = useState([]);
@@ -105,6 +106,27 @@ function MovieResultsPage() {
 		setModalOpen(true);
 	};
 
+	const addMovie = async (id, name, year) => {
+		const user_id = localStorage.getItem("user_id");
+		if (user_id) {
+			const payload = {
+				user_id: user_id,
+				movie_id: id,
+				movie_name: name,
+				movie_year: year,
+			};
+
+			try {
+				const res = await axios.post(`${SERVER_URL}/user/watched-list/add`);
+				console.log(res);
+			} catch (error) {
+				console.error("Error adding movie to watched list", error);
+			}
+		} else {
+			console.log("User is not authenticated");
+		}
+	};
+
 	return (
 		<div className="results">
 			{loading ? (
@@ -153,12 +175,12 @@ function MovieResultsPage() {
 								target="_blank"
 							>
 								<img
-									className="movie-modal_poster"
+									className="movie-modal__poster"
 									src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
 									alt={movieDetails.original_title}
 								/>
 							</Link>
-							<span className="movie-modal_tagline">
+							<span className="movie-modal__tagline">
 								"{movieDetails.tagline}"
 							</span>
 						</div>
@@ -167,7 +189,7 @@ function MovieResultsPage() {
 							{"  " + "(" + movieDetails.release_date.slice(0, 4) + ")"}
 						</p>
 						<p>{movieDetails.overview}</p>
-						<div className="movie-modal_genres">
+						<div className="movie-modal__genres">
 							<strong>Genres: </strong>
 							{movieDetails.genres.map((genre) => {
 								return <span key={genre.id}>{genre.name + ", "}</span>;
@@ -177,6 +199,30 @@ function MovieResultsPage() {
 							<strong>Runtime: </strong>
 							{movieDetails.runtime + " min"}
 						</p>
+						{isLoggedIn ? (
+							<div className="movie-modal__watch-list">
+								<p>Add to your Watched List</p>
+								<img
+									className="movie-modal__watch-icon"
+									src="/src/assets/icons/watched-icon.png"
+									alt="add to watch list icon"
+								/>
+								<img
+									onClick={() => {
+										addMovie(
+											movieDetails.id,
+											movieDetails.original_title,
+											movieDetails.release_date.slice(0.4)
+										);
+									}}
+									className="movie-modal__watch-icon movie-modal__watch-icon--blue"
+									src="/src/assets/icons/watched-icon-blue.png"
+									alt="add to watch list icon clicked"
+								/>
+							</div>
+						) : (
+							<></>
+						)}
 					</>
 				) : (
 					<p>loading...</p>

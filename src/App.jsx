@@ -25,7 +25,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/movies" element={<MoviesPage />} />
-					<Route path="/movies/results" element={<MovieResultsPage />} />
+					<Route
+						path="/movies/results"
+						element={<MovieResultsPage isLoggedIn={isLoggedIn} />}
+					/>
 					<Route path="/videogames" element={<VideogamePage />} />
 					<Route
 						path="/videogames/results"

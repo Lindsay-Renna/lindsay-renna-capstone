@@ -20,6 +20,7 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 			setIsAuthenticating(false);
 			setIsLoggedIn(true);
 			setProfileData(res.data);
+			localStorage.setItem("user_id", res.data.id);
 			getWatchedList(res.data.id);
 		} catch (err) {
 			if (err.response && err.response.status == 401) {
@@ -77,7 +78,7 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 							/>
 						</div>
 						<div className="profile-page__logout-wrapper">
-							<LogoutButton />
+							<LogoutButton setIsLoggedIn={setIsLoggedIn} />
 						</div>
 					</div>
 				)
