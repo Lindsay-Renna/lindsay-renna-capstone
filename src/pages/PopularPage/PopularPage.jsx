@@ -13,10 +13,12 @@ import {
 	MOVIE_BASE_URL,
 } from "../../utilities/movie-api.js";
 import { VG_BASE_URL } from "../../utilities/videogame-api.js";
+import { BG_API_BASE_URL } from "../../utilities/boardgame-api.js";
 
 function PopularPage() {
 	const [movieResults, setMovieResults] = useState([]);
 	const [videogameResults, setVideogameResults] = useState([]);
+	const [boardgameResults, setBoardgameResults] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const movieApiKey = import.meta.env.VITE_MOVIE_API_KEY;
 	const movieApiToken = import.meta.env.VITE_MOVIE_API_TOKEN;
@@ -56,6 +58,7 @@ function PopularPage() {
 	const params = {
 		tags: "family-friendly",
 		page_size: 50,
+		ordering: "-metacritic",
 	};
 
 	const getPopularMovies = async () => {
@@ -73,24 +76,45 @@ function PopularPage() {
 	const getPopularVideogames = async () => {
 		try {
 			const response = await axios.get(VG_BASE_URL + vgAPI, { params });
+			console.log(response.data.results);
 			const games = response.data.results.splice(0, 10);
+			console.log(games);
 			setVideogameResults(games);
 			setLoading(false);
 		} catch (error) {
 			console.error("Error fetching games:", error);
-			setError("An error occurred while fetching games.");
+			setLoading(false);
+		}
+	};
+
+	const getPopularBoardgames = async () => {
+		try {
+			const response = await axios.post(
+				`${BG_API_BASE_URL}/boardgames/popular`
+			);
+			const sortedBoardgames = response.data
+				.sort((a, b) => b.rank - a.rank)
+				.splice(0, 10);
+			console.log(response.data);
+			setBoardgameResults(sortedBoardgames);
+			setLoading(false);
+		} catch (error) {
+			console.error(error);
+
+			setLoading(false);
 		}
 	};
 
 	useEffect(() => {
 		getPopularMovies();
 		getPopularVideogames();
+		getPopularBoardgames();
 	}, []);
 
 	return (
 		<div className="popular">
+			<h2>Top 10 movies for families</h2>
 			<div className="popular__movies">
-				<h2>Top 10 movies for families</h2>
 				{loading ? (
 					<div className="popular__loading">
 						<p>loading...</p>
@@ -106,7 +130,7 @@ function PopularPage() {
 								300: { slidesPerView: 1 },
 
 								500: {
-									slidesPerView: 2,
+									slidesPerView: 3,
 								},
 								1000: {
 									slidesPerView: 3,
@@ -142,8 +166,8 @@ function PopularPage() {
 					</div>
 				)}
 			</div>
+			<h2>Top 10 videogames for families</h2>
 			<div className="popular__videogames">
-				<h2>Top 10 videogames for families</h2>
 				{loading ? (
 					<div className="popular__loading">
 						<p>loading...</p>
@@ -192,9 +216,57 @@ function PopularPage() {
 					</div>
 				)}
 			</div>
-			<div className="pop-boardgames">
-				<h2>Top 10 boardgames for families</h2>
+			<h2>Top 10 boardgames for families</h2>
+			<div className="popular__boardgames">
+				{loading ? (
+					<div className="popular__loading">
+						<p>loading...</p>
+					</div>
+				) : boardgameResults.length ? (
+					<div className="popular__swiper">
+						<Swiper
+							effect={"coverflow"}
+							grabCursor={true}
+							centeredSlides={true}
+							slidesPerView={"auto"}
+							breakpoints={{
+								300: { slidesPerView: 1 },
+
+								500: {
+									slidesPerView: 2,
+								},
+								1000: {
+									slidesPerView: 3,
+								},
+							}}
+							coverflowEffect={{
+								rotate: 40,
+								stretch: 0,
+								depth: 100,
+								modifier: 1,
+								slideShadows: false,
+							}}
+							pagination={{ clickable: true }}
+							modules={[EffectCoverflow, Pagination]}
+							className="mySwiper"
+						>
+							{boardgameResults.map((game) => (
+								<SwiperSlide key={game.id}>
+									<img src={game.image_urls[0]} alt={game.name} />
+									<p>{game.name}</p>
+								</SwiperSlide>
+							))}
+						</Swiper>
+					</div>
+				) : (
+					<div className="results__error">
+						<p className="results__error__text">
+							Oh no! Something went wrong getting results.
+						</p>
+					</div>
+				)}
 			</div>
+			<div className="spacer">.</div>
 		</div>
 	);
 }
