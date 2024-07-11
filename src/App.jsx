@@ -13,6 +13,7 @@ import BoardgameResultsPage from "./pages/BoardgameResultsPage/BoardgameResultsP
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import AuthFailPage from "./pages/AuthFailPage/AuthFailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import PopularPage from "./pages/PopularPage/PopularPage";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 						path="/boardgames/results"
 						element={<BoardgameResultsPage />}
 					/>
+					<Route path="/popular" element={<PopularPage />} />
 					<Route
 						path="/profile"
 						element={

@@ -5,10 +5,11 @@ import { useState, useEffect, useRef } from "react";
 
 const navListArr = [
 	{ name: "Home", path: "/", id: 0 },
-	{ name: "Browse Movies", path: "/movies//browse", id: 1 },
-	{ name: "Browse Games", path: "/videogames/browse", id: 2 },
-	{ name: "Browse BoardGames", path: "/boardgames/browse", id: 3 },
-	{ name: "About", path: "/about", id: 4 },
+	{ name: "Popular", path: "/popular", id: 1 },
+	// { name: "Browse Movies", path: "/movies//browse", id: 2 },
+	// { name: "Browse Games", path: "/videogames/browse", id: 3 },
+	// { name: "Browse BoardGames", path: "/boardgames/browse", id: 4 },
+	{ name: "About", path: "/about", id: 5 },
 ];
 
 function NavBar({ isLoggedIn }) {

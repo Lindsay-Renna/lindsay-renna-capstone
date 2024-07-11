@@ -23,7 +23,8 @@
 		"react-scroll": "^1.9.0",
 		"react-switch-selector": "^2.2.1",
 		"sass": "^1.77.4",
-		"styled-jsx": "^5.1.6"
+		"styled-jsx": "^5.1.6",
+		"swiper": "^11.1.4"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.66",
