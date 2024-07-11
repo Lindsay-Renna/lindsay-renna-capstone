@@ -105,11 +105,16 @@ function BoardgameResultsPage() {
 			<Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
 				{boardgameDetails ? (
 					<>
-						<img
-							className="boardgame-modal_poster"
-							src={boardgameDetails.image_urls[0]}
-							alt={boardgameDetails.name}
-						/>
+						<Link
+							to={`https://boardgamegeek.com/boardgame/${boardgameDetails.bgg_id}`}
+							target="_blank"
+						>
+							<img
+								className="bg-modal__poster"
+								src={boardgameDetails.image_urls[0]}
+								alt={boardgameDetails.name}
+							/>
+						</Link>
 						<p>
 							<strong>{boardgameDetails.name}</strong>
 							{"  " + "(" + boardgameDetails.year + ")"}
@@ -120,8 +125,8 @@ function BoardgameResultsPage() {
 							{boardgameDetails.min_age}
 						</p>
 						<p>
-							<strong>Minimum Players: </strong>
-							{boardgameDetails.min_players}
+							<strong>Players: </strong>
+							{boardgameDetails.min_players} - {boardgameDetails.max_players}
 						</p>
 						<p>
 							<strong>Recommended Time: </strong>
