@@ -1,8 +1,14 @@
 @use "./styles/partials/global" as *;
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "/node_modules/bootstrap/scss/bootstrap";
 
 html {
-	scroll-behavior: smooth;
+	@media (prefers-reduced-motion: no-preference) {
+		* {
+			animation: inherit !important;
+			transition: inherit !important;
+			scroll-behavior: smooth !important;
+		}
+	}
 }
 
 body {
@@ -12,6 +18,7 @@ body {
 	background-color: #f8f8ec;
 	color: black;
 	cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
+	scroll-behavior: smooth !important;
 }
 
 h3 {

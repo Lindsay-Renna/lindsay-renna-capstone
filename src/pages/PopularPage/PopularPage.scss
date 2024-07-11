@@ -1,23 +1,18 @@
 @use "../../styles/partials/global" as *;
-.pop-movies {
-	margin-top: 2rem;
-}
 
-.swiper {
-	width: 50%;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
+.popular {
+	&__movies {
+		margin-top: 2rem;
+	}
 
-.swiper-slide {
-	background-position: center;
-	background-size: cover;
-	width: 300px;
-	height: 300px;
-}
+	&__loading {
+		min-height: 10rem;
+	}
 
-.swiper-slide img {
-	display: block;
-	width: 100%;
-	border-radius: 10px;
+	.swiper {
+		img {
+			width: 90%;
+			border-radius: 10px;
+		}
+	}
 }
