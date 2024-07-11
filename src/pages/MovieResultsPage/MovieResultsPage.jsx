@@ -73,8 +73,23 @@ function MovieResultsPage({ isLoggedIn }) {
 	const getMovieResults = async () => {
 		try {
 			const response = await axios.get(MOVIE_QUERY_URL, options);
-			console.log(response.data);
-			setMovieResults(response.data.results);
+			const movies = response.data.results;
+
+			if (isLoggedIn) {
+				const user_id = localStorage.getItem("user_id");
+				const results = await axios.get(
+					`${SERVER_URL}/user/${user_id}/watched-list`
+				);
+				console.log(results);
+
+				const watchedList = results.data.map((item) => item.movie_id);
+				const filteredMovies = movies.filter(
+					(movie) => !watchedList.includes(movie.id)
+				);
+				setMovieResults(filteredMovies);
+			} else {
+				setMovieResults(movies);
+			}
 			setLoading(false);
 		} catch (error) {
 			console.error(error);
@@ -106,19 +121,25 @@ function MovieResultsPage({ isLoggedIn }) {
 		setModalOpen(true);
 	};
 
-	const addMovie = async (id, name, year) => {
+	const addMovie = async (movie) => {
 		const user_id = localStorage.getItem("user_id");
+		const year = movie.release_date.slice(0, 4);
 		if (user_id) {
 			const payload = {
 				user_id: user_id,
-				movie_id: id,
-				movie_name: name,
+				movie_id: movie.id,
+				movie_name: movie.original_title,
 				movie_year: year,
 			};
 
 			try {
-				const res = await axios.post(`${SERVER_URL}/user/watched-list/add`);
-				console.log(res);
+				const res = await axios.post(
+					`${SERVER_URL}/user/watched-list/add`,
+					payload
+				);
+				const updatedMovies = movieResults.filter((mov) => mov.id !== movie.id);
+				setMovieResults(updatedMovies);
+				setModalOpen(false);
 			} catch (error) {
 				console.error("Error adding movie to watched list", error);
 			}
@@ -209,11 +230,7 @@ function MovieResultsPage({ isLoggedIn }) {
 								/>
 								<img
 									onClick={() => {
-										addMovie(
-											movieDetails.id,
-											movieDetails.original_title,
-											movieDetails.release_date.slice(0.4)
-										);
+										addMovie(movieDetails);
 									}}
 									className="movie-modal__watch-icon movie-modal__watch-icon--blue"
 									src="/src/assets/icons/watched-icon-blue.png"

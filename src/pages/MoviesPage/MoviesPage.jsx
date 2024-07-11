@@ -97,8 +97,6 @@ function MoviesPage() {
 		navigate("/movies/results", { state: { data } });
 	};
 
-	console.log(data.childAges);
-
 	return (
 		<div id="movie-selection">
 			<main className="movie-main">
