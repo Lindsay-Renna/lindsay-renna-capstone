@@ -16,9 +16,11 @@ import { VG_BASE_URL } from "../../utilities/videogame-api.js";
 
 function PopularPage() {
 	const [movieResults, setMovieResults] = useState([]);
+	const [videogameResults, setVideogameResults] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const movieApiKey = import.meta.env.VITE_MOVIE_API_KEY;
 	const movieApiToken = import.meta.env.VITE_MOVIE_API_TOKEN;
+	const vgAPI = `?key=${import.meta.env.VITE_RAWG_API_KEY}`;
 
 	function getFormattedDate() {
 		const today = new Date();
@@ -30,7 +32,7 @@ function PopularPage() {
 
 	const currentDate = getFormattedDate();
 
-	const options = {
+	const movieOptions = {
 		params: {
 			certification: "G|PG|PG13",
 			certification_country: "CA",
@@ -51,12 +53,15 @@ function PopularPage() {
 		},
 	};
 
+	const params = {
+		tags: "family-friendly",
+		page_size: 50,
+	};
+
 	const getPopularMovies = async () => {
 		try {
-			console.log("Sending request with options:", options);
-			const response = await axios.get(MOVIE_QUERY_URL, options);
+			const response = await axios.get(MOVIE_QUERY_URL, movieOptions);
 			const movies = response.data.results.splice(0, 10);
-
 			setMovieResults(movies);
 			setLoading(false);
 		} catch (error) {
@@ -65,8 +70,21 @@ function PopularPage() {
 		}
 	};
 
+	const getPopularVideogames = async () => {
+		try {
+			const response = await axios.get(VG_BASE_URL + vgAPI, { params });
+			const games = response.data.results.splice(0, 10);
+			setVideogameResults(games);
+			setLoading(false);
+		} catch (error) {
+			console.error("Error fetching games:", error);
+			setError("An error occurred while fetching games.");
+		}
+	};
+
 	useEffect(() => {
 		getPopularMovies();
+		getPopularVideogames();
 	}, []);
 
 	return (
@@ -78,7 +96,7 @@ function PopularPage() {
 						<p>loading...</p>
 					</div>
 				) : movieResults.length ? (
-					<div className="movie-swiper">
+					<div className="popular__swiper">
 						<Swiper
 							effect={"coverflow"}
 							grabCursor={true}
@@ -87,11 +105,10 @@ function PopularPage() {
 							breakpoints={{
 								300: { slidesPerView: 1 },
 
-								400: {
+								500: {
 									slidesPerView: 2,
 								},
-								// when window width is >= 1024px
-								1024: {
+								1000: {
 									slidesPerView: 3,
 								},
 							}}
@@ -125,8 +142,55 @@ function PopularPage() {
 					</div>
 				)}
 			</div>
-			<div className="pop-videogames">
+			<div className="popular__videogames">
 				<h2>Top 10 videogames for families</h2>
+				{loading ? (
+					<div className="popular__loading">
+						<p>loading...</p>
+					</div>
+				) : videogameResults.length ? (
+					<div className="popular__swiper">
+						<Swiper
+							effect={"coverflow"}
+							grabCursor={true}
+							centeredSlides={true}
+							slidesPerView={"auto"}
+							breakpoints={{
+								300: { slidesPerView: 1 },
+
+								500: {
+									slidesPerView: 2,
+								},
+								500: {
+									slidesPerView: 3,
+								},
+							}}
+							coverflowEffect={{
+								rotate: 40,
+								stretch: 0,
+								depth: 100,
+								modifier: 1,
+								slideShadows: false,
+							}}
+							pagination={{ clickable: true }}
+							modules={[EffectCoverflow, Pagination]}
+							className="mySwiper"
+						>
+							{videogameResults.map((game) => (
+								<SwiperSlide key={game.id}>
+									<img src={game.background_image} alt={game.name} />
+									<p>{game.name}</p>
+								</SwiperSlide>
+							))}
+						</Swiper>
+					</div>
+				) : (
+					<div className="results__error">
+						<p className="results__error__text">
+							Oh no! Something went wrong getting results.
+						</p>
+					</div>
+				)}
 			</div>
 			<div className="pop-boardgames">
 				<h2>Top 10 boardgames for families</h2>
