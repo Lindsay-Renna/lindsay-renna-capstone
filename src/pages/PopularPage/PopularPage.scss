@@ -12,8 +12,12 @@
 	flex-direction: column;
 	margin: 3rem 0;
 
-	h2 {
+	&__header {
 		font-size: 1.25rem;
+		background-color: $FamtivityBlue-40;
+		padding: 0.5rem 3rem;
+		border-radius: 20px;
+		border: 2px solid black;
 
 		@include tablet {
 			font-size: 2rem;
@@ -32,7 +36,6 @@
 		align-items: center;
 		margin-bottom: 3rem;
 		border-radius: 20px;
-		box-shadow: 2px 2px 10px 0.5px rgba(0, 0, 0, 0.5);
 
 		@include tablet {
 			max-height: 35rem;
@@ -45,17 +48,11 @@
 		}
 	}
 
-	&__movies {
-		background-color: $FamtivityBlue-40;
-	}
-
 	&__videogames {
-		background-color: $FamtivityPink-40;
 		min-height: 25rem;
 	}
 
 	&__boardgames {
-		background-color: $FamtivityPurple-40;
 		height: auto;
 	}
 
@@ -96,7 +93,10 @@
 		background-position: center;
 		background-size: cover;
 		width: 300px;
-		height: auto; // Auto height to maintain aspect ratio
+		height: auto;
+		box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.5);
+		border-radius: 20px;
+		// Auto height to maintain aspect ratio
 	}
 
 	.swiper-slide,

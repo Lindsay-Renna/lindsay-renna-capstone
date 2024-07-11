@@ -5,17 +5,18 @@
 	padding: 0 1rem;
 	text-align: left;
 	width: 100%;
+	@include flex-center-both;
 
-	th:first-child {
-		width: 90%;
+	table {
+		width: 100%;
 	}
 
-	th:nth-child(2) {
-		width: 8%;
+	td:last-child {
+		text-align: right;
 	}
 
 	thead {
-		background-color: $FamtivityPurple;
+		background-color: $FamtivityBlue-40;
 	}
 }
 
@@ -30,4 +31,15 @@
 
 .accordion {
 	width: 100%;
+
+	@include tablet {
+		max-width: 60rem;
+	}
+}
+
+.accordion-button:focus {
+	box-shadow: none;
+}
+.accordion-button:not(.collapsed) {
+	background-color: $FamtivityBlue-40;
 }

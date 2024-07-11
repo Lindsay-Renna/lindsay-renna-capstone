@@ -7,6 +7,9 @@
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	.logo__container {
 		@include flex-center-both;
@@ -79,5 +82,35 @@
 		font-weight: 600;
 		font-size: 2rem;
 		@include custom-pointer;
+
+		&::before {
+			position: absolute;
+			display: block;
+			top: 0px;
+			content: "";
+			width: 20px;
+			z-index: 200;
+			height: 80px;
+
+			background: rgba(255, 255, 255, 0.3);
+			transform: skew(-30deg);
+			animation: sheen 4s ease 0s infinite normal none running;
+		}
 	}
+}
+
+@keyframes sheen {
+	0% {
+		left: -56px;
+	}
+	100% {
+		left: 220px;
+	}
+}
+
+.plan-button__wrapper {
+	position: relative;
+	width: fit-content;
+	overflow: hidden;
+	border-radius: 10px;
 }
