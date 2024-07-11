@@ -1,13 +1,17 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Carousel.scss";
 
-const Carousel = ({ handleQuerySubmit, data, children, ...props }) => {
+const Carousel = ({
+	handleQuerySubmit,
+	data,
+	handleSubmit,
+	children,
+	...props
+}) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [transition, setTransition] = useState("");
 	const components = children;
-	const navigate = useNavigate();
 
 	const handleNext = () => {
 		if (currentIndex < components.length - 1) {
@@ -35,11 +39,17 @@ const Carousel = ({ handleQuerySubmit, data, children, ...props }) => {
 		}
 	};
 
-	const CurrentComponent = components[currentIndex];
+	const allAgesSelected =
+		data.childAges.length === data.numKids &&
+		data.childAges.every((age) => age !== undefined && age !== "");
 
-	const handleSubmit = () => {
-		navigate("/movies/results", { state: { data } });
-	};
+	const peopleAdded = data.numKids !== 0 || data.numAdults !== 0;
+
+	const isSystemSelectionStep =
+		components[currentIndex]?.type.name === "GamingSystems";
+	const isSystemSelected = data.systems ? data.systems.length > 0 : true;
+
+	const CurrentComponent = components[currentIndex];
 
 	return (
 		<div className="carousel">
@@ -62,7 +72,14 @@ const Carousel = ({ handleQuerySubmit, data, children, ...props }) => {
 			</div>
 			<div className="button__wrapper">
 				{currentIndex < components.length - 1 ? (
-					<button onClick={handleNext}>
+					<button
+						onClick={handleNext}
+						disabled={
+							(currentIndex === 0 && !peopleAdded) ||
+							(currentIndex === 1 && !allAgesSelected) ||
+							(isSystemSelectionStep && !isSystemSelected)
+						}
+					>
 						<img
 							className="button__arrow"
 							src="src/assets/icons/arrow-right-small.svg"

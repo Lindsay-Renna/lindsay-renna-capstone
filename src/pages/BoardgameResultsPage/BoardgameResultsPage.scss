@@ -1,1 +1,33 @@
 @use "../../styles/partials/global" as *;
+
+.bg-modal {
+	&__poster {
+		width: 8rem;
+		margin-top: 1rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px black;
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: scale(1.02);
+			@include custom-pointer;
+		}
+
+		@include tablet {
+			width: 12rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	&__genres {
+		display: flex;
+
+		span {
+			padding-left: 0.25rem;
+
+			&:first-of-type {
+				padding-left: 0.5rem;
+			}
+		}
+	}
+}

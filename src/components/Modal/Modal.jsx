@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 ReactModal.setAppElement("#root");
 
-function Modal({ modalOpen, setModalOpen, id, handleDelete, children }) {
+function Modal({ modalOpen, setModalOpen, isLoggedIn, children }) {
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {
@@ -30,14 +30,16 @@ function Modal({ modalOpen, setModalOpen, id, handleDelete, children }) {
 			shouldCloseOnOverlayClick={true}
 			shouldCloseOnEsc={true}
 		>
-			<div
+			{/* <div className="react-modal__closer"> */}
+			<img
 				className="react-modal__closer"
 				onClick={() => {
 					setModalOpen(false);
 				}}
-			>
-				<img src="/src/assets/icons/close-circle.svg" alt="close x" />
-			</div>
+				src="/src/assets/icons/close-circle.svg"
+				alt="close x"
+			/>
+			{/* </div> */}
 			<div className="react-modal__children">{children}</div>
 		</ReactModal>
 	);

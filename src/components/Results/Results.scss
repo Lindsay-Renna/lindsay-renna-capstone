@@ -1,7 +1,11 @@
 @use "../../styles/partials/global" as *;
 
 .result-box {
-	margin: 3rem 0;
+	margin-top: 2rem;
+
+	@include tablet {
+		margin-top: 3rem;
+	}
 
 	&__list {
 		@include flex-center-both;
@@ -11,30 +15,46 @@
 	&__item {
 		width: 50%;
 		margin-bottom: 1rem;
+
+		@include tablet {
+			max-width: 40rem;
+		}
+
+		p {
+			margin-bottom: 0;
+		}
 	}
 
 	&__image {
-		width: 80%;
+		width: 90%;
+		max-height: 14rem;
+		overflow: hidden;
 		border-radius: 10px;
 		margin-bottom: 1rem;
 		box-shadow: 0 2px 5px black;
-
 		transition: transform 0.2s ease-in-out;
 
 		&:hover {
 			transform: scale(1.08);
 			@include custom-pointer;
 		}
+
+		@include tablet {
+			width: 90%;
+			max-height: 16rem;
+			max-width: 20rem;
+		}
 	}
 
 	&__buttons {
 		@include flex-center-both;
-		gap: 2rem;
+		gap: 5%;
 		margin-top: 2rem;
 		align-items: stretch;
 
 		@include tablet {
 			gap: 4rem;
+			margin-top: 2rem;
 		}
 
 		.restart-button,
@@ -62,8 +82,11 @@
 			}
 
 			@include tablet {
-				font-size: 2rem;
+				font-size: 1.5rem;
 			}
+		}
+		.page-button {
+			background-color: $FamtivityYellow;
 		}
 	}
 }

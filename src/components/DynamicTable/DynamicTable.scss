@@ -7,7 +7,11 @@
 	width: 100%;
 
 	th:first-child {
-		width: 98%;
+		width: 90%;
+	}
+
+	th:nth-child(2) {
+		width: 8%;
 	}
 
 	thead {

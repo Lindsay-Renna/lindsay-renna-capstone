@@ -4,7 +4,12 @@
 	margin: 0 1rem;
 
 	&__header {
-		margin-top: 2rem;
+		margin-top: 1rem;
+		font-size: 1.25rem;
+
+		@include tablet {
+			font-size: 1.5rem;
+		}
 	}
 	&__error {
 		@include flex-center-both;
@@ -38,19 +43,96 @@
 		width: 15rem;
 	}
 }
-
-.movie-modal_poster {
-	width: 8rem;
-}
-
-.movie-modal_genres {
+.poster-tagline {
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 1rem;
 
 	span {
-		padding-left: 0.25rem;
+		padding: 0 0.5rem;
+		font-style: italic;
 
-		&:first-of-type {
-			padding-left: 0;
+		@include tablet {
+			padding-right: 1.5rem;
+			font-size: 1.5rem;
+		}
+	}
+}
+
+.movie-modal {
+	&__poster {
+		width: 8rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px black;
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: scale(1.02);
+			@include custom-pointer;
+		}
+
+		@include tablet {
+			width: 12rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	&__genres {
+		display: flex;
+
+		span {
+			padding-left: 0.25rem;
+
+			&:first-of-type {
+				padding-left: 0.5rem;
+			}
+		}
+	}
+
+	&__watch-list {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 1rem;
+		position: absolute;
+		bottom: 20px;
+		right: 30px;
+
+		p {
+			margin: 0;
+		}
+
+		&:hover {
+			.movie-modal__watch-icon {
+				display: none;
+			}
+			.movie-modal__watch-icon--blue {
+				display: inline;
+			}
+		}
+	}
+
+	&__watch-icon {
+		width: 1.5rem;
+
+		@include tablet {
+			width: 2.5rem;
+		}
+
+		&:hover {
+			@include custom-pointer;
+		}
+
+		&--blue {
+			display: none;
+			transition: transform 0.1s ease-in-out;
+
+			&:active {
+				@include custom-pointer;
+				transform: scale(0.95);
+			}
 		}
 	}
 }

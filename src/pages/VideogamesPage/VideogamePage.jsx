@@ -1,10 +1,13 @@
 import "./VideogamePage.scss";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
 import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector";
 import GamingSystems from "../../components/GamingSystems/GamingSystems";
 import VideogameGenre from "../../components/VideogameGenre/VideogameGenre";
+import VideogameTagSelection from "../../components/VideogameTagSelection/VideogameTagSelection";
 
 function VideogamePage() {
 	const [data, setData] = useState({
@@ -13,9 +16,11 @@ function VideogamePage() {
 		childAges: [],
 		systems: [],
 		genres: [],
-		minYear: 1980,
-		maxYear: 2024,
+		cooperative: true,
+		splitScreen: true,
 	});
+
+	const navigate = useNavigate();
 
 	const addKid = () => {
 		setData((prevData) => {
@@ -69,11 +74,26 @@ function VideogamePage() {
 		});
 	};
 
-	const handleSliderChange = (field, value) => {
+	const handleGenreSelect = (event) => {
+		const genreId = parseInt(event.currentTarget.id);
+		setData((prevData) => {
+			const isSelected = prevData.genres.includes(genreId);
+			const newGenres = isSelected
+				? prevData.genres.filter((id) => id !== genreId)
+				: [...prevData.genres, genreId];
+			return { ...prevData, genres: newGenres };
+		});
+	};
+
+	const handleToggle = (value) => {
 		setData((prevData) => ({
 			...prevData,
-			[field]: value,
+			cooperative: value,
 		}));
+	};
+
+	const handleSubmit = () => {
+		navigate("/videogames/results", { state: { data } });
 	};
 
 	return (
@@ -86,13 +106,16 @@ function VideogamePage() {
 					addAdult={addAdult}
 					removeAdult={removeAdult}
 					handleAgeSelect={handleAgeSelect}
-					handleSliderChange={handleSliderChange}
 					handleSystemSelect={handleSystemSelect}
+					handleGenreSelect={handleGenreSelect}
+					handleToggle={handleToggle}
+					handleSubmit={handleSubmit}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />
 					<GamingSystems />
 					<VideogameGenre />
+					<VideogameTagSelection />
 				</Carousel>
 			</main>
 		</div>

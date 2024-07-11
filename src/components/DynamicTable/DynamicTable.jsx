@@ -8,28 +8,33 @@ function DynamicTable({ movies, handleRemoveMovie }) {
 				<Accordion.Item eventKey="0">
 					<Accordion.Header>Your Watched List</Accordion.Header>
 					<Accordion.Body>
-						<table>
-							<thead>
-								<tr>
-									<th>Movie Name</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								{movies.map((movie) => (
-									<tr key={movie.id}>
-										<td>{movie.name}</td>
-										<td>
-											<img
-												className="delete-icon"
-												src="/src/assets/icons/delete.svg"
-												onClick={() => handleRemoveMovie(movie.id)}
-											/>
-										</td>
+						{movies.length > 0 ? (
+							<table>
+								<thead>
+									<tr>
+										<th>Movie Name</th>
+										<th></th>
 									</tr>
-								))}
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									{movies.map((movie) => (
+										<tr key={movie.id}>
+											<td>{movie.movie_name}</td>
+											<td>{movie.movie_year}</td>
+											<td>
+												<img
+													className="delete-icon"
+													src="/src/assets/icons/delete.svg"
+													onClick={() => handleRemoveMovie(movie.id)}
+												/>
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						) : (
+							<p>You have no watched movies.</p>
+						)}
 					</Accordion.Body>
 				</Accordion.Item>
 			</Accordion>

@@ -9,8 +9,9 @@ import {
 } from "../../utilities/movie-api.js";
 import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
+const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
-function MovieResultsPage() {
+function MovieResultsPage({ isLoggedIn }) {
 	const location = useLocation();
 	const { data } = location.state || {};
 	const [movieResults, setMovieResults] = useState([]);
@@ -27,20 +28,35 @@ function MovieResultsPage() {
 			title: movie.original_title,
 			image: MOVIE_BASE_IMAGE_URL + movie.backdrop_path,
 			id: movie.id,
-			release_date: movie.release_date,
+			release_date: movie.release_date.slice(0, 4),
 		}));
 	};
 
+	const cert = Math.min(...data.childAges) > 8 ? "G|PG" : "G|PG|PG13";
+	const currentDate = new Date();
+	const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
+	const currentYear = currentDate.getFullYear();
+	const month =
+		data.maxYear === currentYear
+			? String(currentMonth - 3).padStart(2, "0")
+			: "12";
+	const getLastDayOfMonth = (year, month) => {
+		return new Date(year, month, 0).getDate();
+	};
+
+	const lastDay = getLastDayOfMonth(data.maxYear, month);
+
 	const options = {
 		params: {
-			certification: "G|PG",
+			certification: cert,
 			certification_country: "CA",
 			include_adult: "false",
 			include_video: "false",
 			language: "en-US",
+			with_original_language: "en",
 			page: "1",
 			"primary_release_date.gte": `${data?.minYear}-01-01`,
-			"primary_release_date.lte": `${data?.maxYear}-12-31`,
+			"primary_release_date.lte": `${data?.maxYear}-${month}-${lastDay}`,
 			sort_by: "popularity.desc",
 			watch_region: "CA",
 			"with_runtime.gte": `${data?.minLength}`,
@@ -57,8 +73,23 @@ function MovieResultsPage() {
 	const getMovieResults = async () => {
 		try {
 			const response = await axios.get(MOVIE_QUERY_URL, options);
-			console.log(response.data);
-			setMovieResults(response.data.results);
+			const movies = response.data.results;
+
+			if (isLoggedIn) {
+				const user_id = localStorage.getItem("user_id");
+				const results = await axios.get(
+					`${SERVER_URL}/user/${user_id}/watched-list`
+				);
+				console.log(results);
+
+				const watchedList = results.data.map((item) => item.movie_id);
+				const filteredMovies = movies.filter(
+					(movie) => !watchedList.includes(movie.id)
+				);
+				setMovieResults(filteredMovies);
+			} else {
+				setMovieResults(movies);
+			}
 			setLoading(false);
 		} catch (error) {
 			console.error(error);
@@ -79,6 +110,7 @@ function MovieResultsPage() {
 				MOVIE_BASE_URL + `${id}?api_key=` + movieApiKey
 			);
 			const movie = response.data;
+
 			setMovieDetails(movie);
 			console.log(movie);
 		} catch (error) {}
@@ -87,6 +119,33 @@ function MovieResultsPage() {
 	const handleClick = async (id) => {
 		await getMovieDetails(id);
 		setModalOpen(true);
+	};
+
+	const addMovie = async (movie) => {
+		const user_id = localStorage.getItem("user_id");
+		const year = movie.release_date.slice(0, 4);
+		if (user_id) {
+			const payload = {
+				user_id: user_id,
+				movie_id: movie.id,
+				movie_name: movie.original_title,
+				movie_year: year,
+			};
+
+			try {
+				const res = await axios.post(
+					`${SERVER_URL}/user/watched-list/add`,
+					payload
+				);
+				const updatedMovies = movieResults.filter((mov) => mov.id !== movie.id);
+				setMovieResults(updatedMovies);
+				setModalOpen(false);
+			} catch (error) {
+				console.error("Error adding movie to watched list", error);
+			}
+		} else {
+			console.log("User is not authenticated");
+		}
 	};
 
 	return (
@@ -131,25 +190,56 @@ function MovieResultsPage() {
 			<Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
 				{movieDetails ? (
 					<>
-						<img
-							className="movie-modal_poster"
-							src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
-							alt={movieDetails.original_title}
-						/>
+						<div className="poster-tagline">
+							<Link
+								to={`https://www.imdb.com/title/${movieDetails.imdb_id}`}
+								target="_blank"
+							>
+								<img
+									className="movie-modal__poster"
+									src={MOVIE_BASE_IMAGE_URL + movieDetails.poster_path}
+									alt={movieDetails.original_title}
+								/>
+							</Link>
+							<span className="movie-modal__tagline">
+								"{movieDetails.tagline}"
+							</span>
+						</div>
 						<p>
-							{movieDetails.original_title +
-								"  " +
-								"(" +
-								movieDetails.release_date.slice(0, 4) +
-								")"}
+							<strong>{movieDetails.original_title}</strong>
+							{"  " + "(" + movieDetails.release_date.slice(0, 4) + ")"}
 						</p>
 						<p>{movieDetails.overview}</p>
-						<div className="movie-modal_genres">
+						<div className="movie-modal__genres">
+							<strong>Genres: </strong>
 							{movieDetails.genres.map((genre) => {
 								return <span key={genre.id}>{genre.name + ", "}</span>;
 							})}
 						</div>
-						<p>{movieDetails.runtime + " min"}</p>
+						<p>
+							<strong>Runtime: </strong>
+							{movieDetails.runtime + " min"}
+						</p>
+						{isLoggedIn ? (
+							<div className="movie-modal__watch-list">
+								<p>Add to your Watched List</p>
+								<img
+									className="movie-modal__watch-icon"
+									src="/src/assets/icons/watched-icon.png"
+									alt="add to watch list icon"
+								/>
+								<img
+									onClick={() => {
+										addMovie(movieDetails);
+									}}
+									className="movie-modal__watch-icon movie-modal__watch-icon--blue"
+									src="/src/assets/icons/watched-icon-blue.png"
+									alt="add to watch list icon clicked"
+								/>
+							</div>
+						) : (
+							<></>
+						)}
 					</>
 				) : (
 					<p>loading...</p>

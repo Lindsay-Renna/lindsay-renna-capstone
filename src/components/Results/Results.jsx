@@ -6,10 +6,12 @@ function Results({ preparedData, handleClick }) {
 	const [currentPage, setCurrentPage] = useState(0);
 	const itemsPerPage = 4;
 
-	const dateToYear = (date) => date.slice(0, 4);
-
 	const seeMore = () => {
 		setCurrentPage((prevPage) => prevPage + 1);
+	};
+
+	const seePrev = () => {
+		setCurrentPage((prevPage) => prevPage - 1);
 	};
 
 	const startIndex = currentPage * itemsPerPage;
@@ -29,13 +31,18 @@ function Results({ preparedData, handleClick }) {
 								alt={item.title}
 							/>
 							<p>
-								{item.title} ({dateToYear(item.release_date)})
+								{item.title} ({item.release_date})
 							</p>
 						</div>
 					);
 				})}
 			</div>
 			<div className="result-box__buttons">
+				{currentPage > 0 && (
+					<button className="page-button" onClick={seePrev}>
+						See prev...
+					</button>
+				)}
 				<Link to="/#activities" className="restart-button">
 					Start over?
 				</Link>

@@ -3,11 +3,10 @@ import { systemNames } from "../../utilities/videogame-api.js";
 
 function GamingSystems({ data, handleSystemSelect }) {
 	const { systems } = data;
-	console.log(systems);
 
 	return (
 		<div className="system">
-			<h2 className="system__header">Which systems do you own?</h2>
+			<h2 className="system__header">Which system will you play on?</h2>
 			<div className="system__selections">
 				{systemNames.map((system) => {
 					const isActive = systems.includes(system.id);

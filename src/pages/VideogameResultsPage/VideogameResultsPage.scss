@@ -1,1 +1,50 @@
 @use "../../styles/partials/global" as *;
+
+.videogame-modal {
+	&__images {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 1rem;
+	}
+
+	&__poster {
+		width: 12rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px black;
+
+		@include tablet {
+			width: 15rem;
+		}
+	}
+
+	&__esrb {
+		width: auto;
+		height: 4rem;
+	}
+	&__esrb-warning {
+		font-size: 0.75rem;
+		font-style: italic;
+
+		@include tablet {
+			font-size: 0.875rem;
+			width: max-content;
+		}
+	}
+}
+
+.videogame-modal_platforms,
+.videogame-modal_genres {
+	ul {
+		padding: 0;
+
+		li {
+			padding-left: 0.25rem;
+			display: inline;
+
+			&:first-of-type {
+				padding-left: 0.5rem;
+			}
+		}
+	}
+}

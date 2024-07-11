@@ -13,30 +13,11 @@ import BoardgameResultsPage from "./pages/BoardgameResultsPage/BoardgameResultsP
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import AuthFailPage from "./pages/AuthFailPage/AuthFailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import PopularPage from "./pages/PopularPage/PopularPage";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {
-	const [isAuthenticating, setIsAuthenticating] = useState(true);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [profileData, setProfileData] = useState(null);
-
-	useEffect(() => {
-		axios
-			.get(`${SERVER_URL}/auth/profile`, { withCredentials: true })
-			.then((res) => {
-				setIsAuthenticating(false);
-				setIsLoggedIn(true);
-				setProfileData(res.data);
-			})
-			.catch((err) => {
-				if (err.response.status === 401) {
-					setIsAuthenticating(false);
-					setIsLoggedIn(false);
-				} else {
-					console.log("Error authenticating", err);
-				}
-			});
-	}, []);
 
 	return (
 		<>
@@ -45,7 +26,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/movies" element={<MoviesPage />} />
-					<Route path="/movies/results" element={<MovieResultsPage />} />
+					<Route
+						path="/movies/results"
+						element={<MovieResultsPage isLoggedIn={isLoggedIn} />}
+					/>
 					<Route path="/videogames" element={<VideogamePage />} />
 					<Route
 						path="/videogames/results"
@@ -56,10 +40,14 @@ function App() {
 						path="/boardgames/results"
 						element={<BoardgameResultsPage />}
 					/>
+					<Route path="/popular" element={<PopularPage />} />
 					<Route
 						path="/profile"
 						element={
-							<ProfilePage profileData={profileData} isLoggedIn={isLoggedIn} />
+							<ProfilePage
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
 						}
 					/>
 					<Route path="/*" element={<NotFoundPage />} />

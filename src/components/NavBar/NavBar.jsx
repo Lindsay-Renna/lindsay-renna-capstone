@@ -5,10 +5,11 @@ import { useState, useEffect, useRef } from "react";
 
 const navListArr = [
 	{ name: "Home", path: "/", id: 0 },
-	{ name: "Browse Movies", path: "/movies//browse", id: 1 },
-	{ name: "Browse Games", path: "/videogames/browse", id: 2 },
-	{ name: "Browse BoardGames", path: "/boardgames/browse", id: 3 },
-	{ name: "About", path: "/about", id: 4 },
+	{ name: "Popular", path: "/popular", id: 1 },
+	// { name: "Browse Movies", path: "/movies//browse", id: 2 },
+	// { name: "Browse Games", path: "/videogames/browse", id: 3 },
+	// { name: "Browse BoardGames", path: "/boardgames/browse", id: 4 },
+	{ name: "About", path: "/about", id: 5 },
 ];
 
 function NavBar({ isLoggedIn }) {
@@ -50,7 +51,11 @@ function NavBar({ isLoggedIn }) {
 			<div ref={hamburgerRef} className="hamburger" onClick={toggleHamburger}>
 				<Hamburger />
 			</div>
-			<Link className="nav__logo__link" to="/">
+			<Link
+				className="nav__logo__link"
+				to="/"
+				onClick={() => setHamburgerOpen(false)}
+			>
 				<img
 					className="nav__logo"
 					src="/src/assets/famtivitylogo.svg"
@@ -70,12 +75,17 @@ function NavBar({ isLoggedIn }) {
 						className={({ isActive }) =>
 							isActive ? "nav-list__link--active" : "nav-list__link"
 						}
+						onClick={() => setHamburgerOpen(false)}
 					>
 						<li className="nav-list__item">{item.name}</li>
 					</NavLink>
 				))}
 			</ul>
-			<Link to="/profile" className="login">
+			<Link
+				to="/profile"
+				className="login"
+				onClick={() => setHamburgerOpen(false)}
+			>
 				<img
 					className="login__logo"
 					src="/src/assets/icons/user-account-red.svg"
