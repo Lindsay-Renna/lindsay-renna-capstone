@@ -1,5 +1,5 @@
 import "./MoviesPage.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
@@ -7,6 +7,7 @@ import ChildAgeSelector from "../../components/ChildAgeSelector/ChildAgeSelector
 import MovieGenres from "../../components/MovieGenres/MovieGenres";
 import MoviesSlider from "../../components/MoviesSlider/MoviesSlider";
 import ProviderSelection from "../../components/ProviderSelection/ProviderSelection";
+import { providers } from "../../utilities/movie-api.js";
 
 function MoviesPage() {
 	const [data, setData] = useState({
@@ -93,9 +94,22 @@ function MoviesPage() {
 		});
 	};
 
+	const providerSelectAll = () => {
+		const providerIds = providers.map((item) => item.provider_id);
+		setData((prevData) => ({ ...prevData, watchProviders: providerIds }));
+	};
+
+	const providerSelectNone = () => {
+		setData((prevData) => ({ ...prevData, watchProviders: [] }));
+	};
+
 	const handleSubmit = () => {
 		navigate("/movies/results", { state: { data } });
 	};
+
+	useEffect(() => {
+		console.log(data);
+	}, [data]);
 
 	return (
 		<div id="movie-selection">
@@ -111,6 +125,8 @@ function MoviesPage() {
 					handleSliderChange={handleSliderChange}
 					handleProviderSelect={handleProviderSelect}
 					handleSubmit={handleSubmit}
+					providerSelectAll={providerSelectAll}
+					providerSelectNone={providerSelectNone}
 				>
 					<PersonSelection />
 					<ChildAgeSelector />

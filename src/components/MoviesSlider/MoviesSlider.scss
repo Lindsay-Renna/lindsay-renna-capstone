@@ -6,6 +6,14 @@
 	justify-content: space-around;
 	flex-direction: column;
 
+	h2 {
+		font-size: 1.25rem;
+
+		@include tablet {
+			font-size: 1.5rem;
+		}
+	}
+
 	.MuiSlider-root {
 		color: $FamtivityPink !important;
 

@@ -98,7 +98,8 @@
 			background: rgba(255, 255, 255, 0.3);
 			transform: skew(-30deg);
 			opacity: 0;
-			animation: sheen 4s ease infinite, fade-in-sheen 3s ease 3s forwards;
+			animation: sheen 4s ease infinite, fade-in-sheen 3s ease 2s forwards;
+			// animation-delay: 3s;
 		}
 	}
 }

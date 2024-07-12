@@ -55,7 +55,7 @@ export const providers = [
 		provider_id: 337,
 	},
 	{
-		provider_name: "Amazon Prime Video",
+		provider_name: "Prime Video",
 		provider_id: 119,
 	},
 	{

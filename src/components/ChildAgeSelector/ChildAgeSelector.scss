@@ -23,6 +23,59 @@
 		&--many {
 			width: 40%;
 			min-height: 10rem;
+
+			@include tablet {
+				width: 30%;
+
+				label {
+					font-size: 1.25rem;
+				}
+
+				img.kids__image {
+					width: 8rem;
+				}
+			}
+		}
+
+		&--medium {
+			@include tablet {
+				width: 35%;
+
+				label {
+					font-size: 1.25rem;
+				}
+
+				img.kids__image {
+					width: 10rem;
+				}
+			}
+		}
+
+		&--few {
+			img.kids__image {
+				width: 10rem;
+			}
+
+			label {
+				font-size: 1.25rem;
+			}
+
+			@include tablet {
+				width: 50%;
+
+				img.kids__image {
+					width: 15rem;
+				}
+			}
+		}
+
+		.kids__image {
+			@include tablet {
+				width: 6rem;
+			}
+
+			&--large {
+			}
 		}
 	}
 
@@ -46,12 +99,8 @@
 
 		option {
 			background-color: $FamtivityPurple;
-			padding-left: 1rem; // Add padding to the left
+			// padding-left: 1rem; // Add padding to the left
 			text-indent: 1rem; // Indent text to simulate padding
 		}
 	}
-}
-
-.kids__image--many {
-	width: 8rem;
 }
