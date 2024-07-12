@@ -129,6 +129,7 @@ function PopularPage() {
 							grabCursor={true}
 							centeredSlides={true}
 							slidesPerView={"auto"}
+							loop={true}
 							breakpoints={{
 								300: { slidesPerView: 1 },
 
@@ -180,6 +181,7 @@ function PopularPage() {
 				) : videogameResults.length ? (
 					<div className="popular__swiper">
 						<Swiper
+							loop={true}
 							effect={"coverflow"}
 							grabCursor={true}
 							centeredSlides={true}
@@ -230,6 +232,7 @@ function PopularPage() {
 					<div className="popular__swiper">
 						<Swiper
 							effect={"coverflow"}
+							loop={true}
 							grabCursor={true}
 							centeredSlides={true}
 							slidesPerView={"auto"}
