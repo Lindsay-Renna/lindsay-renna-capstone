@@ -130,11 +130,16 @@ function VideogameResultsPage() {
 				{videogameDetails ? (
 					<>
 						<div className="videogame-modal__images">
-							<img
-								className="videogame-modal__poster"
-								src={videogameDetails.background_image}
-								alt={videogameDetails.name}
-							/>
+							<Link
+								to={`https://rawg.io/games/${videogameDetails.id}`}
+								target="_blank"
+							>
+								<img
+									className="videogame-modal__poster"
+									src={videogameDetails.background_image}
+									alt={videogameDetails.name}
+								/>
+							</Link>
 							{videogameDetails.esrb_rating ? (
 								<img
 									className="videogame-modal__esrb"
