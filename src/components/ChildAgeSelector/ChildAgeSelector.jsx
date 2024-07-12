@@ -13,7 +13,9 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 						className={
 							numKids > 4
 								? "age-select__wrapper age-select__wrapper--many"
-								: "age-select__wrapper"
+								: numKids === 4
+								? "age-select__wrapper age-select__wrapper--medium"
+								: "age-select__wrapper age-select__wrapper--few"
 						}
 					>
 						<img
