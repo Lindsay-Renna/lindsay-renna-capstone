@@ -1,0 +1,78 @@
+@use "../../styles/partials/global" as *;
+
+.about {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	text-align: left;
+	padding: 0 1rem;
+	margin-top: 1rem;
+	min-height: 85vh;
+
+	h2 {
+		font-size: 1.25rem;
+		font-weight: 600;
+	}
+
+	p {
+		font-size: 0.875rem;
+	}
+
+	ul {
+		font-size: 0.875rem;
+		list-style-type: disc;
+	}
+
+	@include tablet {
+		padding: 0 3rem;
+
+		h2 {
+			font-size: 1.875rem;
+			margin-bottom: 1rem;
+		}
+
+		p {
+			font-size: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		ul {
+			font-size: 1rem;
+			list-style-type: disc;
+		}
+	}
+
+	@include desktop {
+		width: 70%;
+		margin: auto;
+		margin-top: 1rem;
+		justify-content: center;
+
+		h2 {
+			font-size: 1.875rem;
+			margin-bottom: 1rem;
+		}
+
+		p {
+			font-size: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		ul {
+			font-size: 1rem;
+			list-style-type: disc;
+		}
+	}
+
+	&__intro {
+		color: $FamtivityPurple;
+	}
+
+	&__story {
+		color: $FamtivityBlue;
+	}
+
+	&__attribution {
+		color: $FamtivityPink;
+	}
+}

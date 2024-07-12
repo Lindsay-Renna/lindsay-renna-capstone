@@ -4,6 +4,7 @@ import ActivityChoiceBox from "../../components/ActivityChoiceBox/ActivityChoice
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import Footer from "../../components/Footer/Footer";
 
 function HomePage() {
 	const { hash } = useLocation();
@@ -23,6 +24,7 @@ function HomePage() {
 			<main className="homepage-main">
 				<ActivityChoiceBox />
 			</main>
+			<Footer />
 		</div>
 	);
 }

@@ -113,7 +113,7 @@ function PopularPage() {
 
 	return (
 		<div className="popular">
-			<h2>Top 10 movies for families</h2>
+			<h2 className="popular__header">Top 10 movies for families</h2>
 			<div className="popular__movies">
 				{loading ? (
 					<div className="popular__loading">
@@ -185,9 +185,6 @@ function PopularPage() {
 								500: {
 									slidesPerView: 2,
 								},
-								500: {
-									slidesPerView: 3,
-								},
 							}}
 							coverflowEffect={{
 								rotate: 40,
@@ -233,9 +230,6 @@ function PopularPage() {
 								300: { slidesPerView: 1 },
 
 								500: {
-									slidesPerView: 2,
-								},
-								1000: {
 									slidesPerView: 3,
 								},
 							}}

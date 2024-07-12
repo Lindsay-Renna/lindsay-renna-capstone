@@ -1,14 +1,7 @@
 @use "./styles/partials/global" as *;
 @import "/node_modules/bootstrap/scss/bootstrap";
-
 html {
-	@media (prefers-reduced-motion: no-preference) {
-		* {
-			animation: inherit !important;
-			transition: inherit !important;
-			scroll-behavior: smooth !important;
-		}
-	}
+	scroll-behavior: smooth;
 }
 
 body {

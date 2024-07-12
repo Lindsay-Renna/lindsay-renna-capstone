@@ -12,7 +12,7 @@ function DynamicTable({ movies, handleRemoveMovie }) {
 							<table>
 								<thead>
 									<tr>
-										<th>Movie Name</th>
+										<th colSpan="2">Movie Name</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -20,6 +20,7 @@ function DynamicTable({ movies, handleRemoveMovie }) {
 									{movies.map((movie) => (
 										<tr key={movie.id}>
 											<td>{movie.movie_name}</td>
+
 											<td>{movie.movie_year}</td>
 											<td>
 												<img
