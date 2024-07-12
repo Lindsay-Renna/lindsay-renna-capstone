@@ -40,7 +40,7 @@ function Results({ preparedData, handleClick }) {
 			<div className="result-box__buttons">
 				{currentPage > 0 && (
 					<button className="page-button" onClick={seePrev}>
-						See prev...
+						<p>See prev...</p>
 					</button>
 				)}
 				<Link to="/#activities" className="restart-button">
@@ -48,7 +48,7 @@ function Results({ preparedData, handleClick }) {
 				</Link>
 				{startIndex + itemsPerPage < preparedData.length && (
 					<button className="page-button" onClick={seeMore}>
-						See more...
+						<p>See more...</p>
 					</button>
 				)}
 			</div>

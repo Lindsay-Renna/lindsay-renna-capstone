@@ -17,6 +17,7 @@
 
 		&__text {
 			font-size: 2rem;
+			margin-top: 2rem;
 		}
 
 		&__link {
@@ -31,6 +32,11 @@
 
 			&:hover {
 				@include custom-pointer;
+			}
+
+			&:active {
+				transform: scale(0.98);
+				box-shadow: 2px 2px 10px 0.5px rgba(0, 0, 0, 0.24);
 			}
 		}
 	}
