@@ -14,6 +14,7 @@ import {
 } from "../../utilities/movie-api.js";
 import { VG_BASE_URL } from "../../utilities/videogame-api.js";
 import { BG_API_BASE_URL } from "../../utilities/boardgame-api.js";
+import Footer from "../../components/Footer/Footer.jsx";
 
 function PopularPage() {
 	const [movieResults, setMovieResults] = useState([]);
@@ -114,7 +115,7 @@ function PopularPage() {
 	return (
 		<div className="popular">
 			<h2 className="popular__header popular__header--blue">
-				Top 10 movies for families
+				TOP 10 MOVIES FOR FAMILIES
 			</h2>
 			<div className="popular__movies">
 				{loading ? (
@@ -169,7 +170,7 @@ function PopularPage() {
 				)}
 			</div>
 			<h2 className="popular__header popular__header--pink">
-				Top 10 videogames for families
+				TOP 10 VIDEOGAMES FOR FAMILIES
 			</h2>
 			<div className="popular__videogames">
 				{loading ? (
@@ -218,7 +219,7 @@ function PopularPage() {
 				)}
 			</div>
 			<h2 className="popular__header popular__header--purple">
-				Top 10 boardgames for families
+				TOP 10 BOARDGAMES FOR FAMILIES
 			</h2>
 			<div className="popular__boardgames">
 				{loading ? (
@@ -266,7 +267,7 @@ function PopularPage() {
 					</div>
 				)}
 			</div>
-			<div className="spacer">.</div>
+			<Footer />
 		</div>
 	);
 }

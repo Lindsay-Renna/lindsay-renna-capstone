@@ -21,7 +21,7 @@ function Hero() {
 			</div>
 
 			<h3 className="hero__header fade-in-down">
-				Welcome to your ultimate family night planner - let's get started
+				Welcome to your ultimate family night planner - let's get started...
 			</h3>
 			<div className="plan-button__wrapper">
 				<Link to="activities" smooth={true}>

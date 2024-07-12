@@ -8,15 +8,19 @@
 	display: flex;
 	margin-top: 1rem;
 	align-items: center;
-	height: 100vh;
 	flex-direction: column;
-	margin: 3rem 0;
+	height: 100vh;
+	margin-top: 3rem;
 
 	&__header {
-		font-size: 1.25rem;
+		font-size: 1.2rem;
 		font-weight: 700;
-		padding: 0.5rem 3rem;
+		padding: 0.5rem;
 		text-shadow: 1px 1px 2px black;
+
+		@include mobile-big {
+			font-size: 1.5rem;
+		}
 
 		@include tablet {
 			font-size: 2rem;
@@ -49,16 +53,24 @@
 		@include tablet {
 			max-height: 35rem;
 			width: 95%;
+
+			p {
+				font-size: 1.25rem;
+			}
 		}
 
 		@include desktop {
 			height: 40rem;
-			width: 75%;
+			max-width: 75rem;
 		}
 	}
 
 	&__videogames {
 		min-height: 25rem;
+
+		@include desktop {
+			min-height: 30rem;
+		}
 	}
 
 	&__boardgames {
@@ -122,9 +134,8 @@
 		height: 100%; // Make the image take the full height of the slide
 		object-fit: cover; // Ensure the image covers the slide area
 	}
-}
 
-.spacer {
-	min-height: 3rem;
-	color: #f8f8ec;
+	footer {
+		width: 100%;
+	}
 }
