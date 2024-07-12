@@ -86,7 +86,6 @@
 		font-weight: 600;
 		font-size: 2rem;
 		@include custom-pointer;
-		animation: grow 3s ease;
 
 		&::before {
 			position: absolute;
@@ -99,7 +98,7 @@
 			background: rgba(255, 255, 255, 0.3);
 			transform: skew(-30deg);
 			opacity: 0;
-			animation: sheen 4s ease infinite, fade-in-sheen 3s ease 3s forwards;
+			animation: sheen 4s ease infinite, fade-in-sheen 3s ease 2s forwards;
 			// animation-delay: 3s;
 		}
 	}
@@ -128,17 +127,6 @@
 	width: fit-content;
 	overflow: hidden;
 	border-radius: 10px;
-}
-
-@keyframes grow {
-	from {
-		transform: scale(0);
-		z-index: 100;
-	}
-	to {
-		transform: scale(1);
-		z-index: 1;
-	}
 }
 
 @keyframes fade-in-down {

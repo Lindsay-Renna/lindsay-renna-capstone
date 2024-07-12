@@ -35,7 +35,7 @@ function MoviesSlider({ data, handleSliderChange }) {
 	return (
 		<div className="sliders">
 			<div className="decade-slider">
-				<h2>Which decade(s) should we include?</h2>
+				<h2>Which decade(s) to include?</h2>
 				<div className="sliders__container">
 					<h3>{`${minYear} to ${maxYear == 2020 ? "current" : maxYear}`}</h3>
 					<Slider

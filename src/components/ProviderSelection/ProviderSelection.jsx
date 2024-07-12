@@ -1,7 +1,12 @@
 import "./ProviderSelection.scss";
 import { providers } from "../../utilities/movie-api.js";
 
-function ProviderSelection({ handleProviderSelect, data }) {
+function ProviderSelection({
+	handleProviderSelect,
+	providerSelectAll,
+	providerSelectNone,
+	data,
+}) {
 	const { watchProviders } = data;
 
 	return (
@@ -14,6 +19,8 @@ function ProviderSelection({ handleProviderSelect, data }) {
 					return (
 						<div key={provider.provider_id} className="provider__wrapper">
 							<button
+								onClick={handleProviderSelect}
+								id={provider.provider_id}
 								className={
 									isActive
 										? "provider__button--active provider__button"
@@ -21,8 +28,6 @@ function ProviderSelection({ handleProviderSelect, data }) {
 								}
 							>
 								<img
-									id={provider.provider_id}
-									onClick={handleProviderSelect}
 									className={
 										isActive
 											? "provider__icon--active provider__icon"
@@ -36,6 +41,22 @@ function ProviderSelection({ handleProviderSelect, data }) {
 						</div>
 					);
 				})}
+			</div>
+			<div className="provider__select-buttons">
+				<button
+					onClick={providerSelectAll}
+					className="provider__select-all"
+					disabled={watchProviders.length >= 6}
+				>
+					SELECT ALL
+				</button>
+				<button
+					onClick={providerSelectNone}
+					className="provider__select-none"
+					disabled={watchProviders.length < 1}
+				>
+					REMOVE ALL
+				</button>
 			</div>
 		</div>
 	);
