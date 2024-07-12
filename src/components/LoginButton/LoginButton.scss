@@ -7,8 +7,17 @@
 
 	.login-button {
 		@include flex-center-both;
+
 		&__text {
 			margin: 0 1rem;
+		}
+
+		&__wrapper {
+			border: 2px solid black;
+			border-radius: 10px;
+			background-color: white;
+
+			padding: 1rem;
 		}
 	}
 }

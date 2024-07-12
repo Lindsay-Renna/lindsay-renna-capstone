@@ -50,6 +50,11 @@
 .login-request {
 	padding: 4rem 1rem;
 
+	@include tablet {
+		margin: auto;
+		max-width: 50rem;
+	}
+
 	&__container {
 		display: flex;
 		flex-direction: column;
