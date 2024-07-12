@@ -113,7 +113,9 @@ function PopularPage() {
 
 	return (
 		<div className="popular">
-			<h2 className="popular__header">Top 10 movies for families</h2>
+			<h2 className="popular__header popular__header--blue">
+				Top 10 movies for families
+			</h2>
 			<div className="popular__movies">
 				{loading ? (
 					<div className="popular__loading">
@@ -166,7 +168,9 @@ function PopularPage() {
 					</div>
 				)}
 			</div>
-			<h2>Top 10 videogames for families</h2>
+			<h2 className="popular__header popular__header--pink">
+				Top 10 videogames for families
+			</h2>
 			<div className="popular__videogames">
 				{loading ? (
 					<div className="popular__loading">
@@ -213,7 +217,9 @@ function PopularPage() {
 					</div>
 				)}
 			</div>
-			<h2>Top 10 boardgames for families</h2>
+			<h2 className="popular__header popular__header--purple">
+				Top 10 boardgames for families
+			</h2>
 			<div className="popular__boardgames">
 				{loading ? (
 					<div className="popular__loading">
@@ -245,7 +251,7 @@ function PopularPage() {
 							className="mySwiper"
 						>
 							{boardgameResults.map((game) => (
-								<SwiperSlide key={game.id}>
+								<SwiperSlide key={game.bgg_id}>
 									<img src={game.image_urls[0]} alt={game.name} />
 									<p>{game.name}</p>
 								</SwiperSlide>

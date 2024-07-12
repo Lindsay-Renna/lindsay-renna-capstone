@@ -14,13 +14,22 @@
 
 	&__header {
 		font-size: 1.25rem;
-		background-color: $FamtivityBlue-40;
+		font-weight: 700;
 		padding: 0.5rem 3rem;
-		border-radius: 20px;
-		border: 2px solid black;
+		text-shadow: 1px 1px 2px black;
 
 		@include tablet {
 			font-size: 2rem;
+		}
+
+		&--blue {
+			color: $FamtivityBlue;
+		}
+		&--pink {
+			color: $FamtivityPink;
+		}
+		&--purple {
+			color: $FamtivityPurple;
 		}
 	}
 
