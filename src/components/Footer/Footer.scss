@@ -1,1 +1,23 @@
 @use "../../styles/partials/global" as *;
+
+footer {
+	background-color: white;
+	min-height: 4rem;
+	color: black;
+	@include flex-center-both;
+	justify-content: space-around;
+
+	h3 {
+		margin: 0;
+	}
+}
+
+.social {
+	@include flex-center-both;
+	gap: 1rem;
+
+	img {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
