@@ -1,6 +1,7 @@
 import { Link } from "react-scroll";
 import "./Hero.scss";
 import logo from "/src/assets/famtivity-logo.png";
+import controller from "/src/assets/icons/controller-icon-red.png";
 
 function Hero() {
 	return (
@@ -11,12 +12,9 @@ function Hero() {
 				</div>
 				<p className="tagline">Where family fun begins</p>
 				<div className="icon__container">
-					<img
-						className="icon"
-						src="/src/assets/icons/controller-icon-red.png"
-					/>
-					<img className="icon" src="/src/assets/icons/dice-icon-purple.png" />
-					<img className="icon" src="src/assets/icons/movie-icon-blue.png" />
+					<img className="icon" src={controller} />
+					<img className="icon" src="../../assets/dice-icon-black.svg" />
+					<img className="icon" src="/assets/icons/movie-icon-blue.png" />
 				</div>
 			</div>
 
