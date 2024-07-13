@@ -30,7 +30,7 @@
 }
 
 @mixin custom-pointer {
-	cursor: url("/src/assets/icons/cursor.svg"), pointer !important;
+	cursor: url("/icons/cursor.svg"), pointer !important;
 }
 
 @mixin box-shadow {

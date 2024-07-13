@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
@@ -15,7 +14,6 @@ import AuthFailPage from "./pages/AuthFailPage/AuthFailPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import PopularPage from "./pages/PopularPage/PopularPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
-const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);

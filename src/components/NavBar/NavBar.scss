@@ -36,7 +36,7 @@ nav {
 	}
 
 	.nav__logo__link {
-		cursor: url("/src/assets/icons/mouse-cursor.svg") 0 0, default;
+		cursor: url("/icons/mouse-cursor.svg") 0 0, default;
 		padding-left: 1rem;
 
 		@include tablet {
