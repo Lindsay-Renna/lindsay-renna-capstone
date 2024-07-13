@@ -58,7 +58,7 @@ const Carousel = ({
 					<button onClick={handlePrevious} disabled={currentIndex === 0}>
 						<img
 							className="button__arrow"
-							src="src/assets/icons/arrow-left-small.svg"
+							src="/icons/arrow-left-small.svg"
 							alt="previous arrow"
 						/>
 					</button>
@@ -82,7 +82,7 @@ const Carousel = ({
 					>
 						<img
 							className="button__arrow"
-							src="src/assets/icons/arrow-right-small.svg"
+							src="/icons/arrow-right-small.svg"
 							alt="next arrow"
 						/>
 					</button>

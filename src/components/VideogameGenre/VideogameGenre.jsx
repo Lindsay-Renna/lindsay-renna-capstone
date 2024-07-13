@@ -26,8 +26,8 @@ function VideogameGenre({ data, handleGenreSelect }) {
 									className="vg-genre__icon"
 									src={
 										isActive
-											? `src/assets/icons/vg-genres/genre-icon-${genre.name}-white.png`
-											: `src/assets/icons/vg-genres/genre-icon-${genre.name}.png`
+											? `/icons/vg-genres/genre-icon-${genre.name}-white.png`
+											: `/icons/vg-genres/genre-icon-${genre.name}.png`
 									}
 									alt={`${genre.name} icon`}
 								/>

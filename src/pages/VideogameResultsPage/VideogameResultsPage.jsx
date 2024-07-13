@@ -93,7 +93,7 @@ function VideogameResultsPage() {
 				<div className="loading">
 					<img
 						className="loading__image"
-						src="/src/assets/loading.svg"
+						src="/loading.svg"
 						alt="loading image"
 					/>
 				</div>
@@ -143,7 +143,7 @@ function VideogameResultsPage() {
 							{videogameDetails.esrb_rating ? (
 								<img
 									className="videogame-modal__esrb"
-									src={`/src/assets/icons/esrb-${videogameDetails.esrb_rating.id}.png`}
+									src={`/icons/esrb-${videogameDetails.esrb_rating.id}.png`}
 									alt="ESRB rating"
 								/>
 							) : (

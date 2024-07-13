@@ -64,8 +64,8 @@ function BoardgameSlider({ data, handleSliderChange, handleToggle }) {
 						<img
 							src={
 								cooperative
-									? "/src/assets/icons/boardgame-co-op-icon.png"
-									: "src/assets/icons/boardgame-pvp-icon.png"
+									? "/icons/boardgame-co-op-icon.png"
+									: "/icons/boardgame-pvp-icon.png"
 							}
 							alt="PVP icon"
 						/>

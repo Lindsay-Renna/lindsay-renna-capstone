@@ -9,16 +9,13 @@ function Footer() {
 			</div>
 			<div className="social">
 				<Link to="https://www.linkedin.com/in/lindsay-renna/">
-					<img
-						src="src/assets/icons/socials/linkedin.png"
-						alt="linked-in icon"
-					/>
+					<img src="/icons/socials/linkedin.png" alt="linked-in icon" />
 				</Link>
 				<Link to="https://github.com/Lindsay-Renna">
-					<img src="src/assets/icons/socials/github.png" alt="git-hub icon" />
+					<img src="/icons/socials/github.png" alt="git-hub icon" />
 				</Link>
 				<Link to="mailto:lrenna.oct@gmail.com">
-					<img src="/src/assets/icons/socials/email.png" alt="email icon" />
+					<img src="/icons/socials/email.png" alt="email icon" />
 				</Link>
 			</div>
 		</footer>

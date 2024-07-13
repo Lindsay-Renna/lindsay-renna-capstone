@@ -6,10 +6,7 @@ import { useState, useEffect, useRef } from "react";
 const navListArr = [
 	{ name: "Home", path: "/", id: 0 },
 	{ name: "Popular", path: "/popular", id: 1 },
-	// { name: "Browse Movies", path: "/movies//browse", id: 2 },
-	// { name: "Browse Games", path: "/videogames/browse", id: 3 },
-	// { name: "Browse BoardGames", path: "/boardgames/browse", id: 4 },
-	{ name: "About", path: "/about", id: 5 },
+	{ name: "About", path: "/about", id: 2 },
 ];
 
 function NavBar({ isLoggedIn }) {
@@ -58,7 +55,7 @@ function NavBar({ isLoggedIn }) {
 			>
 				<img
 					className="nav__logo"
-					src="/src/assets/famtivitylogo.svg"
+					src="/famtivitylogo.svg"
 					alt="famtivity logo"
 				/>
 			</Link>
@@ -88,7 +85,7 @@ function NavBar({ isLoggedIn }) {
 			>
 				<img
 					className="login__logo"
-					src="/src/assets/icons/user-account-red.svg"
+					src="/icons/user-account-red.svg"
 					alt="user account logo"
 				/>
 				<p className="login__title">{isLoggedIn ? "Profile" : "Login"}</p>

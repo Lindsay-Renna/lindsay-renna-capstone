@@ -24,9 +24,7 @@ function VideogameTagSelection({ data, handleToggle }) {
 				<div className="tags__image__wrapper">
 					<img
 						src={
-							data.cooperative
-								? "/src/assets/icons/co-op-icon.png"
-								: "src/assets/icons/pvp-icon.png"
+							data.cooperative ? "/icons/co-op-icon.png" : "/icons/pvp-icon.png"
 						}
 						alt="PVP icon"
 					/>

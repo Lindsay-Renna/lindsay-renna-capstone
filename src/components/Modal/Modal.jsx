@@ -36,7 +36,7 @@ function Modal({ modalOpen, setModalOpen, isLoggedIn, children }) {
 				onClick={() => {
 					setModalOpen(false);
 				}}
-				src="/src/assets/icons/close-circle.svg"
+				src="/icons/close-circle.svg"
 				alt="close x"
 			/>
 			{/* </div> */}

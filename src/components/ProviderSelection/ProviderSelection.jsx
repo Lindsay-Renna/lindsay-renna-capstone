@@ -33,7 +33,7 @@ function ProviderSelection({
 											? "provider__icon--active provider__icon"
 											: "provider__icon"
 									}
-									src={`src/assets/icons/providers/provider-icon-${provider.provider_name}.png`}
+									src={`/icons/providers/provider-icon-${provider.provider_name}.png`}
 									alt={`${provider.provider_name} icon`}
 								/>
 								<p>{provider.provider_name}</p>

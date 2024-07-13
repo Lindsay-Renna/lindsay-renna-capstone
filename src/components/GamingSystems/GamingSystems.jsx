@@ -26,8 +26,8 @@ function GamingSystems({ data, handleSystemSelect }) {
 									className="system__icon"
 									src={
 										isActive
-											? `src/assets/icons/systems/systems-${system.id}-white.png`
-											: `src/assets/icons/systems/systems-${system.id}.png`
+											? `/icons/systems/systems-${system.id}-white.png`
+											: `/icons/systems/systems-${system.id}.png`
 									}
 									alt={`${system.name} icon`}
 								/>

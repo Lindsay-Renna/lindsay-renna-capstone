@@ -8,7 +8,7 @@ const LoginButton = () => {
 			<a className="login-button" href={`${SERVER_URL}/auth/google`}>
 				<div className="login-button__wrapper">
 					<img
-						src="/src/assets/icons/google.svg"
+						src="/icons/google.svg"
 						alt="google logo"
 						height="32"
 						viewBox="0 0 16 16"
