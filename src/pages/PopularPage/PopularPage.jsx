@@ -90,9 +90,7 @@ function PopularPage() {
 
 	const getPopularBoardgames = async () => {
 		try {
-			const response = await axios.post(
-				`${BG_API_BASE_URL}/boardgames/popular`
-			);
+			const response = await axios.get(`${BG_API_BASE_URL}/boardgames/popular`);
 			const sortedBoardgames = response.data
 				.sort((a, b) => b.rank - a.rank)
 				.splice(0, 10);
