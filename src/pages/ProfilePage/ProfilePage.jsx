@@ -35,7 +35,9 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const getWatchedList = async (id) => {
 		try {
 			const res = await axios.get(`${SERVER_URL}/user/${id}/watched-list`);
-			const movies = res.data;
+			const movies = res.data.sort((a, b) =>
+				a.movie_name.localeCompare(b.movie_name)
+			);
 			console.log(movies);
 			setMovies(movies);
 		} catch (err) {

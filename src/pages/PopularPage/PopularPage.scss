@@ -6,7 +6,6 @@
 
 .popular {
 	display: flex;
-	margin-top: 1rem;
 	align-items: center;
 	flex-direction: column;
 	height: 100vh;
@@ -40,7 +39,7 @@
 	&__movies,
 	&__videogames,
 	&__boardgames {
-		width: 95%;
+		width: 100%;
 		max-width: 1200px;
 		max-height: 30rem;
 		display: flex;
@@ -52,25 +51,15 @@
 
 		@include tablet {
 			max-height: 35rem;
-			width: 95%;
 
 			p {
 				font-size: 1.25rem;
 			}
 		}
-
-		@include desktop {
-			height: 40rem;
-			max-width: 75rem;
-		}
 	}
 
 	&__videogames {
-		min-height: 25rem;
-
-		@include desktop {
-			min-height: 30rem;
-		}
+		min-height: 30rem;
 	}
 
 	&__boardgames {

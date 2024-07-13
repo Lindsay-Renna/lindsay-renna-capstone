@@ -134,11 +134,9 @@ function PopularPage() {
 								300: { slidesPerView: 1 },
 
 								500: {
-									slidesPerView: 3,
+									slidesPerView: 2,
 								},
-								1000: {
-									slidesPerView: 3,
-								},
+								1000: { slidesPerView: 4 },
 							}}
 							coverflowEffect={{
 								rotate: 40,
@@ -192,6 +190,7 @@ function PopularPage() {
 								500: {
 									slidesPerView: 2,
 								},
+								1000: { slidesPerView: 4 },
 							}}
 							coverflowEffect={{
 								rotate: 40,
@@ -240,8 +239,9 @@ function PopularPage() {
 								300: { slidesPerView: 1 },
 
 								500: {
-									slidesPerView: 3,
+									slidesPerView: 2,
 								},
+								1000: { slidesPerView: 4 },
 							}}
 							coverflowEffect={{
 								rotate: 40,
