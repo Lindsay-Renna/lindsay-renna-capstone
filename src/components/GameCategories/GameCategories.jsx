@@ -24,8 +24,8 @@ function GameCategories({ data, handleCategorySelect }) {
 									className="categories__icon"
 									src={
 										isActive
-											? `src/assets/icons/bg-category/category-icon-${category.id}-white.png`
-											: `src/assets/icons/bg-category/category-icon-${category.id}.png`
+											? `/icons/bg-category/category-icon-${category.id}-white.png`
+											: `/icons/bg-category/category-icon-${category.id}.png`
 									}
 									alt={`${category.name} icon`}
 								/>

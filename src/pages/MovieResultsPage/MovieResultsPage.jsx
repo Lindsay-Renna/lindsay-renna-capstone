@@ -225,7 +225,7 @@ function MovieResultsPage({ isLoggedIn }) {
 								<p>Add to your Watched List</p>
 								<img
 									className="movie-modal__watch-icon"
-									src="/src/assets/icons/watched-icon.png"
+									src="/icons/watched-icon.png"
 									alt="add to watch list icon"
 								/>
 								<img
@@ -233,7 +233,7 @@ function MovieResultsPage({ isLoggedIn }) {
 										addMovie(movieDetails);
 									}}
 									className="movie-modal__watch-icon movie-modal__watch-icon--blue"
-									src="/src/assets/icons/watched-icon-blue.png"
+									src="/icons/watched-icon-blue.png"
 									alt="add to watch list icon clicked"
 								/>
 							</div>

@@ -1,22 +1,18 @@
 import { Link } from "react-scroll";
 import "./Hero.scss";
-import logo from "/src/assets/famtivity-logo.png";
 
 function Hero() {
 	return (
 		<div className="hero">
 			<div className="logo-items">
 				<div className="logo__container">
-					<img className="logo" src={logo} />
+					<img className="logo" src="/famtivity-logo.png" />
 				</div>
 				<p className="tagline">Where family fun begins</p>
 				<div className="icon__container">
-					<img
-						className="icon"
-						src="/src/assets/icons/controller-icon-red.png"
-					/>
-					<img className="icon" src="/src/assets/icons/dice-icon-purple.png" />
-					<img className="icon" src="src/assets/icons/movie-icon-blue.png" />
+					<img className="icon" src="/icons/controller-icon-red.png" />
+					<img className="icon" src="/icons/dice-icon-purple.png" />
+					<img className="icon" src="/icons/movie-icon-blue.png" />
 				</div>
 			</div>
 
@@ -32,7 +28,7 @@ function Hero() {
 
 			<div className="navigation-div">
 				<Link to="activities" smooth={true}>
-					<img className="arrow-link" src="/src/assets/icons/arrow-down.svg" />
+					<img className="arrow-link" src="/icons/arrow-down.svg" />
 				</Link>
 			</div>
 		</div>

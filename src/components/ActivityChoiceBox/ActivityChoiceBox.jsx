@@ -10,12 +10,12 @@ function ActivityChoiceBox() {
 					<div className="activities__block activities__block--pink">
 						<img
 							className="activities__icon activities__icon--default"
-							src="src/assets/icons/controller-icon-black.svg"
+							src="/icons/controller-icon-black.svg"
 							alt="controller icon"
 						/>
 						<img
 							className="activities__icon activities__icon--hover"
-							src="src/assets/icons/controller-icon-white.svg"
+							src="/icons/controller-icon-white.svg"
 							alt="colored controller icon"
 						/>
 						<h4 className="activities__title">VIDEO GAME</h4>
@@ -26,12 +26,12 @@ function ActivityChoiceBox() {
 					<div className="activities__block activities__block--purple">
 						<img
 							className="activities__icon activities__icon--default"
-							src="src/assets/icons/dice-icon-black.svg"
+							src="/icons/dice-icon-black.svg"
 							alt="controller icon"
 						/>
 						<img
 							className="activities__icon activities__icon--hover"
-							src="src/assets/icons/dice-icon-white.svg"
+							src="/icons/dice-icon-white.svg"
 							alt="colored controller icon"
 						/>
 						<h4 className="activities__title">BOARD GAME</h4>
@@ -42,12 +42,12 @@ function ActivityChoiceBox() {
 					<div className="activities__block activities__block--blue">
 						<img
 							className="activities__icon activities__icon--default"
-							src="src/assets/icons/movie-icon-black.svg"
+							src="/icons/movie-icon-black.svg"
 							alt="controller icon"
 						/>
 						<img
 							className="activities__icon activities__icon--hover"
-							src="src/assets/icons/movie-icon-white.svg"
+							src="/icons/movie-icon-white.svg"
 							alt="colored controller icon"
 						/>
 						<h4 className="activities__title">MOVIE</h4>

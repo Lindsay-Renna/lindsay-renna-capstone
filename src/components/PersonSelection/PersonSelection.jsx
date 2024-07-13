@@ -11,7 +11,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={removeKid} className="minus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/minus-circle.png"
+							src="/icons/minus-circle.png"
 							alt="minus circle"
 						/>
 					</button>
@@ -19,7 +19,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 						{[...Array(numKids)].map((_, index) => (
 							<img
 								key={index}
-								src={`/src/assets/images/icon${index}.svg`}
+								src={`/images/icon${index}.svg`}
 								alt="smile icon"
 								className={
 									numKids < 5 ? "kids__image kids__image--large" : "kids__image"
@@ -30,7 +30,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={addKid} className="plus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/plus-circle.png"
+							src="/icons/plus-circle.png"
 							alt="plus circle"
 						/>
 					</button>
@@ -43,7 +43,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={removeAdult} className="minus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/minus-circle.png"
+							src="/icons/minus-circle.png"
 							alt="minus circle"
 						/>
 					</button>
@@ -51,7 +51,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 						{[...Array(numAdults)].map((_, index) => (
 							<img
 								key={index}
-								src={`/src/assets/images/icon${index + 8}.svg`}
+								src={`/images/icon${index + 8}.svg`}
 								alt="smile icon"
 								className={
 									numAdults < 5
@@ -64,7 +64,7 @@ function PersonSelection({ data, addKid, removeKid, addAdult, removeAdult }) {
 					<button onClick={addAdult} className="plus-button">
 						<img
 							className="button__image"
-							src="src/assets/icons/plus-circle.png"
+							src="/icons/plus-circle.png"
 							alt="plus circle"
 						/>
 					</button>

@@ -25,7 +25,7 @@ function DynamicTable({ movies, handleRemoveMovie }) {
 											<td>
 												<img
 													className="delete-icon"
-													src="/src/assets/icons/delete.svg"
+													src="/icons/delete.svg"
 													onClick={() => handleRemoveMovie(movie.id)}
 												/>
 											</td>

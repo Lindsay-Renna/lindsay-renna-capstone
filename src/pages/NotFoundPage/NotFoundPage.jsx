@@ -5,7 +5,7 @@ function NotFoundPage() {
 		<div className="not-found">
 			<div className="not-found__image-wrapper">
 				<img
-					src="/src/assets/404-image.png"
+					src="/404-image.png"
 					alt="404 not found"
 					className="not-found__image"
 				/>

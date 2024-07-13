@@ -26,8 +26,8 @@ function MovieGenres({ data, handleGenreSelect }) {
 									className="genre__icon"
 									src={
 										isActive
-											? `src/assets/icons/genres/genre-icon-${genre.name}-white.png`
-											: `src/assets/icons/genres/genre-icon-${genre.name}.png`
+											? `/icons/genres/genre-icon-${genre.name}-white.png`
+											: `/icons/genres/genre-icon-${genre.name}.png`
 									}
 									alt={`${genre.name} icon`}
 								/>
