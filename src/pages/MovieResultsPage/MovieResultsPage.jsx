@@ -154,7 +154,7 @@ function MovieResultsPage({ isLoggedIn }) {
 				<div className="loading">
 					<img
 						className="loading__image"
-						src="/src/assets/loading.svg"
+						src="/loading.svg"
 						alt="loading image"
 					/>
 				</div>
