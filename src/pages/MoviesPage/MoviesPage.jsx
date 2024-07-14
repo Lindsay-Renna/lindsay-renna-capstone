@@ -107,10 +107,6 @@ function MoviesPage() {
 		navigate("/movies/results", { state: { data } });
 	};
 
-	useEffect(() => {
-		console.log(data);
-	}, [data]);
-
 	return (
 		<div id="movie-selection">
 			<main className="movie-main">

@@ -80,7 +80,6 @@ function MovieResultsPage({ isLoggedIn }) {
 				const results = await axios.get(
 					`${SERVER_URL}/user/${user_id}/watched-list`
 				);
-				console.log(results);
 
 				const watchedList = results.data.map((item) => item.movie_id);
 				const filteredMovies = movies.filter(
@@ -112,7 +111,6 @@ function MovieResultsPage({ isLoggedIn }) {
 			const movie = response.data;
 
 			setMovieDetails(movie);
-			console.log(movie);
 		} catch (error) {}
 	}
 

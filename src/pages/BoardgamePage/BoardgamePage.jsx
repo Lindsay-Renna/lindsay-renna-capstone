@@ -88,8 +88,6 @@ function BoardgamePage() {
 		navigate("/boardgames/results", { state: { data } });
 	};
 
-	console.log(data);
-
 	return (
 		<div id="boardgame-selection">
 			<main className="boardgame-main">

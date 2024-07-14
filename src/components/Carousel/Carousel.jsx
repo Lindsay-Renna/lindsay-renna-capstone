@@ -43,7 +43,7 @@ const Carousel = ({
 		data.childAges.length === data.numKids &&
 		data.childAges.every((age) => age !== undefined && age !== "");
 
-	const peopleAdded = data.numKids !== 0 || data.numAdults !== 0;
+	const peopleAdded = data.numKids !== 0 && data.numAdults !== 0;
 
 	const isSystemSelectionStep =
 		components[currentIndex]?.type.name === "GamingSystems";

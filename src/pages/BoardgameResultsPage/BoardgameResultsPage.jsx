@@ -39,7 +39,6 @@ function BoardgameResultsPage() {
 				options
 			);
 			const sortedBoardgames = response.data.sort((a, b) => b.rank - a.rank);
-			console.log(response.data);
 			setBoardgameResults(sortedBoardgames);
 			setLoading(false);
 		} catch (error) {

@@ -77,9 +77,7 @@ function PopularPage() {
 	const getPopularVideogames = async () => {
 		try {
 			const response = await axios.get(VG_BASE_URL + vgAPI, { params });
-			console.log(response.data.results);
 			const games = response.data.results.splice(0, 10);
-			console.log(games);
 			setVideogameResults(games);
 			setLoading(false);
 		} catch (error) {
@@ -94,7 +92,6 @@ function PopularPage() {
 			const sortedBoardgames = response.data
 				.sort((a, b) => b.rank - a.rank)
 				.splice(0, 10);
-			console.log(response.data);
 			setBoardgameResults(sortedBoardgames);
 			setLoading(false);
 		} catch (error) {

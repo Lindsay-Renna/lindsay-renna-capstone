@@ -16,7 +16,6 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 			const res = await axios.get(`${SERVER_URL}/auth/profile`, {
 				withCredentials: true,
 			});
-			console.log(res.data);
 			setIsAuthenticating(false);
 			setIsLoggedIn(true);
 			setProfileData(res.data);
@@ -38,7 +37,6 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 			const movies = res.data.sort((a, b) =>
 				a.movie_name.localeCompare(b.movie_name)
 			);
-			console.log(movies);
 			setMovies(movies);
 		} catch (err) {
 			console.log(err);

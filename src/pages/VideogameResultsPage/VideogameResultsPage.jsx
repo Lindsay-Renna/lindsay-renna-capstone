@@ -44,7 +44,6 @@ function VideogameResultsPage() {
 		try {
 			const response = await axios.get(VG_BASE_URL + vgAPI, { params });
 			const games = response.data.results;
-			console.log(games);
 			const filteredGames = games.filter((game) => {
 				const esrbRating = game.esrb_rating
 					? game.esrb_rating.name.toLowerCase()
@@ -77,7 +76,6 @@ function VideogameResultsPage() {
 		try {
 			const response = await axios.get(VG_BASE_URL + `/${id}` + vgAPI);
 			const game = response.data;
-			console.log(game);
 			setVideogameDetails(game);
 		} catch (error) {}
 	}
