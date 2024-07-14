@@ -1,11 +1,9 @@
 @use "../../styles/partials/global" as *;
 
 #home-page {
-	height: 100vh;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	flex: 1;
 }
 
 .homepage-main {
