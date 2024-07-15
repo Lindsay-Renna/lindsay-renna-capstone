@@ -10,6 +10,10 @@
 		@include tablet {
 			font-size: 1.5rem;
 		}
+
+		@include iPhone15 {
+			font-size: 1rem;
+		}
 	}
 	&__error {
 		@include flex-center-both;

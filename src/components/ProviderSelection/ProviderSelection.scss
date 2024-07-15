@@ -4,7 +4,11 @@
 	padding: 0 0.5rem;
 	display: flex;
 	flex-direction: column;
-	height: 95%;
+	height: 47rem;
+
+	@include iPhone15 {
+		height: 39rem;
+	}
 
 	&__header {
 		margin-top: 1rem;
@@ -16,9 +20,6 @@
 		flex-wrap: wrap;
 		align-items: stretch;
 		flex-grow: 1;
-
-		@include tablet {
-		}
 	}
 
 	&__wrapper {

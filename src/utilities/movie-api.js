@@ -38,8 +38,6 @@ export const genreNames = [
 	{ id: 878, name: "Sci-Fi" },
 
 	{ id: 53, name: "Thriller" },
-
-	{ id: 37, name: "Western" },
 ];
 
 const watchRegion = {

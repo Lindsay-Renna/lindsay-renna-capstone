@@ -18,6 +18,12 @@
 	}
 }
 
+@mixin iPhone15 {
+	@media only screen and (min-device-width: 393px) and (max-device-width: 852px) and (-webkit-min-device-pixel-ratio: 3) {
+		@content;
+	}
+}
+
 @mixin flex-center-both {
 	display: flex;
 	justify-content: center;
