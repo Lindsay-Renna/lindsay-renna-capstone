@@ -9,7 +9,6 @@
 	height: 94.5vh;
 
 	&__profile {
-		padding: 1rem;
 		@include flex-center-both;
 		flex-direction: column;
 	}
@@ -67,6 +66,13 @@
 	}
 
 	&__header {
-		margin: 2rem 0;
+		margin: 1rem 0;
+		font-size: 1.25rem;
+
+		@include tablet {
+			margin: 2rem 0;
+
+			font-size: 1.5rem;
+		}
 	}
 }
