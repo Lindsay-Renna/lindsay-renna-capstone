@@ -5,6 +5,14 @@ import { useEffect, useState } from "react";
 import { VG_BASE_URL } from "../../utilities/videogame-api.js";
 import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
+import {
+	EmailShareButton,
+	FacebookShareButton,
+	WhatsappShareButton,
+	EmailIcon,
+	FacebookMessengerIcon,
+	WhatsappIcon,
+} from "react-share";
 
 function VideogameResultsPage() {
 	const location = useLocation();
@@ -84,6 +92,10 @@ function VideogameResultsPage() {
 		await getVideogameDetail(id);
 		setModalOpen(true);
 	};
+
+	const shareUrl = videogameDetails
+		? `https://rawg.io/games/${videogameDetails.id}`
+		: "";
 
 	return (
 		<div className="results">
@@ -193,6 +205,18 @@ function VideogameResultsPage() {
 						) : (
 							<p></p>
 						)}
+						<div className="videogame-modal__share-buttons">
+							<p>Share this videogame:</p>
+							<EmailShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+								<EmailIcon size={24} round />
+							</EmailShareButton>
+							<FacebookShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+								<FacebookMessengerIcon size={24} round />
+							</FacebookShareButton>
+							<WhatsappShareButton url={shareUrl}>
+								<WhatsappIcon size={24} round />
+							</WhatsappShareButton>
+						</div>
 					</>
 				) : (
 					<p>loading...</p>

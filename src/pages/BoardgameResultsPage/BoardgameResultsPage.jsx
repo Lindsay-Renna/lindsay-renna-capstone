@@ -5,6 +5,14 @@ import { useEffect, useState } from "react";
 import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import { BG_API_BASE_URL } from "../../utilities/boardgame-api.js";
+import {
+	EmailShareButton,
+	FacebookShareButton,
+	WhatsappShareButton,
+	EmailIcon,
+	FacebookMessengerIcon,
+	WhatsappIcon,
+} from "react-share";
 
 function BoardgameResultsPage() {
 	const location = useLocation();
@@ -61,6 +69,10 @@ function BoardgameResultsPage() {
 		setboardgameDetails(selectedBoardgame);
 		setModalOpen(true);
 	};
+
+	const shareUrl = boardgameDetails
+		? `https://boardgamegeek.com/boardgame/${boardgameDetails.bgg_id}`
+		: "";
 
 	return (
 		<div className="results">
@@ -131,6 +143,18 @@ function BoardgameResultsPage() {
 							<strong>Recommended Time: </strong>
 							{boardgameDetails.min_time + " min"}
 						</p>
+						<div className="bg-modal__share-buttons">
+							<p>Share this boardgame:</p>
+							<EmailShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+								<EmailIcon size={24} round />
+							</EmailShareButton>
+							<FacebookShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+								<FacebookMessengerIcon size={24} round />
+							</FacebookShareButton>
+							<WhatsappShareButton url={shareUrl}>
+								<WhatsappIcon size={24} round />
+							</WhatsappShareButton>
+						</div>
 					</>
 				) : (
 					<p>loading...</p>

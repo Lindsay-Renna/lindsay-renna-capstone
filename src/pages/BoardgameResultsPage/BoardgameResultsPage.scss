@@ -30,4 +30,14 @@
 			}
 		}
 	}
+
+	&__share-buttons {
+		p {
+			margin: 0;
+		}
+	}
+
+	.react-share__ShareButton {
+		margin: 0 0.25rem;
+	}
 }

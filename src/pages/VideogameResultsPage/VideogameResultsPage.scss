@@ -31,6 +31,16 @@
 			width: max-content;
 		}
 	}
+
+	&__share-buttons {
+		p {
+			margin: 0;
+		}
+	}
+
+	.react-share__ShareButton {
+		margin: 0 0.25rem;
+	}
 }
 
 .videogame-modal_platforms,

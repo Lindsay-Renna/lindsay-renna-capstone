@@ -21,17 +21,11 @@
 	}
 
 	@include tablet {
-		top: 25rem;
+		top: 26rem;
 		left: 50%;
-		height: 40rem;
+		min-height: 45rem;
 		width: 85vw;
-		max-width: 50rem;
-
 		padding: 1rem 1rem 1rem 2rem;
-	}
-
-	@include desktop {
-		width: 50rem;
 	}
 
 	&:focus {
