@@ -58,7 +58,9 @@
 	padding: 0 0.5rem;
 	display: flex;
 	flex-direction: column;
-	height: 45rem;
+
+	@include iPhone15 {
+	}
 
 	&__header {
 		margin: 1rem 0 2rem 0;
@@ -97,7 +99,7 @@
 	}
 }
 .switch__wrapper {
-	max-height: 15rem;
+	height: 7rem;
 	width: 90%;
 	text-align: center;
 
