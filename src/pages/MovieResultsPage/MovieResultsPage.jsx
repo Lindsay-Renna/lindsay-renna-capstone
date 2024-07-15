@@ -10,6 +10,14 @@ import {
 import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+import {
+	EmailShareButton,
+	FacebookMessengerShareButton,
+	WhatsappShareButton,
+	EmailIcon,
+	FacebookMessengerIcon,
+	WhatsappIcon,
+} from "react-share";
 
 function MovieResultsPage({ isLoggedIn }) {
 	const location = useLocation();
@@ -146,6 +154,15 @@ function MovieResultsPage({ isLoggedIn }) {
 		}
 	};
 
+	const shareUrl = movieDetails
+		? `https://www.imdb.com/title/${movieDetails.imdb_id}`
+		: "";
+
+	const handleShareClose = () => {
+		console.log("Share window closed");
+		// Optionally, you can add additional logic here to handle after the share is completed
+	};
+
 	return (
 		<div className="results">
 			{loading ? (
@@ -238,6 +255,22 @@ function MovieResultsPage({ isLoggedIn }) {
 						) : (
 							<></>
 						)}
+						<div className="movie-modal__share-buttons">
+							<p>Share this movie:</p>
+							<EmailShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+								<EmailIcon size={24} round />
+							</EmailShareButton>
+							<FacebookMessengerShareButton
+								url={shareUrl}
+								appId="512749567856290"
+								style={{ paddingRight: 5 }}
+							>
+								<FacebookMessengerIcon size={24} round />
+							</FacebookMessengerShareButton>
+							<WhatsappShareButton url={shareUrl}>
+								<WhatsappIcon size={24} round />
+							</WhatsappShareButton>
+						</div>
 					</>
 				) : (
 					<p>loading...</p>
