@@ -6,11 +6,16 @@
 	display: flex;
 	flex-direction: column;
 
+	@include iPhone15 {
+		height: 39rem;
+	}
+
 	&__header {
 		font-size: 1.5rem;
 		margin: 1rem 0 2rem 0;
 
-		@include tablet {
+		@include iPhone15 {
+			margin: 1rem 0;
 		}
 	}
 
@@ -33,6 +38,10 @@
 		@include tablet {
 			min-height: 7rem;
 			min-width: 25%;
+		}
+
+		@include iPhone15 {
+			min-width: 30%;
 		}
 	}
 

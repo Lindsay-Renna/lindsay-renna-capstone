@@ -6,6 +6,10 @@
 	flex-direction: column;
 	height: 45rem;
 
+	@include iPhone15 {
+		height: 39rem;
+	}
+
 	&__header {
 		font-size: 1.25rem;
 		margin: 1rem 0;

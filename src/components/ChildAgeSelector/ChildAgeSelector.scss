@@ -35,6 +35,10 @@
 					width: 8rem;
 				}
 			}
+
+			@include iPhone15 {
+				min-height: 8rem;
+			}
 		}
 
 		&--medium {
@@ -49,11 +53,19 @@
 					width: 10rem;
 				}
 			}
+
+			@include iPhone15 {
+				width: 35%;
+			}
 		}
 
 		&--few {
 			img.kids__image {
 				width: 10rem;
+
+				@include iPhone15 {
+					width: 8rem;
+				}
 			}
 
 			label {
@@ -66,6 +78,10 @@
 				img.kids__image {
 					width: 15rem;
 				}
+			}
+
+			@include iPhone15 {
+				width: 50%;
 			}
 		}
 
