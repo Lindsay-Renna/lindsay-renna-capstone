@@ -39,7 +39,10 @@ function App() {
 						path="/boardgames/results"
 						element={<BoardgameResultsPage />}
 					/>
-					<Route path="/popular" element={<PopularPage />} />
+					<Route
+						path="/popular"
+						element={<PopularPage isLoggedIn={isLoggedIn} />}
+					/>
 					<Route path="/about" element={<AboutPage />} />
 					<Route
 						path="/profile"

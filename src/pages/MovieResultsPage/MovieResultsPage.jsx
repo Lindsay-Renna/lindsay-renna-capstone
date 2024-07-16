@@ -158,11 +158,6 @@ function MovieResultsPage({ isLoggedIn }) {
 		? `https://www.imdb.com/title/${movieDetails.imdb_id}`
 		: "";
 
-	const handleShareClose = () => {
-		console.log("Share window closed");
-		// Optionally, you can add additional logic here to handle after the share is completed
-	};
-
 	return (
 		<div className="results">
 			{loading ? (

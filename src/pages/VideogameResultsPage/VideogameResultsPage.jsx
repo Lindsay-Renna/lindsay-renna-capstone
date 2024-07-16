@@ -7,7 +7,7 @@ import Results from "../../components/Results/Results.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import {
 	EmailShareButton,
-	FacebookShareButton,
+	FacebookMessengerShareButton,
 	WhatsappShareButton,
 	EmailIcon,
 	FacebookMessengerIcon,
@@ -63,7 +63,7 @@ function VideogameResultsPage() {
 						esrbRating === null
 					);
 				}
-				return esrbRating === "everyone" || esrbRating === null;
+				return esrbRating === "everyone";
 			});
 			setVideogameResults(filteredGames);
 		} catch (error) {
@@ -210,9 +210,12 @@ function VideogameResultsPage() {
 							<EmailShareButton url={shareUrl} style={{ paddingRight: 5 }}>
 								<EmailIcon size={24} round />
 							</EmailShareButton>
-							<FacebookShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+							<FacebookMessengerShareButton
+								url={shareUrl}
+								style={{ paddingRight: 5 }}
+							>
 								<FacebookMessengerIcon size={24} round />
-							</FacebookShareButton>
+							</FacebookMessengerShareButton>
 							<WhatsappShareButton url={shareUrl}>
 								<WhatsappIcon size={24} round />
 							</WhatsappShareButton>

@@ -7,7 +7,7 @@ import Modal from "../../components/Modal/Modal.jsx";
 import { BG_API_BASE_URL } from "../../utilities/boardgame-api.js";
 import {
 	EmailShareButton,
-	FacebookShareButton,
+	FacebookMessengerShareButton,
 	WhatsappShareButton,
 	EmailIcon,
 	FacebookMessengerIcon,
@@ -148,9 +148,12 @@ function BoardgameResultsPage() {
 							<EmailShareButton url={shareUrl} style={{ paddingRight: 5 }}>
 								<EmailIcon size={24} round />
 							</EmailShareButton>
-							<FacebookShareButton url={shareUrl} style={{ paddingRight: 5 }}>
+							<FacebookMessengerShareButton
+								url={shareUrl}
+								style={{ paddingRight: 5 }}
+							>
 								<FacebookMessengerIcon size={24} round />
-							</FacebookShareButton>
+							</FacebookMessengerShareButton>
 							<WhatsappShareButton url={shareUrl}>
 								<WhatsappIcon size={24} round />
 							</WhatsappShareButton>
