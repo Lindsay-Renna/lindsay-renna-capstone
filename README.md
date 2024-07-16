@@ -222,7 +222,7 @@ Project Link: [https://github.com/lindsay-renna/lindsay-renna-capstone](https://
 
 ## Acknowledgments
 
-- [https://recommend.games](Markus Shepherd of recommend.games for the scraped boardgame data)
+- [https://recommend.games] (Markus Shepherd of recommend.games for the scraped boardgame data)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
