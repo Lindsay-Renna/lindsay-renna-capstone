@@ -5,18 +5,22 @@ import { useState, useEffect } from "react";
 ReactModal.setAppElement("#root");
 
 function Modal({ modalOpen, setModalOpen, isLoggedIn, children }) {
-	const [scrollTop, setScrollTop] = useState(0);
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			setScrollTop(window.pageYOffset || document.documentElement.scrollTop);
-		};
-
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+		const body = document.body;
+		if (modalOpen) {
+			const currentScrollPosition = window.scrollY;
+			setScrollPosition(currentScrollPosition);
+			body.style.position = "fixed";
+			body.style.top = `-${currentScrollPosition}px`;
+			body.style.width = "100%";
+		} else {
+			body.style.position = "";
+			body.style.top = `-${scrollPosition}px`;
+			window.scrollTo(0, scrollPosition);
+		}
+	}, [modalOpen]);
 
 	if (!modalOpen) return null;
 
@@ -30,7 +34,6 @@ function Modal({ modalOpen, setModalOpen, isLoggedIn, children }) {
 			shouldCloseOnOverlayClick={true}
 			shouldCloseOnEsc={true}
 		>
-			{/* <div className="react-modal__closer"> */}
 			<img
 				className="react-modal__closer"
 				onClick={() => {
@@ -39,7 +42,6 @@ function Modal({ modalOpen, setModalOpen, isLoggedIn, children }) {
 				src="/icons/close-circle.svg"
 				alt="close x"
 			/>
-			{/* </div> */}
 			<div className="react-modal__children">{children}</div>
 		</ReactModal>
 	);
