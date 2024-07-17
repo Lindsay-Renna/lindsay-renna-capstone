@@ -2,14 +2,12 @@ import "./MovieGenres.scss";
 import { genreNames } from "../../utilities/movie-api.js";
 
 function MovieGenres({ data, handleGenreSelect }) {
-	const { genres } = data;
-
 	return (
 		<div className="genre">
-			<h2 className="genre__header">Choose some genres?</h2>
+			<h2 className="genre__header">Choose a genre?</h2>
 			<div className="genre__selections">
 				{genreNames.map((genre) => {
-					const isActive = genres.includes(genre.id);
+					const isActive = data.genre === genre.id;
 
 					return (
 						<div key={genre.id} className="genre__wrapper">
