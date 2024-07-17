@@ -14,7 +14,7 @@ function MoviesPage() {
 		numKids: 0,
 		numAdults: 0,
 		childAges: [],
-		genre: null,
+		genres: [],
 		minYear: 1980,
 		maxYear: 2024,
 		minLength: 60,
@@ -68,8 +68,11 @@ function MoviesPage() {
 	const handleGenreSelect = (event) => {
 		const genreId = parseInt(event.currentTarget.id);
 		setData((prevData) => {
-			const newGenre = prevData.genre === genreId ? null : genreId;
-			return { ...prevData, genre: newGenre };
+			const isSelected = prevData.genres.includes(genreId);
+			const newGenres = isSelected
+				? prevData.genres.filter((id) => id !== genreId)
+				: [...prevData.genres, genreId];
+			return { ...prevData, genres: newGenres };
 		});
 	};
 

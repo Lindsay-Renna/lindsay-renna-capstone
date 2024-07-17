@@ -4,10 +4,10 @@ import { genreNames } from "../../utilities/movie-api.js";
 function MovieGenres({ data, handleGenreSelect }) {
 	return (
 		<div className="genre">
-			<h2 className="genre__header">Choose a genre?</h2>
+			<h2 className="genre__header">Choose some genres?</h2>
 			<div className="genre__selections">
 				{genreNames.map((genre) => {
-					const isActive = data.genre === genre.id;
+					const isActive = data.genres.includes(genre.id);
 
 					return (
 						<div key={genre.id} className="genre__wrapper">

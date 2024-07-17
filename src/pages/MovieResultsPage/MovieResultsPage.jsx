@@ -69,7 +69,7 @@ function MovieResultsPage({ isLoggedIn }) {
 			watch_region: "CA",
 			"with_runtime.gte": `${data?.minLength}`,
 			"with_runtime.lte": `${data?.maxLength}`,
-			with_genres: data?.genres?.join(","),
+			with_genres: data?.genres?.join("|"),
 			with_watch_providers: data?.watchProviders?.join("|"),
 		},
 		headers: {
