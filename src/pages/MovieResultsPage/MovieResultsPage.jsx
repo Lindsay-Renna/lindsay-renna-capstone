@@ -40,7 +40,7 @@ function MovieResultsPage({ isLoggedIn }) {
 		}));
 	};
 
-	const cert = Math.min(...data.childAges) > 8 ? "G|PG" : "G|PG|PG13";
+	const cert = Math.min(...data.childAges) < 10 ? "G|PG" : "G|PG|PG13";
 	const currentDate = new Date();
 	const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
 	const currentYear = currentDate.getFullYear();
@@ -57,7 +57,7 @@ function MovieResultsPage({ isLoggedIn }) {
 	const options = {
 		params: {
 			certification: cert,
-			certification_country: "CA",
+			certification_country: "US",
 			include_adult: "false",
 			include_video: "false",
 			language: "en-US",
