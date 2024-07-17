@@ -53,44 +53,48 @@ const Carousel = ({
 
 	return (
 		<div className="carousel">
-			<div className="button__wrapper">
-				{currentIndex > 0 && (
-					<button onClick={handlePrevious} disabled={currentIndex === 0}>
-						<img
-							className="button__arrow"
-							src="/icons/arrow-left-small.svg"
-							alt="previous arrow"
-						/>
-					</button>
-				)}
-			</div>
-			<div
-				className={`selections ${transition}`}
-				onTransitionEnd={() => setTransition("")}
-			>
-				{React.cloneElement(CurrentComponent, { ...props, data })}
-			</div>
-			<div className="button__wrapper">
-				{currentIndex < components.length - 1 ? (
-					<button
-						onClick={handleNext}
-						disabled={
-							(currentIndex === 0 && !peopleAdded) ||
-							(currentIndex === 1 && !allAgesSelected) ||
-							(isSystemSelectionStep && !isSystemSelected)
-						}
-					>
-						<img
-							className="button__arrow"
-							src="/icons/arrow-right-small.svg"
-							alt="next arrow"
-						/>
-					</button>
-				) : (
-					<button onClick={handleSubmit} className="submit">
-						SUBMIT
-					</button>
-				)}
+			<div className="carousel__wrapper">
+				<div
+					className={`selections ${transition}`}
+					onTransitionEnd={() => setTransition("")}
+				>
+					{React.cloneElement(CurrentComponent, { ...props, data })}
+				</div>
+				<div className="carousel__buttons">
+					<div className="button__wrapper">
+						{currentIndex > 0 && (
+							<button onClick={handlePrevious} disabled={currentIndex === 0}>
+								<img
+									className="button__arrow"
+									src="/icons/arrow-left-small.svg"
+									alt="previous arrow"
+								/>
+							</button>
+						)}
+					</div>
+					<div className="button__wrapper">
+						{currentIndex < components.length - 1 ? (
+							<button
+								onClick={handleNext}
+								disabled={
+									(currentIndex === 0 && !peopleAdded) ||
+									(currentIndex === 1 && !allAgesSelected) ||
+									(isSystemSelectionStep && !isSystemSelected)
+								}
+							>
+								<img
+									className="button__arrow"
+									src="/icons/arrow-right-small.svg"
+									alt="next arrow"
+								/>
+							</button>
+						) : (
+							<button onClick={handleSubmit} className="submit">
+								SUBMIT
+							</button>
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
