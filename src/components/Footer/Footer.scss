@@ -11,6 +11,13 @@ footer {
 	h3 {
 		margin: 0;
 	}
+
+	@include iPhone15 {
+		min-height: 6rem;
+		h3 {
+			font-size: 1.25rem;
+		}
+	}
 }
 
 .social {
@@ -20,5 +27,10 @@ footer {
 	img {
 		width: 1.5rem;
 		height: 1.5rem;
+
+		@include iPhone15 {
+			width: 2rem;
+			height: 2rem;
+		}
 	}
 }
