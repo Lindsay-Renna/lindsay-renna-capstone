@@ -9,6 +9,11 @@ import "./ProfilePage.scss";
 const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [movies, setMovies] = useState([]);
 	const [isAuthenticating, setIsAuthenticating] = useState(true);
+
+	useEffect(() => {
+		authenticateUser();
+	}, []);
+
 	const [profileData, setProfileData] = useState(null);
 
 	const authenticateUser = async () => {
@@ -42,10 +47,6 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 			console.log(err);
 		}
 	};
-
-	useEffect(() => {
-		authenticateUser();
-	}, []);
 
 	const handleRemoveMovie = (id) => {
 		try {

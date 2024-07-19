@@ -1,5 +1,3 @@
-// TMDB
-// export const API_KEY = "ce8ee11d891272f30341df56ac404c9b";
 export const MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
 export const MOVIE_QUERY_URL = "https://api.themoviedb.org/3/discover/movie?";
 export const MOVIE_BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
@@ -39,12 +37,6 @@ export const genreNames = [
 
 	{ id: 53, name: "Thriller" },
 ];
-
-const watchRegion = {
-	iso_3166_1: "CA",
-	english_name: "Canada",
-	native_name: "Canada",
-};
 
 export const providers = [
 	{ provider_name: "Netflix", provider_id: 8 },

@@ -1,5 +1,5 @@
 import "./MoviesPage.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
