@@ -12,7 +12,7 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 
 	useEffect(() => {
 		authenticateUser();
-	}, [isLoggedIn]);
+	}, []);
 
 	const [profileData, setProfileData] = useState(null);
 
@@ -24,7 +24,6 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 			setIsAuthenticating(false);
 			setIsLoggedIn(true);
 			console.log(res.data);
-			console.log(isLoggedIn);
 			setProfileData(res.data);
 			localStorage.setItem("user_id", res.data.id);
 			getWatchedList(res.data.id);
@@ -36,7 +35,6 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 				console.log("Error authenticating", err);
 			}
 		}
-		console.log(isLoggedIn);
 	};
 
 	const getWatchedList = async (id) => {
