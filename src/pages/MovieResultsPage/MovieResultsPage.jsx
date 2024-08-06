@@ -214,7 +214,7 @@ function MovieResultsPage({ isLoggedIn }) {
 								/>
 							</Link>
 							<span className="movie-modal__tagline">
-								"{movieDetails.tagline}"
+								{movieDetails.tagline ? `"${movieDetails.tagline}"` : ""}
 							</span>
 						</div>
 						<p>
