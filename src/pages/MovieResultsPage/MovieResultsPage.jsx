@@ -119,7 +119,9 @@ function MovieResultsPage({ isLoggedIn }) {
 			const movie = response.data;
 
 			setMovieDetails(movie);
-		} catch (error) {}
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	const handleClick = async (id) => {

@@ -53,7 +53,7 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 		try {
 			axios.delete(`${SERVER_URL}/user/${id}`);
 		} catch (error) {
-			console.log(err);
+			console.log(error);
 		}
 		setMovies(movies.filter((movie) => movie.id !== id));
 	};

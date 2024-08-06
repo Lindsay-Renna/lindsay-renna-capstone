@@ -1,5 +1,5 @@
 import "./PopularPage.scss";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -94,8 +94,22 @@ function PopularPage({ isLoggedIn }) {
 	const getPopularMovies = async () => {
 		try {
 			const response = await axios.get(MOVIE_QUERY_URL, movieOptions);
-			const movies = response.data.results.splice(0, 10);
-			setMovieResults(movies);
+			const movies = response.data.results;
+
+			if (isLoggedIn) {
+				const user_id = localStorage.getItem("user_id");
+				const results = await axios.get(
+					`${SERVER_URL}/user/${user_id}/watched-list`
+				);
+
+				const watchedList = results.data.map((item) => item.movie_id);
+				const filteredMovies = movies.filter(
+					(movie) => !watchedList.includes(movie.id)
+				);
+				setMovieResults(filteredMovies.splice(0, 10));
+			} else {
+				setMovieResults(movies.splice(0, 10));
+			}
 			setLoading(false);
 		} catch (error) {
 			console.error(error);
@@ -138,7 +152,9 @@ function PopularPage({ isLoggedIn }) {
 			const movie = response.data;
 
 			setMovieDetails(movie);
-		} catch (error) {}
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	const handleMovieClick = async (id) => {
@@ -178,7 +194,9 @@ function PopularPage({ isLoggedIn }) {
 			const response = await axios.get(VG_BASE_URL + `/${id}` + vgAPI);
 			const game = response.data;
 			setVideogameDetails(game);
-		} catch (error) {}
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	const handleVideogameClick = async (id) => {
