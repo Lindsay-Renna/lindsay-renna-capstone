@@ -5,7 +5,7 @@
 
 	.family-member {
 		display: flex;
-		padding-bottom: 1rem;
+		padding: 1rem 0;
 		border-bottom: 1px solid $FamtivityGrey;
 
 		img {
@@ -32,6 +32,11 @@
 				margin: 0 0.25rem;
 			}
 		}
+
+		&__add {
+			border-radius: 10px;
+			margin-top: 1rem;
+		}
 	}
 }
 
@@ -48,4 +53,47 @@
 }
 .accordion-button:not(.collapsed) {
 	background-color: $FamtivityBlue-40;
+}
+
+.family-modal {
+	.react-modal {
+		padding: 1rem 1rem 2.5rem 1rem;
+		box-sizing: border-box;
+		position: fixed;
+		background-color: white;
+		height: 20rem;
+		width: 100vw;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
+		z-index: 1000;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		overflow: scroll;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none; /* for Chrome, Safari, and Opera */
+		}
+
+		@include tablet {
+			top: 26rem;
+			left: 50%;
+			min-height: 45rem;
+			width: 85vw;
+			padding: 1rem 1rem 1rem 2rem;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&__closer {
+			display: inline;
+			float: right;
+			text-align: right;
+			width: 2rem;
+			@include custom-pointer;
+		}
+	}
 }
