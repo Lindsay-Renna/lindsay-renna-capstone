@@ -5,9 +5,11 @@ import { useState, useEffect } from "react";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 import axios from "axios";
 import "./ProfilePage.scss";
+import FamilyProfiles from "../../components/FamilyProfiles/FamilyProfiles";
 
 const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [movies, setMovies] = useState([]);
+	const [familyProfiles, setFamilyProfiles] = useState([]);
 	const [isAuthenticating, setIsAuthenticating] = useState(true);
 
 	useEffect(() => {
@@ -27,6 +29,7 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 			setProfileData(res.data);
 			localStorage.setItem("user_id", res.data.id);
 			getWatchedList(res.data.id);
+			getFamilyProfiles(res.data.id);
 		} catch (err) {
 			if (err.response && err.response.status == 401) {
 				setIsAuthenticating(false);
@@ -58,6 +61,15 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 		setMovies(movies.filter((movie) => movie.id !== id));
 	};
 
+	const getFamilyProfiles = async (id) => {
+		try {
+			const { data } = await axios.get(`${SERVER_URL}/user/${id}/family`);
+			setFamilyProfiles(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<section className="profile-page">
 			{isLoggedIn ? (
@@ -78,6 +90,9 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 								movies={movies}
 								handleRemoveMovie={handleRemoveMovie}
 							/>
+						</div>
+						<div className="profile-page__family-profiles">
+							<FamilyProfiles family={familyProfiles} />
 						</div>
 						<div className="profile-page__logout-wrapper">
 							<LogoutButton setIsLoggedIn={setIsLoggedIn} />

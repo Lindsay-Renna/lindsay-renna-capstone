@@ -41,8 +41,14 @@
 		margin-bottom: 2rem;
 	}
 
-	&__watch-list {
+	&__watch-list,
+	&__family-profiles {
 		width: 100%;
+		margin: 2rem 0;
+	}
+
+	&__family-profiles {
+		padding: 0 1rem;
 	}
 }
 
