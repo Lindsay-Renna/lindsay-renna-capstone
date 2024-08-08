@@ -61,8 +61,8 @@
 		box-sizing: border-box;
 		position: fixed;
 		background-color: white;
-		height: 20rem;
-		width: 100vw;
+		min-height: 15rem;
+		width: 80vw;
 		border-radius: 10px;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
 		z-index: 1000;

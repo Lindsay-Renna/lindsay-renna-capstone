@@ -7,7 +7,7 @@ function FamilyProfiles({ family }) {
 	const [modalOpen, setModalOpen] = useState(false);
 
 	return (
-		<>
+		<div className="dynamic-table">
 			<Accordion>
 				<Accordion.Item eventKey="0">
 					<Accordion.Header>Your Family Profile</Accordion.Header>
@@ -62,7 +62,7 @@ function FamilyProfiles({ family }) {
 					<button>ADD</button>
 				</form>
 			</Modal>
-		</>
+		</div>
 	);
 }
 
