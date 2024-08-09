@@ -18,10 +18,7 @@
 	}
 
 	&__logout-wrapper {
-		margin: 2rem;
-		position: absolute;
-		bottom: 10px;
-		left: 40%;
+		margin: 5rem 2rem;
 
 		a {
 			@include flex-center-both;

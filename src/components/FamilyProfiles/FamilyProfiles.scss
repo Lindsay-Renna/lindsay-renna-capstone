@@ -33,12 +33,12 @@
 				@include custom-pointer;
 			}
 		}
-
-		&__add {
-			border-radius: 10px;
-			margin-top: 1rem;
-		}
 	}
+}
+
+.family-member__add {
+	border-radius: 10px;
+	margin-top: 1rem;
 }
 
 .accordion {
@@ -61,14 +61,27 @@
 	flex-direction: column;
 	gap: 0.5rem;
 
+	p {
+		margin: 0;
+	}
+
 	label {
 		margin: 0 0.5rem;
+	}
+
+	select,
+	input {
+		padding: 0.25rem;
+		border: 1px solid black;
+		margin: 0 0.5rem 1rem 0.5rem;
+		width: 90%;
+		border-radius: 10px;
 	}
 
 	.radio-buttons__wrapper {
 		@include flex-center-both;
 		flex-wrap: wrap;
-		gap: 2rem;
+		gap: 1rem;
 		margin: 1rem;
 
 		.radio-button {

@@ -112,7 +112,15 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 								</button>
 							</div>
 						) : (
-							<p>You haven't added any family members yet.</p>
+							<>
+								<p>You haven't added any family members yet.</p>
+								<button
+									className="family-member__add"
+									onClick={() => setModalOpen(true)}
+								>
+									Add a family member
+								</button>
+							</>
 						)}
 					</Accordion.Body>
 				</Accordion.Item>
