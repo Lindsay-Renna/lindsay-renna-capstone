@@ -18,7 +18,7 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 			user_id: user_id,
 			name: event.target.name.value,
 			age: event.target.age.value,
-			gender: event.target.profile.value,
+			avatar: event.target.profile.value,
 		};
 
 		try {
@@ -54,7 +54,7 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 			user_id: user_id,
 			name: event.target.name.value,
 			age: event.target.age.value,
-			gender: event.target.profile.value,
+			avatar: event.target.profile.value,
 		};
 
 		try {
@@ -83,12 +83,12 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 								{family.map((person) => (
 									<div key={person.id} className="family-member">
 										<img
-											src={`/images/icon${person.gender}.png`}
+											src={`/images/icon${person.avatar}.png`}
 											alt="profile avatar"
 										/>
 										<div className="family-member__info">
 											<p>Name: {person.name}</p>
-											<p>Age: {person.age}</p>
+											<p>Age: {person.age === 0 ? "Adult" : person.age}</p>
 										</div>
 										<div className="family-member__edit">
 											<img
@@ -150,6 +150,7 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 								&nbsp;&nbsp;{i + 1}
 							</option>
 						))}
+						<option value="0">Adult</option>
 					</select>
 					<p>Avatar:</p>
 					<div className="radio-buttons__wrapper">
@@ -215,7 +216,7 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 										id={avatar}
 										name="profile"
 										value={avatar}
-										defaultChecked={selectedProfile.gender === avatar}
+										defaultChecked={selectedProfile.avatar === avatar}
 									/>
 									<label htmlFor={avatar}>
 										<img
