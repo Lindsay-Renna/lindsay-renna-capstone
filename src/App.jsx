@@ -16,7 +16,9 @@ import PopularPage from "./pages/PopularPage/PopularPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 
 function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(() => {
+		return localStorage.getItem("isLoggedIn") === "true";
+	});
 
 	return (
 		<>

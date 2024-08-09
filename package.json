@@ -6,9 +6,10 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"postbuild": "cp -R ./dist /Users/padfo/Documents/Brainstation Bootcamp/Development/lindsay-renna-capstone-api/client",
+		"postbuild": "xcopy /E /I /Y \"dist\" \"\\Users\\padfo\\Documents\\Brainstation Bootcamp\\Development\\lindsay-renna-capstone-api\\client\"",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"deploy": "npm run build && postbuild"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.4",

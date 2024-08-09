@@ -25,3 +25,5 @@ dist-ssr
 *.env
 
 To-dos.md
+.env.production
+.env.development
