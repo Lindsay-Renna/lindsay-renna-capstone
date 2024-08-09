@@ -102,13 +102,15 @@ function PopularPage({ isLoggedIn }) {
 					`${SERVER_URL}/user/${user_id}/watched-list`
 				);
 
-				const watchedList = results.data.map((item) => item.movie_id);
+				const watchedList = results.data
+					? results.data.map((item) => String(item.movie_id))
+					: [];
 				const filteredMovies = movies.filter(
-					(movie) => !watchedList.includes(movie.id)
+					(movie) => !watchedList.includes(String(movie.id))
 				);
-				setMovieResults(filteredMovies.splice(0, 10));
+				setMovieResults(filteredMovies.slice(0, 10));
 			} else {
-				setMovieResults(movies.splice(0, 10));
+				setMovieResults(movies.slice(0, 10));
 			}
 			setLoading(false);
 		} catch (error) {
