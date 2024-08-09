@@ -30,6 +30,7 @@
 				width: 1.5rem;
 				height: auto;
 				margin: 0 0.25rem;
+				@include custom-pointer;
 			}
 		}
 
@@ -55,45 +56,49 @@
 	background-color: $FamtivityBlue-40;
 }
 
-.family-modal {
-	.react-modal {
-		padding: 1rem 1rem 2.5rem 1rem;
-		box-sizing: border-box;
-		position: fixed;
-		background-color: white;
-		min-height: 15rem;
-		width: 80vw;
+.new-profile {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	label {
+		margin: 0 0.5rem;
+	}
+
+	.radio-buttons__wrapper {
+		@include flex-center-both;
+		flex-wrap: wrap;
+		gap: 2rem;
+		margin: 1rem;
+
+		.radio-button {
+			input[type="radio"] {
+				display: none;
+			}
+
+			label {
+				border: 1px solid transparent;
+				border-radius: 10px;
+				padding: 2px;
+				@include custom-pointer;
+				display: inline-block;
+			}
+
+			input[type="radio"]:checked + label {
+				border-color: rgb(0, 0, 0);
+				border-radius: 10px;
+			}
+		}
+	}
+
+	&__button {
 		border-radius: 10px;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
-		z-index: 1000;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		overflow: scroll;
-		scrollbar-width: none;
+		padding: 0.5rem 0.5rem;
+		background-color: $FamtivityBlue-40;
+	}
 
-		&::-webkit-scrollbar {
-			display: none; /* for Chrome, Safari, and Opera */
-		}
-
-		@include tablet {
-			top: 26rem;
-			left: 50%;
-			min-height: 45rem;
-			width: 85vw;
-			padding: 1rem 1rem 1rem 2rem;
-		}
-
-		&:focus {
-			outline: none;
-		}
-
-		&__closer {
-			display: inline;
-			float: right;
-			text-align: right;
-			width: 2rem;
-			@include custom-pointer;
-		}
+	&__image {
+		width: 4rem;
+		@include custom-pointer;
 	}
 }

@@ -11,12 +11,11 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [movies, setMovies] = useState([]);
 	const [familyProfiles, setFamilyProfiles] = useState([]);
 	const [isAuthenticating, setIsAuthenticating] = useState(true);
+	const [profileData, setProfileData] = useState(null);
 
 	useEffect(() => {
 		authenticateUser();
 	}, []);
-
-	const [profileData, setProfileData] = useState(null);
 
 	const authenticateUser = async () => {
 		try {
@@ -98,7 +97,10 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 							/>
 						</div>
 						<div className="profile-page__family-profiles">
-							<FamilyProfiles family={familyProfiles} />
+							<FamilyProfiles
+								family={familyProfiles}
+								getFamilyProfiles={getFamilyProfiles}
+							/>
 						</div>
 						<div className="profile-page__logout-wrapper">
 							<LogoutButton handleLogout={handleLogout} />
