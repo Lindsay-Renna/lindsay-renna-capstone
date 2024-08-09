@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
@@ -19,6 +19,10 @@ function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(() => {
 		return localStorage.getItem("isLoggedIn") === "true";
 	});
+
+	useEffect(() => {
+		localStorage.setItem("isLoggedIn", isLoggedIn);
+	}, [isLoggedIn]);
 
 	return (
 		<>

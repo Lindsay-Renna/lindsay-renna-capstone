@@ -40,6 +40,12 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 		}
 	};
 
+	const handleLogout = () => {
+		localStorage.removeItem("isLoggedIn");
+		localStorage.removeItem("user_id");
+		setIsLoggedIn(false);
+	};
+
 	const getWatchedList = async (id) => {
 		try {
 			const res = await axios.get(`${SERVER_URL}/user/${id}/watched-list`);
@@ -95,7 +101,7 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 							<FamilyProfiles family={familyProfiles} />
 						</div>
 						<div className="profile-page__logout-wrapper">
-							<LogoutButton setIsLoggedIn={setIsLoggedIn} />
+							<LogoutButton handleLogout={handleLogout} />
 						</div>
 					</div>
 				)
