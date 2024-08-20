@@ -1,5 +1,6 @@
 import "./MoviesPage.scss";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import PersonSelection from "../../components/PersonSelection/PersonSelection";
@@ -9,7 +10,9 @@ import MoviesSlider from "../../components/MoviesSlider/MoviesSlider";
 import ProviderSelection from "../../components/ProviderSelection/ProviderSelection";
 import { providers } from "../../utilities/movie-api.js";
 
-function MoviesPage() {
+const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+
+function MoviesPage({ isLoggedIn }) {
 	const [data, setData] = useState({
 		numKids: 0,
 		numAdults: 0,
@@ -21,6 +24,44 @@ function MoviesPage() {
 		maxLength: 210,
 		watchProviders: [],
 	});
+
+	useEffect(() => {
+		if (isLoggedIn) {
+			const user_id = localStorage.getItem("user_id");
+
+			const getFamilyProfiles = async (id) => {
+				try {
+					const { data } = await axios.get(`${SERVER_URL}/user/${id}/family`);
+
+					let numAdults = 0;
+					let numKids = 0;
+					let childAges = [];
+
+					data.forEach((profile) => {
+						if (profile.age === 0) {
+							numAdults += 1;
+						} else if (profile.age > 0) {
+							numKids += 1;
+							childAges.push(profile.age);
+						}
+					});
+
+					setData((prevData) => ({
+						...prevData,
+						numKids,
+						numAdults,
+						childAges,
+					}));
+				} catch (error) {
+					console.log("Error fetching family profiles:", error);
+				}
+			};
+
+			if (user_id) {
+				getFamilyProfiles(user_id);
+			}
+		}
+	}, [isLoggedIn]);
 
 	const navigate = useNavigate();
 
@@ -34,10 +75,16 @@ function MoviesPage() {
 	};
 
 	const removeKid = () => {
-		setData((prevData) => ({
-			...prevData,
-			numKids: Math.max(0, prevData.numKids - 1),
-		}));
+		setData((prevData) => {
+			const newChildAges = [...prevData.childAges];
+			newChildAges.pop();
+
+			return {
+				...prevData,
+				numKids: Math.max(0, prevData.numKids - 1),
+				childAges: newChildAges,
+			};
+		});
 	};
 
 	const addAdult = () => {
@@ -60,7 +107,7 @@ function MoviesPage() {
 		const value = event.target.value;
 		setData((prevData) => {
 			const newChildAges = [...prevData.childAges];
-			newChildAges[index] = value;
+			newChildAges[index] = parseInt(value);
 			return { ...prevData, childAges: newChildAges };
 		});
 	};
@@ -106,6 +153,8 @@ function MoviesPage() {
 	const handleSubmit = () => {
 		navigate("/movies/results", { state: { data } });
 	};
+
+	console.log(data);
 
 	return (
 		<div id="movie-selection">

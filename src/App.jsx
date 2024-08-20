@@ -30,17 +30,26 @@ function App() {
 				<NavBar isLoggedIn={isLoggedIn} />
 				<Routes>
 					<Route path="/" element={<HomePage />} />
-					<Route path="/movies" element={<MoviesPage />} />
+					<Route
+						path="/movies"
+						element={<MoviesPage isLoggedIn={isLoggedIn} />}
+					/>
 					<Route
 						path="/movies/results"
 						element={<MovieResultsPage isLoggedIn={isLoggedIn} />}
 					/>
-					<Route path="/videogames" element={<VideogamePage />} />
+					<Route
+						path="/videogames"
+						element={<VideogamePage isLoggedIn={isLoggedIn} />}
+					/>
 					<Route
 						path="/videogames/results"
 						element={<VideogameResultsPage />}
 					/>
-					<Route path="/boardgames" element={<BoardgamePage />} />
+					<Route
+						path="/boardgames"
+						element={<BoardgamePage isLoggedIn={isLoggedIn} />}
+					/>
 					<Route
 						path="/boardgames/results"
 						element={<BoardgameResultsPage />}

@@ -2,13 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Carousel.scss";
 
-const Carousel = ({
-	handleQuerySubmit,
-	data,
-	handleSubmit,
-	children,
-	...props
-}) => {
+const Carousel = ({ data, handleSubmit, children, ...props }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [transition, setTransition] = useState("");
 	const components = children;
@@ -41,7 +35,10 @@ const Carousel = ({
 
 	const allAgesSelected =
 		data.childAges.length === data.numKids &&
-		data.childAges.every((age) => age !== undefined && age !== "");
+		data.childAges.every(
+			(age) => typeof age === "number" && !isNaN(age) && age >= 1
+		) &&
+		!data.childAges.includes(undefined);
 
 	const peopleAdded = data.numKids !== 0 && data.numAdults !== 0;
 
