@@ -196,7 +196,11 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 						required
 					></input>
 					<label htmlFor="name">Age:</label>
-					<select required defaultValue={selectedProfile.age} name="age">
+					<select
+						required
+						defaultValue={selectedProfile.age === 0 ? 0 : selectedProfile.age}
+						name="age"
+					>
 						<option value="" disabled>
 							- select -
 						</option>
@@ -205,6 +209,7 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 								&nbsp;&nbsp;{i + 1}
 							</option>
 						))}
+						<option value={0}>&nbsp;&nbsp;Adult</option>
 					</select>
 					<p>Avatar:</p>
 					<div className="radio-buttons__wrapper">
@@ -230,7 +235,7 @@ function FamilyProfiles({ family, getFamilyProfiles }) {
 						})}
 					</div>
 					<button className="new-profile__button" type="submit">
-						ADD
+						SUBMIT
 					</button>
 				</form>
 			</Modal>

@@ -13,6 +13,7 @@ import { providers } from "../../utilities/movie-api.js";
 const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function MoviesPage({ isLoggedIn }) {
+	const [familyProfiles, setFamilyProfiles] = useState([]);
 	const [data, setData] = useState({
 		numKids: 0,
 		numAdults: 0,
@@ -32,6 +33,16 @@ function MoviesPage({ isLoggedIn }) {
 			const getFamilyProfiles = async (id) => {
 				try {
 					const { data } = await axios.get(`${SERVER_URL}/user/${id}/family`);
+					const profiles = data.sort((a, b) => {
+						if (a.age >= 1 && a.age <= 13 && b.age === 0) {
+							return -1;
+						} else if (a.age === 0 && b.age >= 1 && b.age <= 13) {
+							return 1;
+						} else {
+							return a.age - b.age;
+						}
+					});
+					setFamilyProfiles(profiles);
 
 					let numAdults = 0;
 					let numKids = 0;
@@ -173,8 +184,14 @@ function MoviesPage({ isLoggedIn }) {
 					providerSelectAll={providerSelectAll}
 					providerSelectNone={providerSelectNone}
 				>
-					<PersonSelection />
-					<ChildAgeSelector />
+					<PersonSelection
+						isLoggedIn={isLoggedIn}
+						familyProfiles={familyProfiles}
+					/>
+					<ChildAgeSelector
+						isLoggedIn={isLoggedIn}
+						familyProfiles={familyProfiles}
+					/>
 					<MovieGenres />
 					<MoviesSlider />
 					<ProviderSelection />

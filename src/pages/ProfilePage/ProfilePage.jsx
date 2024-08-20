@@ -69,7 +69,17 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
 	const getFamilyProfiles = async (id) => {
 		try {
 			const { data } = await axios.get(`${SERVER_URL}/user/${id}/family`);
-			setFamilyProfiles(data);
+			const profiles = data.sort((a, b) => {
+				if (a.age >= 1 && a.age <= 13 && b.age === 0) {
+					return -1;
+				} else if (a.age === 0 && b.age >= 1 && b.age <= 13) {
+					return 1;
+				} else {
+					return a.age - b.age;
+				}
+			});
+
+			setFamilyProfiles(profiles);
 		} catch (error) {
 			console.log(error);
 		}

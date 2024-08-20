@@ -1,12 +1,25 @@
 import "./ChildAgeSelector.scss";
 
-function ChildAgeSelector({ data, handleAgeSelect }) {
+function ChildAgeSelector({
+	data,
+	handleAgeSelect,
+	familyProfiles,
+	isLoggedIn,
+}) {
 	const { numKids, childAges } = data;
+
+	// Filter the profiles to include only children (ages 1 to 13)
+	const childProfiles = familyProfiles.filter(
+		(profile) => profile.age >= 1 && profile.age <= 13
+	);
 
 	return (
 		<div className="age-select">
 			<h2 className="age-select__header">How old are the kids?</h2>
 			{[...Array(numKids)].map((_, index) => {
+				// Check if a profile exists for the current child, fallback to placeholders if not
+				const profileExists = childProfiles[index] !== undefined;
+
 				return (
 					<div
 						key={index}
@@ -19,13 +32,21 @@ function ChildAgeSelector({ data, handleAgeSelect }) {
 						}
 					>
 						<img
-							src={`/images/icon${index}.png`}
+							src={
+								isLoggedIn && profileExists
+									? `/images/icon${childProfiles[index].avatar}.png`
+									: `/images/icon${index}.png`
+							}
 							alt="child icon"
 							className={
 								numKids > 4 ? "kids__image" : "kids__image kids__image--large"
 							}
 						/>
-						<label>{`Child ${index + 1}`}</label>
+						<label>
+							{isLoggedIn && profileExists
+								? `${childProfiles[index].name}`
+								: `Child ${index + 1}`}
+						</label>
 						<div key={index} className="age-select__dropdown">
 							<select
 								onChange={(event) => {

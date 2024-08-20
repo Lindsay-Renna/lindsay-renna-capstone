@@ -162,6 +162,8 @@ function MovieResultsPage({ isLoggedIn }) {
 		? `https://www.imdb.com/title/${movieDetails.imdb_id}`
 		: "";
 
+	console.log(movieResults);
+
 	return (
 		<div className="results">
 			{loading ? (
