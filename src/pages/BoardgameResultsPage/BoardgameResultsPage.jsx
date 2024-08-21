@@ -36,9 +36,13 @@ function BoardgameResultsPage() {
 		min_age: Math.min(...data.childAges),
 		num_players: parseInt(data.numKids + data.numAdults),
 		max_time: data.maxLength,
-		category: data.category,
 		mechanics: data.cooperative === true ? "Cooperative" : "",
+		...(data.category && data.category.length > 0
+			? { category: data.category }
+			: { category: "" }),
 	};
+
+	console.log(options);
 
 	const getBoardgameResults = async () => {
 		try {
